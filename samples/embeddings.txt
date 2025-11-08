@@ -1,0 +1,2 @@
+OpenAI embedding models such as text-embedding-3-small (1536 dims) and text-embedding-3-large (3072 dims) are commonly used with cosine distance for semantic similarity. Keep your collection dimension matched to the chosen model.
+

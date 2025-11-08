@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DrCloudEHR Support - Analytics Dashboard</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            padding: 20px;
+            overflow-x: auto;
+        }
+        
+        .container {
+            max-width: 100%;
+            min-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 24px;
+        }
+        
+        h1 {
+            color: #2563eb;
+            margin-bottom: 24px;
+            font-size: 28px;
+        }
+        
+        .filters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+            padding: 20px;
+            background: #f9fafb;
+            border-radius: 8px;
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .filter-group label {
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #555;
+            font-size: 14px;
+        }
+        
+        .filter-group input,
+        .filter-group select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        
+        .filter-group input:focus,
+        .filter-group select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .btn {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+        
+        .btn:hover {
+            background: #2563eb;
+        }
+        
+        .btn-secondary {
+            background: #6b7280;
+        }
+        
+        .btn-secondary:hover {
+            background: #4b5563;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .stat-card h3 {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+        
+        .stat-card .value {
+            font-size: 32px;
+            font-weight: 700;
+        }
+        
+        .stat-card.blue {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        }
+        
+        .stat-card.green {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+        
+        .stat-card.orange {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            overflow-y: visible;
+            margin-top: 24px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            max-width: 100%;
+        }
+        
+        .logs-table {
+            width: 100%;
+            min-width: 1400px;
+            border-collapse: collapse;
+            margin: 0;
+        }
+        
+        .logs-table th {
+            background: #f9fafb;
+            padding: 12px 8px;
+            text-align: left;
+            font-weight: 600;
+            color: #555;
+            border-bottom: 2px solid #e5e7eb;
+            font-size: 13px;
+            white-space: nowrap;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .logs-table td {
+            padding: 12px 8px;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 13px;
+            vertical-align: top;
+            white-space: nowrap;
+        }
+        
+        .logs-table th,
+        .logs-table td {
+            min-width: 100px;
+        }
+        
+        /* Specific column widths for better layout */
+        .logs-table th:nth-child(1), .logs-table td:nth-child(1) { min-width: 150px; } /* Date */
+        .logs-table th:nth-child(2), .logs-table td:nth-child(2) { min-width: 100px; } /* Ticket # */
+        .logs-table th:nth-child(3), .logs-table td:nth-child(3) { min-width: 120px; } /* User ID */
+        .logs-table th:nth-child(4), .logs-table td:nth-child(4) { min-width: 120px; } /* Site ID */
+        .logs-table th:nth-child(5), .logs-table td:nth-child(5) { min-width: 130px; } /* Category */
+        .logs-table th:nth-child(6), .logs-table td:nth-child(6) { min-width: 100px; } /* Severity */
+        .logs-table th:nth-child(7), .logs-table td:nth-child(7) { min-width: 200px; max-width: 300px; white-space: normal; } /* Question */
+        .logs-table th:nth-child(8), .logs-table td:nth-child(8) { min-width: 200px; max-width: 300px; white-space: normal; } /* Answer */
+        .logs-table th:nth-child(9), .logs-table td:nth-child(9) { min-width: 150px; } /* Attachments */
+        .logs-table th:nth-child(10), .logs-table td:nth-child(10) { min-width: 150px; } /* Tags */
+        .logs-table th:nth-child(11), .logs-table td:nth-child(11) { min-width: 100px; } /* Rating */
+        .logs-table th:nth-child(12), .logs-table td:nth-child(12) { min-width: 200px; max-width: 300px; white-space: normal; } /* Feedback */
+        
+        .logs-table tr:hover {
+            background: #f9fafb;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .badge-user {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+        
+        .badge-site {
+            background: #dcfce7;
+            color: #166534;
+        }
+        
+        .badge-tag {
+            background: #fef3c7;
+            color: #92400e;
+            margin-right: 4px;
+        }
+        
+        .question {
+            max-width: 300px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            white-space: normal;
+        }
+        
+        .answer {
+            max-width: 300px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            white-space: normal;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #6b7280;
+        }
+        
+        .error {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 16px;
+        }
+        
+        .no-data {
+            text-align: center;
+            padding: 40px;
+            color: #6b7280;
+        }
+        
+        .file-preview {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin: 2px 4px 2px 0;
+            padding: 4px 8px;
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 4px;
+            font-size: 11px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .file-preview:hover {
+            background: #dbeafe;
+        }
+        
+        .file-preview img {
+            width: 16px;
+            height: 16px;
+            object-fit: cover;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            overflow: auto;
+        }
+        
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 90%;
+            max-height: 90vh;
+            overflow: auto;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .modal-header h2 {
+            margin: 0;
+            color: #1f2937;
+        }
+        
+        .close {
+            color: #6b7280;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 20px;
+        }
+        
+        .close:hover {
+            color: #1f2937;
+        }
+        
+        .file-viewer {
+            text-align: center;
+        }
+        
+        .file-viewer img {
+            max-width: 100%;
+            max-height: 70vh;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .file-viewer iframe {
+            width: 100%;
+            height: 70vh;
+            border: none;
+            border-radius: 8px;
+        }
+        
+        .file-info {
+            margin-top: 16px;
+            padding: 12px;
+            background: #f9fafb;
+            border-radius: 6px;
+            text-align: left;
+        }
+        
+        .file-info-item {
+            margin: 8px 0;
+            font-size: 14px;
+        }
+        
+        .file-info-label {
+            font-weight: 600;
+            color: #4b5563;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 DrCloudEHR Support Analytics Dashboard</h1>
+        
+        <div style="margin-bottom: 20px; display: flex; gap: 12px; align-items: center;">
+            <button id="viewLogsBtn" class="btn" onclick="switchView('logs')" style="background: #3b82f6;">View Logs (Q&A)</button>
+            <button id="viewTicketsBtn" class="btn btn-secondary" onclick="switchView('tickets')" style="background: #6b7280;">View Tickets</button>
+            <span id="viewIndicator" style="margin-left: auto; font-weight: 600; color: #2563eb;">Currently viewing: Logs</span>
+        </div>
+        
+        <div class="filters">
+            <div class="filter-group">
+                <label for="userId">User ID</label>
+                <input type="text" id="userId" placeholder="Filter by User ID">
+            </div>
+            
+            <div class="filter-group">
+                <label for="siteId">Site ID</label>
+                <input type="text" id="siteId" placeholder="Filter by Site ID">
+            </div>
+            
+            <div class="filter-group">
+                <label for="startDate">Start Date</label>
+                <input type="date" id="startDate">
+            </div>
+            
+            <div class="filter-group">
+                <label for="endDate">End Date</label>
+                <input type="date" id="endDate">
+            </div>
+            
+            <div class="filter-group" style="display: flex; align-items: flex-end;">
+                <button class="btn" onclick="loadLogs()">Apply Filters</button>
+            </div>
+            
+            <div class="filter-group" style="display: flex; align-items: flex-end;">
+                <button class="btn btn-secondary" onclick="clearFilters()">Clear</button>
+            </div>
+            
+            <div class="filter-group" style="display: flex; align-items: flex-end;">
+                <button class="btn" onclick="loadLogs()" style="background: #10b981;">Refresh</button>
+            </div>
+        </div>
+        
+        <div id="error" class="error" style="display: none;"></div>
+        
+        <div class="stats" id="stats"></div>
+        
+        <div id="loading" class="loading" style="display: none;">Loading logs...</div>
+        
+        <div id="logsContainer">
+            <div class="table-container">
+                <table class="logs-table" id="logsTable" style="display: none;">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Ticket #</th>
+                            <th>User ID</th>
+                            <th>Site ID</th>
+                            <th>Category</th>
+                            <th>Severity</th>
+                            <th>Question</th>
+                            <th>Answer</th>
+                            <th>Attachments</th>
+                            <th>Tags</th>
+                            <th>Rating</th>
+                            <th>Feedback</th>
+                        </tr>
+                    </thead>
+                    <tbody id="logsBody"></tbody>
+                </table>
+            </div>
+            <div id="noData" class="no-data" style="display: none;">No logs found</div>
+        </div>
+    </div>
+    
+    <!-- File Viewer Modal -->
+    <div id="fileModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">File Viewer</h2>
+                <span class="close" onclick="closeFileModal()">&times;</span>
+            </div>
+            <div id="fileViewer" class="file-viewer"></div>
+            <div id="fileInfo" class="file-info"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8000'; // Update this to your backend URL
+        let currentView = 'logs'; // 'logs' or 'tickets'
+        
+        function showError(message) {
+            const errorDiv = document.getElementById('error');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            setTimeout(() => {
+                errorDiv.style.display = 'none';
+            }, 5000);
+        }
+        
+        function formatDate(dateString) {
+            if (!dateString) return 'N/A';
+            const date = new Date(dateString);
+            return date.toLocaleString();
+        }
+        
+        function calculateStats(logs) {
+            const stats = {
+                total: logs.length,
+                withFeedback: logs.filter(l => l.feedback).length,
+                avgRating: 0,
+                uniqueUsers: new Set(logs.map(l => l.user_id).filter(Boolean)).size,
+                uniqueSites: new Set(logs.map(l => l.site_id).filter(Boolean)).size,
+            };
+            
+            const ratings = logs.map(l => l.rating).filter(r => r !== null && r !== undefined);
+            if (ratings.length > 0) {
+                stats.avgRating = (ratings.reduce((a, b) => a + b, 0) / ratings.length).toFixed(2);
+            }
+            
+            return stats;
+        }
+        
+        function displayStats(stats) {
+            const statsDiv = document.getElementById('stats');
+            statsDiv.innerHTML = `
+                <div class="stat-card blue">
+                    <h3>Total Logs</h3>
+                    <div class="value">${stats.total}</div>
+                </div>
+                <div class="stat-card green">
+                    <h3>Unique Users</h3>
+                    <div class="value">${stats.uniqueUsers}</div>
+                </div>
+                <div class="stat-card orange">
+                    <h3>Unique Sites</h3>
+                    <div class="value">${stats.uniqueSites}</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Avg Rating</h3>
+                    <div class="value">${stats.avgRating || 'N/A'}</div>
+                </div>
+                <div class="stat-card green">
+                    <h3>With Feedback</h3>
+                    <div class="value">${stats.withFeedback}</div>
+                </div>
+            `;
+        }
+        
+        function switchView(viewType) {
+            currentView = viewType;
+            const logsBtn = document.getElementById('viewLogsBtn');
+            const ticketsBtn = document.getElementById('viewTicketsBtn');
+            const indicator = document.getElementById('viewIndicator');
+            
+            if (viewType === 'logs') {
+                logsBtn.style.background = '#3b82f6';
+                ticketsBtn.style.background = '#6b7280';
+                indicator.textContent = 'Currently viewing: Logs (Q&A Interactions)';
+            } else {
+                logsBtn.style.background = '#6b7280';
+                ticketsBtn.style.background = '#3b82f6';
+                indicator.textContent = 'Currently viewing: Tickets (User-Created)';
+            }
+            
+            loadLogs();
+        }
+        
+        async function loadLogs() {
+            const userId = document.getElementById('userId').value.trim();
+            const siteId = document.getElementById('siteId').value.trim();
+            const startDate = document.getElementById('startDate').value;
+            const endDate = document.getElementById('endDate').value;
+            
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('logsTable').style.display = 'none';
+            document.getElementById('noData').style.display = 'none';
+            
+            try {
+                const params = new URLSearchParams();
+                if (userId) params.append('user_id', userId);
+                if (siteId) params.append('site_id', siteId);
+                if (startDate) params.append('start_date', startDate);
+                if (endDate) params.append('end_date', endDate);
+                params.append('limit', '5000'); // Increased limit to show more logs
+                
+                // Use different endpoint based on view type
+                const endpoint = currentView === 'tickets' ? '/tickets' : '/logs';
+                const response = await fetch(`${API_BASE}${endpoint}?${params.toString()}`);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                // Handle both /logs (returns {logs: []}) and /tickets (returns {tickets: []})
+                const logs = data.logs || data.tickets || [];
+                
+                document.getElementById('loading').style.display = 'none';
+                
+                if (logs.length === 0) {
+                    document.getElementById('noData').style.display = 'block';
+                    document.getElementById('stats').innerHTML = '';
+                } else {
+                    displayStats(calculateStats(logs));
+                    displayLogs(logs);
+                }
+            } catch (error) {
+                document.getElementById('loading').style.display = 'none';
+                showError('Error loading logs: ' + error.message);
+                console.error('Error:', error);
+            }
+        }
+        
+        function displayLogs(logs) {
+            const tbody = document.getElementById('logsBody');
+            tbody.innerHTML = '';
+            
+            logs.forEach(log => {
+                const row = document.createElement('tr');
+                
+                const tagsHtml = (log.tags || []).map(tag => 
+                    `<span class="badge badge-tag">${tag}</span>`
+                ).join('');
+                
+                // Build attachments HTML - ensure we're reading the attachments array correctly
+                const attachments = log.attachments || [];
+                
+                // If answer field contains an attachment path, add it to attachments (but don't show in answer)
+                let allAttachments = [...attachments];
+                if (log.answer && typeof log.answer === 'string') {
+                    const isAttachmentInAnswer = /\.(pdf|png|jpg|jpeg|gif|doc|docx|xls|xlsx)$/i.test(log.answer) || 
+                                                  log.answer.includes('uploads/') || 
+                                                  log.answer.includes('Screenshot') ||
+                                                  log.answer.match(/^\d+_[^.]*\./); // Pattern like "1_filename.ext"
+                    if (isAttachmentInAnswer) {
+                        // Extract just the filename if it's a full path
+                        const attachmentPath = log.answer.includes('/') ? log.answer : log.answer;
+                        if (!allAttachments.includes(attachmentPath) && !allAttachments.some(a => a.includes(log.answer.split('/').pop()))) {
+                            allAttachments.push(attachmentPath);
+                        }
+                    }
+                }
+                
+                const attachmentsHtml = allAttachments.length > 0 
+                    ? allAttachments.map((path, idx) => {
+                        // Handle both string paths and object paths
+                        const filePath = typeof path === 'string' ? path : (path.path || path.url || '');
+                        if (!filePath || filePath.trim() === '') return '';
+                        
+                        // Extract filename from path
+                        const fileName = filePath.split('/').pop() || filePath;
+                        // Skip if it looks like it's not a valid file path
+                        if (!fileName || fileName.length < 3) return '';
+                        
+                        const fileExt = fileName.split('.').pop()?.toLowerCase() || '';
+                        const isImage = ['png', 'jpg', 'jpeg'].includes(fileExt);
+                        const fileUrl = `${API_BASE}/files/${filePath}`;
+                        
+                        if (isImage) {
+                            return `<span class="file-preview" onclick="viewFile('${fileUrl}', '${fileName}', '${fileExt}', '${log.id || ''}')">
+                                <img src="${fileUrl}" alt="${fileName}" onerror="this.style.display='none'">
+                                <span>${fileName}</span>
+                            </span>`;
+                        } else {
+                            return `<span class="file-preview" onclick="viewFile('${fileUrl}', '${fileName}', '${fileExt}', '${log.id || ''}')">
+                                <span>📄 ${fileName}</span>
+                            </span>`;
+                        }
+                      }).filter(html => html && html.trim() !== '').join('')
+                    : 'N/A';
+                
+                // Different display for logs vs tickets
+                const isTicket = log.type === 'ticket' || log.is_support_ticket;
+                
+                // For tickets: 
+                // - Question column should show: title
+                // - Answer column should show: chatbot answer from conversation_history
+                // - Attachments column should show: actual attachments
+                // For logs:
+                // - Question shows question
+                // - Answer shows LLM answer text (from database/LLM)
+                // - Attachments shows N/A
+                const questionText = isTicket 
+                    ? (log.title || 'N/A')  // Title goes to Question column
+                    : (log.question || 'N/A');
+                
+                // Answer should always show the LLM answer text, not description or attachments
+                // For tickets: extract answer from conversation_history if answer field is null
+                // For logs: show the actual LLM-generated answer text
+                let answerText = 'N/A';
+                
+                // First, try to get answer from answer field
+                if (log.answer && typeof log.answer === 'string' && log.answer.trim() !== '') {
+                    // Check if answer is actually an attachment path (contains file extensions or paths)
+                    const isAttachmentPath = /\.(pdf|png|jpg|jpeg|gif|doc|docx|xls|xlsx)$/i.test(log.answer) || 
+                                             log.answer.includes('uploads/') || 
+                                             log.answer.includes('Screenshot') ||
+                                             log.answer.match(/^\d+_[^.]*\./); // Starts with number_ and has file extension
+                    
+                    if (!isAttachmentPath) {
+                        // It's a real answer text, show it
+                        answerText = log.answer;
+                    }
+                    // If it's an attachment path, don't use it - will try conversation_history below
+                }
+                
+                // If answer is null/empty and this is a ticket, try to extract from conversation_history
+                if ((answerText === 'N/A' || !log.answer) && isTicket && log.conversation_history) {
+                    // Find the last assistant message in conversation history
+                    for (let i = log.conversation_history.length - 1; i >= 0; i--) {
+                        const msg = log.conversation_history[i];
+                        if (msg && msg.role === 'assistant' && msg.content && typeof msg.content === 'string') {
+                            const content = msg.content.trim();
+                            // Make sure it's not an attachment path
+                            const isAttachmentPath = /\.(pdf|png|jpg|jpeg|gif|doc|docx|xls|xlsx)$/i.test(content) || 
+                                                     content.includes('uploads/') || 
+                                                     content.includes('Screenshot') ||
+                                                     content.match(/^\d+_[^.]*\./);
+                            if (!isAttachmentPath && content.length > 0) {
+                                answerText = content;
+                                break;
+                            }
+                        }
+                    }
+                }
+                
+                row.innerHTML = `
+                    <td>${formatDate(log.created_at)}</td>
+                    <td>${log.ticket_number ? `<span style="font-weight: 600; color: #2563eb;">${log.ticket_number}</span>` : (log.id ? `<span style="font-size: 11px; color: #6b7280;">${log.id.substring(0, 8)}...</span>` : 'N/A')}</td>
+                    <td>${log.user_id ? `<span class="badge badge-user">${log.user_id}</span>` : 'N/A'}</td>
+                    <td>${log.site_id ? `<span class="badge badge-site">${log.site_id}</span>` : 'N/A'}</td>
+                    <td>${log.category ? `<span class="badge" style="background: #dbeafe; color: #1e40af;">${log.category}</span>` : (isTicket ? 'N/A' : 'Q&A')}</td>
+                    <td>${log.severity || (isTicket ? 'Medium' : 'N/A')}</td>
+                    <td class="question" title="${questionText}">${questionText}</td>
+                    <td class="answer" title="${answerText}">${answerText}</td>
+                    <td style="font-size: 11px;">${attachmentsHtml}</td>
+                    <td>${tagsHtml || 'N/A'}</td>
+                    <td>${log.rating ? '⭐ '.repeat(log.rating) : 'N/A'}</td>
+                    <td>${log.feedback || 'N/A'}</td>
+                `;
+                
+                tbody.appendChild(row);
+            });
+            
+            document.getElementById('logsTable').style.display = 'table';
+        }
+        
+        function clearFilters() {
+            document.getElementById('userId').value = '';
+            document.getElementById('siteId').value = '';
+            document.getElementById('startDate').value = '';
+            document.getElementById('endDate').value = '';
+            loadLogs();
+        }
+        
+        // File viewer modal functions
+        function viewFile(fileUrl, fileName, fileExt, ticketId) {
+            const modal = document.getElementById('fileModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const fileViewer = document.getElementById('fileViewer');
+            const fileInfo = document.getElementById('fileInfo');
+            
+            modalTitle.textContent = fileName;
+            modal.style.display = 'block';
+            
+            const isImage = ['png', 'jpg', 'jpeg'].includes(fileExt);
+            const isPdf = fileExt === 'pdf';
+            
+            if (isImage) {
+                fileViewer.innerHTML = `<img src="${fileUrl}" alt="${fileName}">`;
+            } else if (isPdf) {
+                fileViewer.innerHTML = `<iframe src="${fileUrl}"></iframe>`;
+            } else {
+                fileViewer.innerHTML = `
+                    <div style="padding: 40px;">
+                        <p>Preview not available for this file type.</p>
+                        <a href="${fileUrl}" target="_blank" class="btn" style="margin-top: 16px; display: inline-block;">Download File</a>
+                    </div>
+                `;
+            }
+            
+            fileInfo.innerHTML = `
+                <div class="file-info-item">
+                    <span class="file-info-label">File Name:</span> ${fileName}
+                </div>
+                <div class="file-info-item">
+                    <span class="file-info-label">File Type:</span> ${fileExt.toUpperCase()}
+                </div>
+                <div class="file-info-item">
+                    <span class="file-info-label">Ticket ID:</span> ${ticketId || 'N/A'}
+                </div>
+                <div class="file-info-item">
+                    <span class="file-info-label">Actions:</span>
+                    <a href="${fileUrl}" target="_blank" class="btn" style="margin-left: 8px; padding: 6px 12px; font-size: 12px;">Download</a>
+                </div>
+            `;
+        }
+        
+        function closeFileModal() {
+            document.getElementById('fileModal').style.display = 'none';
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('fileModal');
+            if (event.target === modal) {
+                closeFileModal();
+            }
+        }
+        
+        // Load logs on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            // Don't set default dates - show all logs by default
+            // User can filter if needed
+            loadLogs();
+        });
+    </script>
+</body>
+</html>
+
