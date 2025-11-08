@@ -1,4 +1,4 @@
-# Company Knowledge Base Q&A (Qdrant + FastAPI + React)
+# DrCloudEHR Support Knowledge Base
 
 A RAG-powered Q&A system for company knowledge bases. Every question and answer is stored as a ticket with user feedback support.
 
