@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DrCloudEHR : Processing Payments</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">DrCloudEHR</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Billing-and-Payments_88998249.html">Billing and Payments</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            DrCloudEHR : Processing Payments
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Dan Hynes</span> on Aug 10, 2020
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>DrCloudEHR provides full support for processing and reconciling payments sent electronically through a claims clearinghouse, or received manually from insurance payers and patients.</p><p>This topic contains the following sections:</p><p><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1763549374229 {padding: 0px;}
+div.rbtoc1763549374229 ul {margin-left: 0px;}
+div.rbtoc1763549374229 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1763549374229'>
+<ul class='toc-indentation'>
+<li><a href='#ProcessingPayments-ProcessingElectronicPayments'>Processing Electronic Payments</a>
+<ul class='toc-indentation'>
+<li><a href='#ProcessingPayments-AutomaticallyProcessElectronicPayments'>Automatically Process Electronic Payments</a></li>
+<li><a href='#ProcessingPayments-ManuallyProcessElectronicPayments'>Manually Process Electronic Payments</a></li>
+<li><a href='#ProcessingPayments-ViewERAProcessingReports'>View ERA Processing Reports</a></li>
+</ul>
+</li>
+<li><a href='#ProcessingPayments-ProcessingManualPayments'>Processing Manual Payments</a>
+<ul class='toc-indentation'>
+<li><a href='#ProcessingPayments-ProcessPaymentsfromanInsuranceCompany'>Process Payments from an Insurance Company</a></li>
+<li><a href='#ProcessingPayments-ProcessPaymentsfromaPatient(NEEDINFOONHOWTOCHANGEAUTOALLOCATIONS)'>Process Payments from a Patient (NEED INFO ON HOW TO CHANGE AUTO ALLOCATIONS)</a></li>
+</ul>
+</li>
+</ul>
+</div></p><h2 id="ProcessingPayments-ProcessingElectronicPayments">Processing Electronic Payments</h2><p><span style="color: rgb(23,43,77);">When an insurance payer sends you payment for a claim submitted electronically, the insurance payers generates an </span><span style="color: rgb(0,0,0);">electronic remittance advice</span> <span style="color: rgb(23,43,77);">(ERA) file containing details on payments and adjustments. DrCloudEHR scans the file and posts the payment and adjustment details to the DrCloudEHR payment system.</span></p><h3 id="ProcessingPayments-AutomaticallyProcessElectronicPayments">Automatically Process Electronic Payments</h3><p><span style="color: rgb(23,43,77);">If an insurance payer processes claims through a clearinghouse, the company sends ERA files to the clearinghouse. DrCloudEHR downloads the ERA files from the clearinghouse on a scheduled basis. The application scans each file and automatically posts the payment and adjustment details to the DrCloudEHR payment system. No additional action is required on your part.</span></p><p><span style="color: rgb(23,43,77);">You must configure connections to the clearinghouse to automatically download ERA files.  ADD LINK TO CONFIGURE EDI CONNECTION</span></p><h3 id="ProcessingPayments-ManuallyProcessElectronicPayments">Manually Process Electronic Payments</h3><p>If an insurance payer does not send ERA files through a clearinghouse, you might need to download the files directly from the insurance company. You can then manually upload the files from a local directory on your computer to DrCloudEHR. </p><p>Note that your web browser must be set to allow popup windows to post and process ERA files.</p><ol style="text-decoration: none;text-align: left;"><li style="list-style-type: decimal;">Click the <strong style="margin-left: 0.0px;">Billing</strong> <span> </span>tab.</li><li style="list-style-type: decimal;">Click<span> </span> <strong style="margin-left: 0.0px;">Payments</strong> in the left-hand navigation menu.</li><li style="list-style-type: decimal;"><p class="auto-cursor-target">Click the <strong>ERA Posting</strong> tab in the Payments/Refunds page.</p></li><li style="list-style-type: decimal;">Click <strong>Choose File</strong> to upload the ERA file.</li><li style="list-style-type: decimal;">Enter the values required to post the payment.</li><li style="list-style-type: decimal;">Click <strong>Process ERA</strong>.</li></ol><h3 id="ProcessingPayments-ViewERAProcessingReports"><span style="color: rgb(23,43,77);">View ERA Processing Reports</span></h3><p><span style="color: rgb(23,43,77);">You can view reports that contain the details of ERA files processed by DrCloudEHR. You might want to view the report for a claim submitted for an encounter that the application is unable to reconcile.</span></p><ol><li><span style="color: rgb(23,43,77);">Enter search criteria. </span></li><li><span style="color: rgb(23,43,77);">Click <strong>Search</strong>. The details for processed ERA files loads in the table below.</span></li><li><span style="color: rgb(23,43,77);">Click the plus symbol icon next to an ERA entry in the table to view a summary of the ERA data.</span></li><li><span style="color: rgb(23,43,77);">Click the arrow icon in the ERA File column to download the original electronic data interchange file generated by the clearinghouse in .edi format. </span></li><li><span style="color: rgb(23,43,77);">Click the icon in the Results column to load the contents of the electronic data interchange file in the window.<br/>The results provide you with options for investigating issues in the payment, as well as methods for notifying others if any actions are needed.</span><ul><li>Click the <strong>View Encounter Forms</strong> icon in the Invoice column to view the details for the encounter the payment is for.</li><li>Click the <strong>Adjustments</strong> icon to view claim details in the Statement Manager, including any adjustments made. <br/>You can update the claim details with any payments made and reconcile the claim.</li><li>If the provider needs to address the issue, click the <strong>Send Message</strong> icon to send the provider an email.</li><li>To assign a task to the provider, click the <strong>Send Reminder</strong> icon.</li></ul></li></ol><h2 id="ProcessingPayments-ProcessingManualPayments">Processing Manual Payments</h2><p>You can manually process payments received from insurance payers and patients. When you process a payment, you specify the amount to allocate for each service provided.</p><h3 id="ProcessingPayments-ProcessPaymentsfromanInsuranceCompany">Process Payments from an Insurance Company</h3><p>If you do not file a claim with an insurance payer electronically, the payer sends you an explanation of benefits (EOB) form containing payment details for services provided. The EOB form might contain data for a single patient, or more typically will include data for multiple patients. For each patient for which payments are described in the EOB, you allocate the payment amounts for each service code listed.</p><ol style="text-decoration: none;text-align: left;"><li style="list-style-type: decimal;">Click the <strong style="margin-left: 0.0px;">Billing</strong> <span> </span>tab.</li><li style="list-style-type: decimal;">Click<span> </span><strong style="margin-left: 0.0px;">Payments</strong> in the left-hand navigation menu.</li><li style="list-style-type: decimal;">Click <strong>New Payment</strong>.</li><li style="list-style-type: decimal;">Enter the payment details.<ul><li>Select Insurance Funding Source from the Paying Entity menu.</li><li>Start typing the name of the insurance payer in the Payment From field, and then select the payer from the popup list.</li></ul></li><li>Click <strong>Save and Allocate</strong>.</li><li>Start typing the name of the patient for which you want to allocate payments in the Patient field, and then select the patient from the popup list. </li><li>For each service code shown, select the insurance payer in the Post For column:<ul><li>Ins1<span style="color: rgb(51,51,51);">: Primary Insurance</span></li><li><span style="color: rgb(51,51,51);">Ins2: Secondary insurance</span></li><li><span style="color: rgb(51,51,51);">Ins3: Tertiary insurance</span></li></ul></li><li>Enter the payment and adjustment details for the service.</li><li>Click <strong>Post Payments</strong> when you have allocated payments for all of the services listed for the patient.</li><li>If multiple patients are included in the EOB, click <strong>Save and Allocate</strong> again, and repeat the process for the next patient.</li></ol><h3 id="ProcessingPayments-ProcessPaymentsfromaPatient(NEEDINFOONHOWTOCHANGEAUTOALLOCATIONS)">Process Payments from a Patient (NEED INFO ON HOW TO CHANGE AUTO ALLOCATIONS)</h3><p>If a patient provides payment for services, you can automatically allocate the payment amount for each service provided. DrCloudEHR allocates payment amounts based on the most recent services rendered, and automatically posts the payments.</p><ol style="text-decoration: none;text-align: left;"><li style="list-style-type: decimal;">Click the <strong style="margin-left: 0.0px;">Billing</strong> tab.</li><li style="list-style-type: decimal;">Click<span> </span><strong style="margin-left: 0.0px;">Payments</strong> in the left-hand navigation menu.</li><li style="list-style-type: decimal;">Click <strong>New Payment</strong>.</li><li style="list-style-type: decimal;">Enter the payment details. Select one of the following options from the Paying Entity menu:<ul><li><strong>Patient</strong>: Select for a full payment from the patient.</li><li><strong>Capitation</strong>: Select for a payment that makes up the difference between what insurance pays per a capitated contract, and the total amount due.</li><li><strong>CoPay</strong>: Select for a payment that is the patient's portion of the charge for a covered service.</li></ul></li><li>Click <strong>Save &amp; Auto Allocate</strong>.</li></ol><p><br/></p><p><br/></p>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Nov 19, 2025 02:49</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

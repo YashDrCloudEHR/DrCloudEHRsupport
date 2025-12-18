@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DrCloudEHR : Verifying Patient Benefits and Eligibility</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">DrCloudEHR</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Billing-and-Payments_88998249.html">Billing and Payments</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Improving-Claims-Acceptance-and-Approval_88998251.html">Improving Claims Acceptance and Approval</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            DrCloudEHR : Verifying Patient Benefits and Eligibility
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Dan Hynes</span> on Aug 19, 2020
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p style="margin-left: 0.0px;text-align: left;"><span style="color: rgb(51,51,51);text-decoration: none;">Before you schedule a patient for treatment, you should verify the health care benefits that the patient is eligible for through their insurance payer. Verifying eligibility helps you avoid delays in getting payment for services that might not be covered.</span></p><p>Benefits provided by an insurance company to a patient are determined based on the provider and on the type of service provided. When you submit a benefits eligibility inquiry to the clearinghouse that processes inquiries for an insurance company, the clearinghouse returns a response that is uploaded to the DrCloudEHR database. When you check benefit eligibility for a patient, the application retrieves the information from the database.</p><p>The information in the database is typically valid unless unless the patient changes to a different provider or switches to another insurance carrier. When this happens, you can submit a benefit eligibility inquiry to the clearinghouse to retrieve the latest information, which is uploaded to the database. You then retrieve the latest information from the database.</p><p><span style="color: rgb(51,51,51);text-decoration: none;">Note that you might be charged a pay a fee when you submit a benefits eligibility inquiry to the clearinghouse.</span></p><p>This topic contains the following sections:</p><p><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1763549374135 {padding: 0px;}
+div.rbtoc1763549374135 ul {margin-left: 0px;}
+div.rbtoc1763549374135 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1763549374135'>
+<ul class='toc-indentation'>
+<li><a href='#VerifyingPatientBenefitsandEligibility-VerifyBenefitsandEligibilityforaSinglePatient'>Verify Benefits and Eligibility for a Single Patient</a></li>
+<li><a href='#VerifyingPatientBenefitsandEligibility-VerifyBenefitsandEligibilityforOneorMorePatients'>Verify Benefits and Eligibility for One or More Patients</a></li>
+</ul>
+</div></p><h2 id="VerifyingPatientBenefitsandEligibility-VerifyBenefitsandEligibilityforaSinglePatient"><span style="color: rgb(51,51,51);text-decoration: none;">Verify Benefits and Eligibility for a Single Patient</span></h2><p><span style="color: rgb(51,51,51);text-decoration: none;">You can verify benefits and eligibility provided by an insurance company to a patient when you:</span></p><ul><li><span style="color: rgb(51,51,51);text-decoration: none;">Create a new encounter for the patient</span></li><li><span style="color: rgb(51,51,51);text-decoration: none;">When a you add the patient as an application for inpatient care</span></li><li><span style="color: rgb(51,51,51);text-decoration: none;">When you schedule an appointment for the patient</span></li></ul><p><span style="color: rgb(51,51,51);text-decoration: none;">The application retrieves the benefits eligibility information for the patient from the DrCloudEHR database. If the patient's insurance coverage has changed, you can send a benefits eligibility inquiry electronically to the clearinghouse used by the patient's insurance company. </span></p><ol><li>Click the <strong>Benefits</strong> button on the patient page. <br/>The <span style="color: rgb(51,51,51);text-decoration: none;">application displays the results of the request to retrieve data from the database in the table below. Click the icon in the Action column to view the information retrieved.</span></li><li><span style="color: rgb(51,51,51);text-decoration: none;"> <span class="confluence-anchor-link" id="VerifyingPatientBenefitsandEligibility-singlePatient"></span>Enter the following information:</span><ul><li>Select the service category as defined by the insurance company from the Service Code menu.</li><li>Select the name of the provider/clinician providing treatment.</li><li>If you want to submit a benefits inquiry through the clearinghouse used by the insurance payer, select the name of the EDI connection to use from the X12 Partners menu.</li><li>Select the patient's insurance company and the provider providing treatment.</li></ul></li><li>The <span style="color: rgb(51,51,51);text-decoration: none;">application displays the results of the request to retrieve data from the database in the table below. Click the icon in the Action column to view the information retrieved.</span></li><li>If the <span style="color: rgb(51,51,51);text-decoration: none;">patient's insurance coverage has changed,</span> click <strong>Get Latest Benefits </strong> <span style="color: rgb(51,51,51);text-decoration: none;">benefits to submit an eligibility inquiry electronically to the clearinghouse. </span>The <span style="color: rgb(51,51,51);text-decoration: none;">application displays the results of the inquiry in the table below. Click the icon in the Action column to view the inquiry response from the database.</span></li></ol><h2 id="VerifyingPatientBenefitsandEligibility-VerifyBenefitsandEligibilityforOneorMorePatients"><span style="color: rgb(51,51,51);text-decoration: none;">Verify Benefits and Eligibility for One or More Patients </span></h2><p><span style="color: rgb(51,51,51);text-decoration: none;">You can retrieve information on benefits and eligibility for one or more patients through the clearinghouse used by an insurance company. The application displays a list of selected patients with the status of the request to retrieve the patient's data.</span></p><p><span style="color: rgb(51,51,51);text-decoration: none;">If the insurance coverage for the selected patients has not changed, you can retrieve the information directly from the DrCloudEHR database. If the coverage has changed, you can submit a benefits eligibility inquiry to the clearinghouse to update the database with the latest information.</span></p><ol><li><span style="color: rgb(51,51,51);text-decoration: none;">Click the <strong>Billing</strong> tab.</span></li><li><span style="color: rgb(51,51,51);text-decoration: none;">Click <strong>Eligibility &amp; Benefits </strong>in the left hand navigation bar.</span></li><li><span style="color: rgb(51,51,51);text-decoration: none;">Enter the following information:</span><ul><li>Select the dates the inquiry requests were submitted. This information might be helpful if you want to view the status of requests made over multiple days.</li><li>Select the patient's insurance company and the provider providing treatment.</li><li>Select the service category as defined by the insurance company from the Service Code menu.</li><li>Select the patients you want to retrieve data for.</li><li>If you want to submit a benefits inquiry through the clearinghouse used by the insurance payer, select the name of the EDI connection to use from the X12 Partners menu.</li></ul></li><li>Select one of the following options to retrieve benefits data:  <ul><li>Click <strong>Search from DB</strong> to <span style="color: rgb(51,51,51);text-decoration: none;">retrieve the information directly from the DrCloudEHR database</span>. <span style="color: rgb(51,51,51);text-decoration: none;">Click the icon in the Action column to view the information retrieved.</span></li><li>If you you need to update the benefits eligibility data for a patient, click <strong>Generate Eligibility Benefits</strong>. <br/><span style="color: rgb(51,51,51);text-decoration: none;">The application sends a displays a list of selected patients with the status of the request to retrieve the data.</span><ul><li>Click the icon in the Action column for a patient.</li><li>Enter the details described in <a href="#VerifyingPatientBenefitsandEligibility-singlePatient">Verify Benefits Eligibility for a Single Patient</a>. </li><li>Click <strong>Get Latest Benefits</strong> <span style="color: rgb(51,51,51);text-decoration: none;">to submit an eligibility inquiry electronically to the clearinghouse. </span>The <span style="color: rgb(51,51,51);text-decoration: none;">application displays the results of the inquiry in the table below. Click Click the icon in the Action column to view the inquiry response from the database.</span></li></ul></li></ul></li></ol><p><br/></p><p><br/></p><p><br/></p><p><br/></p>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/88998253/88998261.png">image2018-11-21_14-59-0.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/88998253/88998260.png">image2018-11-28_14-30-10.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/88998253/88998259.png">image2018-11-28_15-20-29.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/88998253/88998258.png">image2018-11-28_15-22-34.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/88998253/88998257.png">image2018-11-28_14-32-34.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/88998253/88998256.png">image2018-11-27_15-10-29.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/88998253/88998255.png">image2018-12-24_14-13-4.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/88998253/88998254.png">image2018-12-24_14-22-53.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Nov 19, 2025 02:49</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

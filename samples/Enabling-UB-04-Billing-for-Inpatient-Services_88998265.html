@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DrCloudEHR : Enabling UB-04 Billing for Inpatient Services</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">DrCloudEHR</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Billing-and-Payments_88998249.html">Billing and Payments</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            DrCloudEHR : Enabling UB-04 Billing for Inpatient Services
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Dan Hynes</span> on Aug 20, 2020
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p><span style="color: rgb(0,0,0);">In </span>UB-04 billing, which is used to bill patients admitted to a facility to inpatient care, patients are billed a daily rate based on the days spent in a facility receiving care, rather than for specific services.</p><p><span style="color: rgb(0,0,0);">You must run the UB-04 preprocessing task for each patient admitted to the facility to enable the facility to generate the encounters and fee sheets required for billing.</span></p><p><span style="color: rgb(0,0,0);">This topic contains the following sections:</span></p><p><span style="color: rgb(0,0,0);"><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1763549374218 {padding: 0px;}
+div.rbtoc1763549374218 ul {margin-left: 0px;}
+div.rbtoc1763549374218 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1763549374218'>
+<ul class='toc-indentation'>
+<li><a href='#EnablingUB04BillingforInpatientServices-RequirementsforBillingUB-04Claims'>Requirements for Billing UB-04 Claims</a></li>
+<li><a href='#EnablingUB04BillingforInpatientServices-AdmitaPatientintoaFacilityorProgram'>Admit a Patient into a Facility or Program</a>
+<ul class='toc-indentation'>
+<li><a href='#EnablingUB04BillingforInpatientServices-AddPatientasanApplicant'>Add Patient as an Applicant</a></li>
+<li><a href='#EnablingUB04BillingforInpatientServices-ApproveandProcessanApplication'>Approve and Process an Application</a></li>
+<li><a href='#EnablingUB04BillingforInpatientServices-AdmittheApplicantasaNewResident'>Admit the Applicant as a New Resident</a></li>
+</ul>
+</li>
+<li><a href='#EnablingUB04BillingforInpatientServices-#UB40preprocessRuntheUB-04PrepocessingTaskforInpatientClients'>Run the UB-04 Prepocessing Task for Inpatient Clients</a></li>
+</ul>
+</div></span></p><h2 id="EnablingUB04BillingforInpatientServices-RequirementsforBillingUB-04Claims"><span style="color: rgb(0,0,0);"><span style="text-decoration: none;">Requirements for Billing UB-04 Claims</span></span></h2><p><span>To enable the system to generate UB-04 claims, ensure that the following prerequisites are set up in the system: </span></p><ul><li><span>The patient must be admitted to an inpatient facility. </span></li><li><span>The bed allocation must be done from the start of billing date.</span></li><li><span><span style="color: rgb(51,51,51);text-decoration: none;">The discharge date and bed release date must be entered in the system, along with the discharge reason when the client is discharged.</span></span></li><li><span><span style="color: rgb(51,51,51);text-decoration: none;"><span style="color: rgb(0,0,0);"><span style="text-decoration: none;">You cannot run the preprocessing task for a client who is admitted and discharged on the same day.</span></span></span></span></li></ul><p><h2 id="EnablingUB04BillingforInpatientServices-AdmitaPatientintoaFacilityorProgram"><span><span style="color: rgb(51,51,51);text-decoration: none;">Admit a Patient into a Facility or Program</span></span></h2><p><span><span style="color: rgb(51,51,51);text-decoration: none;">You must add each patient as an applicant to receive treatment at a facility or program, and then approve and process the client's application. You then admit the patient to the facility as a new resident. </span></span></p><h3 style="text-decoration: none;text-align: left;" id="EnablingUB04BillingforInpatientServices-AddPatientasanApplicant">Add Patient as an Applicant</h3><p><span style="color: rgb(51,51,51);"><span>You can optionally click the </span></span><strong>Benefits</strong><span style="color: rgb(51,51,51);"><span> </span>button to check the benefits that are covered by insurance for a particular service the patient might receive.<span> </span></span></p><ol style="text-decoration: none;text-align: left;"><li style="list-style-type: decimal;">Click the <strong style="margin-left: 0.0px;">Applicants</strong> tab, and then click click <strong>Add Applicant</strong> in the left-hand navigation bar. The List of Applicants page opens.</li><li style="list-style-type: decimal;">Click the<span> </span><strong style="margin-left: 0.0px;">Add Applicant</strong><span> </span>button. The Add Applicant page opens.</li><li style="list-style-type: decimal;">Click the <strong>Initial Screening Call</strong> tab, and then enter the client's information. </li><li>Click the <strong>Insurance Information</strong> tab, and then enter the details for the client's primary and secondary insurance payers, if applicable. </li><li style="list-style-type: decimal;">Click<span> </span><strong style="margin-left: 0.0px;">Save</strong>.</li></ol><h3 style="text-decoration: none;text-align: left;" id="EnablingUB04BillingforInpatientServices-ApproveandProcessanApplication">Approve and Process an Application</h3><ol style="text-decoration: none;text-align: left;"><li style="list-style-type: decimal;">Click the<span> </span><strong style="margin-left: 0.0px;">Applicants</strong><span> </span>tab, and then click click <strong>Approve Applicants</strong><span> in the left-hand navigation bar.</span></li><li style="list-style-type: decimal;">Search for the applicant that you want to approve. You can search for the applicant by typing the first three characters of the applicant's name and clicking<span> </span><strong style="margin-left: 0.0px;">Search</strong>.</li><li style="list-style-type: decimal;">Click the<span> </span><strong style="margin-left: 0.0px;">Process Application </strong>link in the Action column for the patient.</li><li style="list-style-type: decimal;">In the Process Application dialog box, select the application status, and then click<span> </span><strong style="margin-left: 0.0px;">Save</strong>.</li></ol><h3 style="text-decoration: none;text-align: left;" id="EnablingUB04BillingforInpatientServices-AdmittheApplicantasaNewResident">Admit the Applicant as a New Resident </h3><p style="text-align: left;">When an applicant becomes a resident, the following changes occur automatically:</p><ul style="text-decoration: none;text-align: left;"><li style="list-style-type: disc;">Residents are automatically admitted to the facility if a move-in date is present.</li><li style="list-style-type: disc;">The Level of Care is set to<span> </span><strong style="margin-left: 0.0px;">Independent Living (IL)</strong>.</li><li style="list-style-type: disc;">The Billing Type is set to<span> </span><strong style="margin-left: 0.0px;">Independent Living (IL)</strong>.</li><li style="list-style-type: disc;">In Billing Info, the Paper Statement option is set to<span> </span><strong style="margin-left: 0.0px;">No</strong>.</li></ul><p style="text-align: left;">To add a new resident, complete the following steps:</p><ol style="text-decoration: none;text-align: left;"><li style="list-style-type: decimal;">Click the<span> </span><strong style="margin-left: 0.0px;">Applicants</strong><span> </span>tab.</li><li style="list-style-type: decimal;">On the left navigation menu, click<span> </span><strong style="margin-left: 0.0px;">Add New Resident</strong>. The Add New Resident page opens.<br style="margin-left: 0.0px;"/>By default, the<span> </span><strong style="margin-left: 0.0px;">Show Only Waitlist</strong><span> </span>filter is selected to display only waitlisted applicants. To show all applicants, select<span> </span><strong style="margin-left: 0.0px;">Show All</strong>. Residents who are accepted into the facility display in green.</li><li style="list-style-type: decimal;">Select the check box next to the resident that you want to add, and then click<span> </span><strong style="margin-left: 0.0px;">Create Resident</strong>.<br style="margin-left: 0.0px;"/>You can verify that the resident was added by selecting the<span> </span><strong style="margin-left: 0.0px;">Show All</strong><span> </span>filter. The resident should display in the list.</li><li style="list-style-type: decimal;">The Resident can be moved back to waiting list status clicking on<span> </span><strong style="margin-left: 0.0px;">Rollback Resident</strong><span> </span>hyperlink.</li></ol></p><h2 id="EnablingUB04BillingforInpatientServices-#UB40preprocessRuntheUB-04PrepocessingTaskforInpatientClients"><span><span class="confluence-anchor-link" id="EnablingUB04BillingforInpatientServices-#UB40preprocess"></span>Run the UB-04 Prepocessing Task for Inpatient Clients</span></h2><p><span>After you admit a new inpatient client, run the preprocessing task to enable billing for services rendered by the facility. When the process completes, </span><span><span style="color: rgb(23,43,77);">encounters with the following conditions are created automatically for each patient:</span><br style="text-align: left;"/></span></p><ul style="text-align: left;"><li>Encounters are created for every day for the month selected with a predefined daily charge for services based on the patient's date of admission.</li><li style="list-style-type: disc;">Pause Encounters are created if patient care is paused for a selected month.</li><li style="list-style-type: disc;">The charges for Pause Encounters and Admit Encounters are totaled and one final billable encounter is created for the last date of the month showing the total charge.</li></ul><p>Complete the following steps to run <span>the preprocessing task:</span></p><ol style="text-decoration: none;text-align: left;"><li style="list-style-type: decimal;">Click the <strong style="margin-left: 0.0px;">Billing</strong> tab.</li><li style="list-style-type: decimal;">Click<span> <strong>UB04 Pre-process</strong></span> in the left-hand navigation menu, and then select <strong>Pre-process</strong>.</li><li style="list-style-type: decimal;">Enter search criteria to find patients, and then click <strong>Search</strong>. </li><li style="list-style-type: decimal;">Select the checkbox for each patient you will bill for inpatient treatment, and then click <strong>Process</strong>. The task might take a significant amount of time to complete due to the amount of data processed.</li><li style="list-style-type: decimal;">To view the status of the pre-process task, click<span> <strong>UB04 Pre-process</strong></span> in the left-hand navigation menu, and then select <strong>Pre-process</strong>.</li></ol><p><br/></p>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Nov 19, 2025 02:49</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

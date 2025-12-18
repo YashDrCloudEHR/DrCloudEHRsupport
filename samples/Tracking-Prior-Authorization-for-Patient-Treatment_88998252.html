@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DrCloudEHR : Tracking Prior Authorization for Patient Treatment</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">DrCloudEHR</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Billing-and-Payments_88998249.html">Billing and Payments</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Improving-Claims-Acceptance-and-Approval_88998251.html">Improving Claims Acceptance and Approval</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            DrCloudEHR : Tracking Prior Authorization for Patient Treatment
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Dan Hynes</span> on Aug 27, 2020
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>If an insurance payer requires prior authorization for a specific procedure or service provided to a patient, you can use DrCloudEHR to track authorized treatment against the treatment provided. Ensuring that the <span style="color: rgb(51,51,51);">services provided align with what the insurance company is willing to cover helps you avoid rejected claims and prevent debt.</span> </p><p>Once a prior authorization number (PAN) is entered for a patient, DrCloudEHR can be configured to alert the provider when the threshold is met to ensure treatment is authorized. For example, if the insurance company has authorized five sessions at a specific facility, the application can send a notification to the provider's email address or DrCloudEHR Inbox if the number of sessions reaches or exceeds five sessions.</p><p>When you create a new encounter for a patient who is assigned a prior authorization number (PAN) in the system, the authorization details are shown in the encounter form. The application uses the PAN to track the services captured in the encounter against what is authorized, and displays the authorized amount balance, number of approved sessions, and billable units remaining.</p><p>This topic contains the following sections:</p><p><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1763549374184 {padding: 0px;}
+div.rbtoc1763549374184 ul {margin-left: 0px;}
+div.rbtoc1763549374184 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1763549374184'>
+<ul class='toc-indentation'>
+<li><a href='#TrackingPriorAuthorizationforPatientTreatment-AddPriorAuthorizationDetailsforaPatient'>Add Prior Authorization Details for a Patient</a></li>
+</ul>
+</div></p><h2 style="text-decoration: none;text-align: left;" id="TrackingPriorAuthorizationforPatientTreatment-AddPriorAuthorizationDetailsforaPatient">Add Prior Authorization Details for a Patient</h2><p>Add the prior authorization details provided by an insurance payer for a patient into the system. After you enter the authorization details, the application tracks services provided to the patient in each encounter. The PAN is included in claims you submit to the specified insurance company to facilitate payment.</p><ol style="text-decoration: none;text-align: left;"><li><span style="color: rgb(23,43,77);">Click the<span> </span><strong style="text-align: left;">Patients</strong><span> </span>tab. </span></li><li><span style="color: rgb(23,43,77);">Click<span> </span> </span> <strong style="text-align: left;">Patient Search/Add</strong><span style="color: rgb(23,43,77);"><span> </span>in the left hand navigation bar, and then search for the patient. </span></li><li><span style="color: rgb(23,43,77);">Select the patient from the search results.<br/>The Patient Summary Chart page opens.</span></li><li style="list-style-type: decimal;">Click the <strong>Prior Authorization</strong> link below the Billing header. </li><li style="list-style-type: decimal;">Click the <strong>Add</strong> button to open the Add Prior Authorization popup window.</li><li style="list-style-type: decimal;">Enter the prior authorization number (PAN) provided by the insurance company in the Authorization # field. The application alerts you if the number already exists in the system.</li><li style="list-style-type: decimal;">Enter the &quot;From&quot; and &quot;To&quot; dates the authorization is valid for.</li><li style="list-style-type: decimal;">Select the facility authorized to provide services.</li><li style="list-style-type: decimal;">Select the Insurance company providing the authorization.</li><li style="list-style-type: decimal;">Enter the number of approved sessions. <br/>Each session is equal to one day. Multiple encounters that occur in a single day are considered to be one session.</li><li style="list-style-type: decimal;">Enter the total billable amount the insurance company is willing to pay for the services provided.</li><li>Click in the<span> </span><strong>Service Codes</strong> field. The Add Service dialog opens.</li><li>Search for and add the service code and modifier for each authorized services to be provided. </li><li>Add the number of units approved for each service code.</li><li style="list-style-type: decimal;">Specify when to alert the provider to ensure the services <span style="color: rgb(51,51,51);">provided align with what the insurance company is willing to cover. Notifications can be sent based on the following thresholds:</span><ul><li>The number of remaining authorized sessions</li><li>The authorized billable amount balance</li><li>The number of remaining authorized billable service units</li><li>The number of days before the prior authorization number (PAN) expires</li></ul></li><li style="list-style-type: decimal;">Check <strong>Inbox</strong>, <strong>Email</strong> or both to indicate how notifications are sent to the provider delivering services.</li><li style="list-style-type: decimal;">Click <strong>Save</strong>.</li></ol><p><br/></p>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Nov 19, 2025 02:49</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Last-Modified" content="0">
+    <title>DrCloudEHR Support - Analytics Dashboard</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            padding: 20px;
+            overflow-x: auto;
+        }
+        
+        .container {
+            max-width: 100%;
+            min-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 24px;
+        }
+        
+        h1 {
+            color: #2563eb;
+            margin-bottom: 24px;
+            font-size: 28px;
+        }
+        
+        .filters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+            padding: 20px;
+            background: #f9fafb;
+            border-radius: 8px;
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .filter-group label {
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #555;
+            font-size: 14px;
+        }
+        
+        .filter-group input,
+        .filter-group select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        
+        .filter-group input:focus,
+        .filter-group select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .btn {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+        
+        .btn:hover {
+            background: #2563eb;
+        }
+        
+        .btn-secondary {
+            background: #6b7280;
+        }
+        
+        .btn-secondary:hover {
+            background: #4b5563;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .stat-card h3 {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+        
+        .stat-card .value {
+            font-size: 32px;
+            font-weight: 700;
+        }
+        
+        .stat-card.blue {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        }
+        
+        .stat-card.green {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+        
+        .stat-card.orange {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            overflow-y: visible;
+            margin-top: 24px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            max-width: 100%;
+        }
+        
+        .logs-table {
+            width: 100%;
+            min-width: 1400px;
+            border-collapse: collapse;
+            margin: 0;
+        }
+        
+        .logs-table th {
+            background: #f9fafb;
+            padding: 12px 8px;
+            text-align: left;
+            font-weight: 600;
+            color: #555;
+            border-bottom: 2px solid #e5e7eb;
+            font-size: 13px;
+            white-space: nowrap;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            vertical-align: top;
+        }
+        
+        /* Allow wrapping for specific columns in headers */
+        .logs-table th:nth-child(7),
+        .logs-table th:nth-child(8),
+        .logs-table th:nth-child(9),
+        .logs-table th:nth-child(10),
+        .logs-table th:nth-child(12) {
+            white-space: normal;
+        }
+        
+        .logs-table td {
+            padding: 12px 8px;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 13px;
+            vertical-align: top;
+        }
+        
+        .logs-table th,
+        .logs-table td {
+            min-width: 100px;
+        }
+        
+        /* Specific column widths for better layout */
+        .logs-table th:nth-child(1), .logs-table td:nth-child(1) { min-width: 150px; } /* Date */
+        .logs-table th:nth-child(2), .logs-table td:nth-child(2) { min-width: 100px; } /* Ticket # */
+        .logs-table th:nth-child(3), .logs-table td:nth-child(3) { min-width: 120px; } /* User ID */
+        .logs-table th:nth-child(4), .logs-table td:nth-child(4) { min-width: 120px; } /* Site ID */
+        .logs-table th:nth-child(5), .logs-table td:nth-child(5) { min-width: 130px; } /* Category */
+        .logs-table th:nth-child(6), .logs-table td:nth-child(6) { min-width: 100px; } /* Severity */
+        .logs-table th:nth-child(7), .logs-table td:nth-child(7) { min-width: 200px; max-width: 300px; white-space: normal; word-wrap: break-word; height: auto; } /* Question */
+        .logs-table th:nth-child(8), .logs-table td:nth-child(8) { min-width: 200px; max-width: 300px; white-space: normal; word-wrap: break-word; height: auto; } /* Answer */
+        .logs-table th:nth-child(9), .logs-table td:nth-child(9) { min-width: 150px; white-space: normal; } /* Attachments */
+        .logs-table th:nth-child(10), .logs-table td:nth-child(10) { min-width: 150px; white-space: normal; } /* Tags */
+        .logs-table th:nth-child(11), .logs-table td:nth-child(11) { min-width: 100px; } /* Rating */
+        .logs-table th:nth-child(12), .logs-table td:nth-child(12) { min-width: 200px; max-width: 300px; white-space: normal; word-wrap: break-word; } /* Feedback */
+        
+        .logs-table tr:hover {
+            background: #f9fafb;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .badge-user {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+        
+        .badge-site {
+            background: #dcfce7;
+            color: #166534;
+        }
+        
+        .badge-tag {
+            background: #fef3c7;
+            color: #92400e;
+            margin-right: 4px;
+        }
+        
+        /* Question and Answer cell styling - truncate with ellipsis */
+        /* Keep display as table-cell to maintain table layout */
+        td.question, td.answer {
+            max-height: 60px;
+            overflow: hidden;
+            line-height: 1.4em;
+            cursor: pointer;
+            position: relative;
+            vertical-align: top;
+        }
+        
+        /* Inner wrapper for truncation without breaking table layout */
+        td.question > div, td.answer > div {
+            max-height: 60px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
+        
+        td.question:hover, td.answer:hover {
+            background: #f0f9ff;
+        }
+        
+        td.answer::after {
+            content: '👁️ View';
+            position: absolute;
+            bottom: 4px;
+            right: 4px;
+            background: #3b82f6;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 10px;
+            opacity: 0;
+            transition: opacity 0.2s;
+            z-index: 5;
+        }
+        
+        td.answer:hover::after {
+            opacity: 1;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #6b7280;
+        }
+        
+        .error {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 16px;
+        }
+        
+        .no-data {
+            text-align: center;
+            padding: 40px;
+            color: #6b7280;
+        }
+        
+        .file-preview {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin: 2px 4px 2px 0;
+            padding: 4px 8px;
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 4px;
+            font-size: 11px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .file-preview:hover {
+            background: #dbeafe;
+        }
+        
+        .file-preview img {
+            width: 16px;
+            height: 16px;
+            object-fit: cover;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            overflow: auto;
+        }
+        
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 90%;
+            max-height: 90vh;
+            overflow: auto;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .modal-header h2 {
+            margin: 0;
+            color: #1f2937;
+        }
+        
+        .close {
+            color: #6b7280;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 20px;
+        }
+        
+        .close:hover {
+            color: #1f2937;
+        }
+        
+        .file-viewer {
+            text-align: center;
+        }
+        
+        .file-viewer img {
+            max-width: 100%;
+            max-height: 70vh;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .file-viewer iframe {
+            width: 100%;
+            height: 70vh;
+            border: none;
+            border-radius: 8px;
+        }
+        
+        .file-info {
+            margin-top: 16px;
+            padding: 12px;
+            background: #f9fafb;
+            border-radius: 6px;
+            text-align: left;
+        }
+        
+        .file-info-item {
+            margin: 8px 0;
+            font-size: 14px;
+        }
+        
+        .file-info-label {
+            font-weight: 600;
+            color: #4b5563;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 DrCloudEHR Support Analytics Dashboard</h1>
+        
+        <div style="margin-bottom: 20px; display: flex; gap: 12px; align-items: center;">
+            <button id="viewLogsBtn" class="btn" onclick="switchView('logs')" style="background: #3b82f6;">View Logs (Q&A)</button>
+            <button id="viewTicketsBtn" class="btn btn-secondary" onclick="switchView('tickets')" style="background: #6b7280;">View Tickets</button>
+            <span id="viewIndicator" style="margin-left: auto; font-weight: 600; color: #2563eb;">Currently viewing: Logs</span>
+        </div>
+        
+        <div class="filters">
+            <div class="filter-group">
+                <label for="userId">User ID</label>
+                <input type="text" id="userId" placeholder="Filter by User ID">
+            </div>
+            
+            <div class="filter-group">
+                <label for="siteId">Site ID</label>
+                <input type="text" id="siteId" placeholder="Filter by Site ID">
+            </div>
+            
+            <div class="filter-group">
+                <label for="startDate">Start Date</label>
+                <input type="date" id="startDate">
+            </div>
+            
+            <div class="filter-group">
+                <label for="endDate">End Date</label>
+                <input type="date" id="endDate">
+            </div>
+            
+            <div class="filter-group" style="display: flex; align-items: flex-end;">
+                <button class="btn" onclick="loadLogs()">Apply Filters</button>
+            </div>
+            
+            <div class="filter-group" style="display: flex; align-items: flex-end;">
+                <button class="btn btn-secondary" onclick="clearFilters()">Clear</button>
+            </div>
+            
+            <div class="filter-group" style="display: flex; align-items: flex-end;">
+                <button class="btn" onclick="loadLogs()" style="background: #10b981;">Refresh</button>
+            </div>
+        </div>
+        
+        <div id="error" class="error" style="display: none;"></div>
+        
+        <div class="stats" id="stats"></div>
+        
+        <div id="loading" class="loading" style="display: none;">Loading logs...</div>
+        
+        <div id="logsContainer">
+            <div class="table-container">
+                <table class="logs-table" id="logsTable" style="display: none;">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Ticket #</th>
+                            <th>User ID</th>
+                            <th>Site ID</th>
+                            <th>Category</th>
+                            <th>Severity</th>
+                            <th>Question</th>
+                            <th>Answer</th>
+                            <th>Attachments</th>
+                            <th>Tags</th>
+                            <th>Rating</th>
+                            <th>Feedback</th>
+                        </tr>
+                    </thead>
+                    <tbody id="logsBody"></tbody>
+                </table>
+            </div>
+            <div id="noData" class="no-data" style="display: none;">No logs found</div>
+        </div>
+    </div>
+    
+    <!-- File Viewer Modal -->
+    <div id="fileModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">File Viewer</h2>
+                <span class="close" onclick="closeFileModal()">&times;</span>
+            </div>
+            <div id="fileViewer" class="file-viewer"></div>
+            <div id="fileInfo" class="file-info"></div>
+            <div class="modal-body" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script>
+        // Version: 2025-11-11-fix-v4-simplified-with-debug
+        console.log('========================================');
+        console.log('Dashboard script loaded - Version: 2025-11-11-fix-v4-simplified-with-debug');
+        console.log('Timestamp:', new Date().toISOString());
+        console.log('File size: 891 lines');
+        console.log('========================================');
+        
+        // Visual confirmation that new code is loaded
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const indicator = document.getElementById('viewIndicator');
+                if (indicator) {
+                    indicator.textContent += ' [v4-debug]';
+                    indicator.style.color = '#10b981';
+                }
+            }, 100);
+        });
+        const API_BASE = 'http://localhost:8000'; // Update this to your backend URL
+        let currentView = 'logs'; // 'logs' or 'tickets'
+        
+        function showError(message) {
+            const errorDiv = document.getElementById('error');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            setTimeout(() => {
+                errorDiv.style.display = 'none';
+            }, 5000);
+        }
+        
+        function formatDate(dateString) {
+            if (!dateString) return 'N/A';
+            const date = new Date(dateString);
+            return date.toLocaleString();
+        }
+        
+        function escapeHtml(text) {
+            if (!text || text === 'N/A') return text;
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        function calculateStats(logs) {
+            const stats = {
+                total: logs.length,
+                withFeedback: logs.filter(l => l.feedback).length,
+                avgRating: 0,
+                uniqueUsers: new Set(logs.map(l => l.user_id).filter(Boolean)).size,
+                uniqueSites: new Set(logs.map(l => l.site_id).filter(Boolean)).size,
+            };
+            
+            const ratings = logs.map(l => l.rating).filter(r => r !== null && r !== undefined);
+            if (ratings.length > 0) {
+                stats.avgRating = (ratings.reduce((a, b) => a + b, 0) / ratings.length).toFixed(2);
+            }
+            
+            return stats;
+        }
+        
+        function displayStats(stats) {
+            const statsDiv = document.getElementById('stats');
+            statsDiv.innerHTML = `
+                <div class="stat-card blue">
+                    <h3>Total Logs</h3>
+                    <div class="value">${stats.total}</div>
+                </div>
+                <div class="stat-card green">
+                    <h3>Unique Users</h3>
+                    <div class="value">${stats.uniqueUsers}</div>
+                </div>
+                <div class="stat-card orange">
+                    <h3>Unique Sites</h3>
+                    <div class="value">${stats.uniqueSites}</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Avg Rating</h3>
+                    <div class="value">${stats.avgRating || 'N/A'}</div>
+                </div>
+                <div class="stat-card green">
+                    <h3>With Feedback</h3>
+                    <div class="value">${stats.withFeedback}</div>
+                </div>
+            `;
+        }
+        
+        function switchView(viewType) {
+            currentView = viewType;
+            const logsBtn = document.getElementById('viewLogsBtn');
+            const ticketsBtn = document.getElementById('viewTicketsBtn');
+            const indicator = document.getElementById('viewIndicator');
+            
+            if (viewType === 'logs') {
+                logsBtn.style.background = '#3b82f6';
+                ticketsBtn.style.background = '#6b7280';
+                indicator.textContent = 'Currently viewing: Logs (Q&A Interactions)';
+            } else {
+                logsBtn.style.background = '#6b7280';
+                ticketsBtn.style.background = '#3b82f6';
+                indicator.textContent = 'Currently viewing: Tickets (User-Created)';
+            }
+            
+            loadLogs();
+        }
+        
+        async function loadLogs() {
+            const userId = document.getElementById('userId').value.trim();
+            const siteId = document.getElementById('siteId').value.trim();
+            const startDate = document.getElementById('startDate').value;
+            const endDate = document.getElementById('endDate').value;
+            
+            console.log('[loadLogs] Starting to load data...');
+            console.log('[loadLogs] API_BASE:', API_BASE);
+            console.log('[loadLogs] currentView:', currentView);
+            
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('logsTable').style.display = 'none';
+            document.getElementById('noData').style.display = 'none';
+            document.getElementById('error').style.display = 'none';
+            
+            try {
+                const params = new URLSearchParams();
+                if (userId) params.append('user_id', userId);
+                if (siteId) params.append('site_id', siteId);
+                if (startDate) params.append('start_date', startDate);
+                if (endDate) params.append('end_date', endDate);
+                params.append('limit', '5000'); // Increased limit to show more logs
+                
+                // Use different endpoint based on view type
+                const endpoint = currentView === 'tickets' ? '/tickets' : '/logs';
+                const url = `${API_BASE}${endpoint}?${params.toString()}`;
+                console.log('[loadLogs] Fetching from:', url);
+                
+                const response = await fetch(url);
+                
+                console.log('[loadLogs] Response status:', response.status);
+                
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    console.error('[loadLogs] Error response:', errorText);
+                    throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+                }
+                
+                const data = await response.json();
+                console.log('[loadLogs] Received data:', {
+                    hasLogs: !!data.logs,
+                    hasTickets: !!data.tickets,
+                    logsCount: data.logs ? data.logs.length : 0,
+                    ticketsCount: data.tickets ? data.tickets.length : 0
+                });
+                
+                // Handle both /logs (returns {logs: []}) and /tickets (returns {tickets: []})
+                const logs = data.logs || data.tickets || [];
+                console.log('[loadLogs] Processed logs array length:', logs.length);
+                
+                document.getElementById('loading').style.display = 'none';
+                
+                if (logs.length === 0) {
+                    console.log('[loadLogs] No logs found, showing noData message');
+                    document.getElementById('noData').style.display = 'block';
+                    document.getElementById('stats').innerHTML = '';
+                } else {
+                    console.log('[loadLogs] Displaying', logs.length, 'entries');
+                    displayStats(calculateStats(logs));
+                    displayLogs(logs);
+                }
+            } catch (error) {
+                console.error('[loadLogs] Error caught:', error);
+                document.getElementById('loading').style.display = 'none';
+                showError('Error loading logs: ' + error.message);
+                console.error('Full error:', error);
+            }
+        }
+        
+        // Helper function to detect if a string is an attachment/file path
+        function isAttachmentPath(text) {
+            if (!text || typeof text !== 'string') return false;
+            const trimmed = text.trim();
+            if (trimmed.length === 0) return false;
+            
+            // Check for file extensions
+            const hasFileExtension = /\.(pdf|png|jpg|jpeg|gif|bmp|webp|doc|docx|xls|xlsx|ppt|pptx|txt|csv|zip|rar)$/i.test(trimmed);
+            
+            // Check for upload path patterns
+            const hasUploadPath = trimmed.includes('uploads/') || 
+                                 trimmed.includes('Screenshot') ||
+                                 trimmed.match(/^\d+_[^.]*\./) || // Pattern like "1_filename.ext"
+                                 trimmed.match(/^uploads\/\d{4}-\d{2}-\d{2}\//) || // Pattern like "uploads/2025-11-08/"
+                                 trimmed.match(/^[a-f0-9-]{36}\//) || // UUID pattern
+                                 (trimmed.split('/').length > 2 && hasFileExtension); // Path with multiple slashes and extension
+            
+            // Check if it's a very short string that looks like just a filename (like "1_Screenshot_2025-11-11_at_10.34.49_AM.png")
+            // This pattern matches numbered filenames that are likely attachments
+            const isJustFilename = trimmed.length < 150 && 
+                                  hasFileExtension && 
+                                  trimmed.split(' ').length <= 3 &&
+                                  /^\d+_/.test(trimmed); // Starts with number and underscore (like "1_filename.ext")
+            
+            return hasFileExtension || hasUploadPath || isJustFilename;
+        }
+        
+        function displayLogs(logs) {
+            console.log('[displayLogs] Called with', logs.length, 'logs');
+            const tbody = document.getElementById('logsBody');
+            if (!tbody) {
+                console.error('[displayLogs] ERROR: logsBody element not found!');
+                return;
+            }
+            tbody.innerHTML = '';
+            console.log('[displayLogs] Cleared tbody, starting to render rows...');
+            
+            logs.forEach((log, index) => {
+                if (index < 3) {
+                    console.log(`[displayLogs] Processing log ${index + 1}:`, {
+                        id: log.id ? log.id.substring(0, 8) : 'N/A',
+                        type: log.type,
+                        isTicket: log.type === 'ticket' || log.is_support_ticket
+                    });
+                }
+                const row = document.createElement('tr');
+                
+                const tagsHtml = (log.tags || []).map(tag => 
+                    `<span class="badge badge-tag">${tag}</span>`
+                ).join('');
+                
+                // Different display for logs vs tickets
+                // Improved ticket detection: check multiple indicators
+                const isTicket = log.type === 'ticket' || 
+                                 log.is_support_ticket === true || 
+                                 (log.ticket_number && typeof log.ticket_number === 'string' && log.ticket_number.startsWith('TKT-')) ||
+                                 (log.conversation_history && Array.isArray(log.conversation_history) && log.conversation_history.length > 0 && (log.type === null || log.type === undefined));
+                
+                // CRITICAL DEBUG: Log the ticket detection
+                if (log.ticket_number || log.is_support_ticket) {
+                    console.log(`[CRITICAL] Entry ${log.ticket_number || log.id?.substring(0, 8)}: type=${log.type}, is_support_ticket=${log.is_support_ticket}, has_ticket_number=${!!log.ticket_number}, isTicket=${isTicket}`);
+                }
+                
+                // Build attachments HTML - check both tickets and logs for attachments
+                let attachmentsHtml = 'N/A';
+                const attachments = log.attachments || [];
+                
+                if (attachments.length > 0) {
+                    attachmentsHtml = attachments.map((path) => {
+                        // Handle both string paths and object paths
+                        const filePath = typeof path === 'string' ? path : (path.path || path.url || '');
+                        if (!filePath || filePath.trim() === '') return '';
+                        
+                        // Extract filename from path
+                        const fileName = filePath.split('/').pop() || filePath;
+                        // Skip if it looks like it's not a valid file path
+                        if (!fileName || fileName.length < 3) return '';
+                        
+                        const fileExt = fileName.split('.').pop()?.toLowerCase() || '';
+                        const isImage = ['png', 'jpg', 'jpeg', 'gif', 'bmp', 'webp'].includes(fileExt);
+                        // Escape quotes in fileUrl and fileName for HTML attribute
+                        const fileUrl = `${API_BASE}/files/${filePath}`.replace(/'/g, "&#39;").replace(/"/g, "&quot;");
+                        const safeFileName = fileName.replace(/'/g, "&#39;").replace(/"/g, "&quot;");
+                        
+                        if (isImage) {
+                            return `<span class="file-preview" onclick="viewFile('${fileUrl}', '${safeFileName}', '${fileExt}', '${log.id || ''}')">
+                                <img src="${fileUrl}" alt="${safeFileName}" onerror="this.style.display='none'">
+                                <span>${safeFileName}</span>
+                            </span>`;
+                        } else {
+                            return `<span class="file-preview" onclick="viewFile('${fileUrl}', '${safeFileName}', '${fileExt}', '${log.id || ''}')">
+                                <span>📄 ${safeFileName}</span>
+                            </span>`;
+                        }
+                    }).filter(html => html && html.trim() !== '').join('');
+                    
+                    if (!attachmentsHtml || attachmentsHtml.trim() === '') {
+                        attachmentsHtml = 'N/A';
+                    }
+                }
+                
+                // SIMPLIFIED AND CORRECT DATA EXTRACTION
+                // For tickets: Use conversation_history (first user message = question, last assistant message = answer)
+                // For logs: Use log.question and log.answer fields directly
+                let questionText = 'N/A';
+                let answerText = 'N/A';
+                
+                if (isTicket) {
+                    // TICKETS: Extract from conversation_history ONLY - NEVER use log.question or log.answer
+                    console.log(`[TICKET DEBUG] Processing ticket ${log.ticket_number || log.id}`);
+                    console.log(`[TICKET DEBUG] log.question field (IGNORE THIS):`, log.question);
+                    console.log(`[TICKET DEBUG] log.answer field (IGNORE THIS):`, log.answer ? log.answer.substring(0, 100) : 'null');
+                    
+                    if (log.conversation_history && Array.isArray(log.conversation_history) && log.conversation_history.length > 0) {
+                        console.log(`[TICKET DEBUG] conversation_history has ${log.conversation_history.length} messages`);
+                        
+                        // QUESTION: Get FIRST user message ONLY
+                        const firstUserMsg = log.conversation_history.find(msg => msg && msg.role === 'user' && msg.content);
+                        if (firstUserMsg && firstUserMsg.content && typeof firstUserMsg.content === 'string') {
+                            const userContent = firstUserMsg.content.trim();
+                            console.log(`[TICKET DEBUG] Found first user message:`, userContent.substring(0, 100));
+                            // Only use if it's not an attachment path and has reasonable length
+                            if (!isAttachmentPath(userContent) && userContent.length > 0) {
+                                questionText = userContent;
+                                console.log(`[TICKET DEBUG] SET questionText to:`, questionText.substring(0, 100));
+                            } else {
+                                console.log(`[TICKET DEBUG] Rejected user message (isAttachmentPath or empty)`);
+                            }
+                        } else {
+                            console.log(`[TICKET DEBUG] No valid first user message found`);
+                        }
+                        
+                        // ANSWER: Get LAST assistant message ONLY (reverse search)
+                        let foundAnswer = false;
+                        for (let i = log.conversation_history.length - 1; i >= 0; i--) {
+                            const msg = log.conversation_history[i];
+                            if (msg && msg.role === 'assistant' && msg.content && typeof msg.content === 'string') {
+                                const assistantContent = msg.content.trim();
+                                console.log(`[TICKET DEBUG] Found assistant message at index ${i}:`, assistantContent.substring(0, 100));
+                                // Only use if it's not an attachment path
+                                if (!isAttachmentPath(assistantContent) && assistantContent.length > 0) {
+                                    answerText = assistantContent;
+                                    foundAnswer = true;
+                                    console.log(`[TICKET DEBUG] SET answerText to:`, answerText.substring(0, 100));
+                                    break;
+                                } else {
+                                    console.log(`[TICKET DEBUG] Rejected assistant message (isAttachmentPath or empty)`);
+                                }
+                            }
+                        }
+                        if (!foundAnswer) {
+                            console.log(`[TICKET DEBUG] No valid assistant message found in conversation_history`);
+                        }
+                    } else {
+                        console.log(`[TICKET DEBUG] No conversation_history or empty array`);
+                    }
+                    
+                    // Fallbacks for tickets (only if conversation_history failed)
+                    if (questionText === 'N/A') {
+                        console.log(`[TICKET DEBUG] Using fallback: title =`, log.title);
+                        questionText = log.title || 'N/A';
+                    }
+                    // Don't fallback answer for tickets - if conversation_history doesn't have it, show N/A
+                    if (answerText === 'N/A') {
+                        console.log(`[TICKET DEBUG] Answer is N/A - no fallback for tickets`);
+                    }
+                    
+                } else {
+                    // LOGS: Use question and answer fields directly, but validate for corruption
+                    console.log(`[LOG DEBUG] Processing log ${log.id?.substring(0, 8) || 'unknown'}`);
+                    console.log(`[LOG DEBUG] log.question field:`, log.question ? `"${log.question.substring(0, 80)}${log.question.length > 80 ? '...' : ''}"` : 'null');
+                    console.log(`[LOG DEBUG] log.answer field:`, log.answer ? `"${log.answer.substring(0, 80)}${log.answer.length > 80 ? '...' : ''}"` : 'null');
+                    
+                    // Process question field with corruption detection
+                    if (log.question && typeof log.question === 'string') {
+                        const q = log.question.trim();
+                        
+                        // Skip if it's an attachment path
+                        if (isAttachmentPath(q)) {
+                            console.log(`[LOG DEBUG] Rejected question (isAttachmentPath)`);
+                        } 
+                        // Check if question field contains answer text (corruption detection)
+                        else if (q.toLowerCase().startsWith('based on') || 
+                                 q.toLowerCase().startsWith('according to') ||
+                                 q.toLowerCase().startsWith('here are') ||
+                                 (q.length > 200 && (q.includes('**') || q.includes('1.')))) {
+                            // This looks like an answer, not a question
+                            console.log(`[LOG DEBUG] Question field contains answer text (corrupted), trying to extract question`);
+                            
+                            // Try to extract actual question if it's concatenated
+                            // Look for patterns where question and answer are concatenated
+                            const questionMarkers = ['Based on', 'According to', 'Here are', 'Here is'];
+                            let extractedQuestion = null;
+                            
+                            for (const marker of questionMarkers) {
+                                const index = q.indexOf(marker);
+                                if (index > 10 && index < q.length * 0.5) {
+                                    // Found marker, text before it might be the question
+                                    extractedQuestion = q.substring(0, index).trim();
+                                    if (extractedQuestion.length > 5 && extractedQuestion.length < 200) {
+                                        break;
+                                    }
+                                }
+                            }
+                            
+                            if (extractedQuestion && extractedQuestion.length > 5) {
+                                questionText = extractedQuestion;
+                                console.log(`[LOG DEBUG] Extracted question from corrupted field:`, questionText.substring(0, 80));
+                            } else {
+                                console.log(`[LOG DEBUG] Could not extract question from corrupted field`);
+                            }
+                        }
+                        // Valid question
+                        else if (q.length > 0) {
+                            questionText = q;
+                            console.log(`[LOG DEBUG] SET questionText to:`, questionText.substring(0, 80));
+                        } else {
+                            console.log(`[LOG DEBUG] Rejected question (empty)`);
+                        }
+                    }
+                    
+                    // Process answer field with corruption detection
+                    if (log.answer && typeof log.answer === 'string') {
+                        const a = log.answer.trim();
+                        
+                        // Check if answer contains attachment paths (corruption detection)
+                        const answerLines = a.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+                        const hasAttachmentPaths = answerLines.some(line => isAttachmentPath(line));
+                        
+                        if (hasAttachmentPaths) {
+                            console.log(`[LOG DEBUG] Answer contains attachment paths (corrupted), filtering them out`);
+                            // Filter out lines that look like attachment paths
+                            const cleanLines = answerLines.filter(line => !isAttachmentPath(line));
+                            if (cleanLines.length > 0) {
+                                answerText = cleanLines.join('\n');
+                                console.log(`[LOG DEBUG] SET answerText (filtered):`, answerText.substring(0, 80));
+                            } else {
+                                console.log(`[LOG DEBUG] All answer lines were attachment paths, rejected`);
+                            }
+                        }
+                        // Check if answer looks like a question (corruption detection)
+                        else if (a.length < 100 && 
+                                 !a.toLowerCase().startsWith('based on') && 
+                                 !a.toLowerCase().startsWith('according to') &&
+                                 !a.toLowerCase().startsWith('here are') &&
+                                 !a.includes('**') &&
+                                 !a.match(/^\d+\./)) {
+                            // This looks like a question, not an answer
+                            console.log(`[LOG DEBUG] Answer field looks like a question (corrupted), rejected`);
+                        }
+                        // Valid answer
+                        else if (a.length > 0 && !isAttachmentPath(a)) {
+                            answerText = a;
+                            console.log(`[LOG DEBUG] SET answerText to:`, answerText.substring(0, 80));
+                        } else {
+                            console.log(`[LOG DEBUG] Rejected answer (isAttachmentPath or empty)`);
+                        }
+                    }
+                }
+                
+                // CRITICAL: Final verification before HTML insertion
+                const entryId = log.ticket_number || (log.id ? log.id.substring(0, 8) : 'unknown');
+                console.log(`[FINAL CHECK] ${isTicket ? 'Ticket' : 'Log'} ${entryId}: questionText="${questionText.substring(0, 50)}${questionText.length > 50 ? '...' : ''}", answerText="${answerText.substring(0, 50)}${answerText.length > 50 ? '...' : ''}"`);
+                
+                // Escape HTML for question and answer to prevent XSS and ensure proper display
+                let safeQuestionText = escapeHtml(questionText);
+                let safeAnswerText = escapeHtml(answerText);
+                
+                // Get log index for debugging
+                const logIndex = logs.indexOf(log);
+                
+                // VERIFY: Log the escaped values that will be inserted into HTML
+                // entryId already declared above, reuse it
+                if (logIndex < 3) { // Only log first 3 to avoid spam
+                    console.log(`[HTML INSERT] ${isTicket ? 'Ticket' : 'Log'} ${entryId}:`);
+                    console.log(`  Inserting question: "${safeQuestionText.substring(0, 50)}${safeQuestionText.length > 50 ? '...' : ''}"`);
+                    console.log(`  Inserting answer: "${safeAnswerText.substring(0, 50)}${safeAnswerText.length > 50 ? '...' : ''}"`);
+                }
+                
+                // Detailed debug logging for troubleshooting
+                if (logIndex < 3) {
+                    console.group(`[Dashboard DEBUG] Entry ${logIndex + 1} - ${log.ticket_number || log.id}`);
+                    console.log('Type:', log.type, '| Is Ticket:', isTicket);
+                    console.log('Raw log.question:', log.question ? `"${log.question.substring(0, 80)}${log.question.length > 80 ? '...' : ''}"` : 'null');
+                    console.log('Raw log.answer:', log.answer ? `"${log.answer.substring(0, 80)}${log.answer.length > 80 ? '...' : ''}"` : 'null');
+                    console.log('Attachments array:', attachments);
+                    console.log('Conversation history length:', log.conversation_history ? log.conversation_history.length : 0);
+                    if (log.conversation_history && log.conversation_history.length > 0) {
+                        const firstUser = log.conversation_history.find(m => m.role === 'user');
+                        const lastAssistant = [...log.conversation_history].reverse().find(m => m.role === 'assistant');
+                        console.log('First user message:', firstUser ? `"${firstUser.content.substring(0, 80)}${firstUser.content.length > 80 ? '...' : ''}"` : 'none');
+                        console.log('Last assistant message:', lastAssistant ? `"${lastAssistant.content.substring(0, 80)}${lastAssistant.content.length > 80 ? '...' : ''}"` : 'none');
+                    }
+                    console.log('EXTRACTED questionText:', questionText ? `"${questionText.substring(0, 80)}${questionText.length > 80 ? '...' : ''}"` : 'N/A');
+                    console.log('EXTRACTED answerText:', answerText ? `"${answerText.substring(0, 80)}${answerText.length > 80 ? '...' : ''}"` : 'N/A');
+                    console.log('Attachments HTML:', attachmentsHtml.substring(0, 100));
+                    console.groupEnd();
+                }
+                
+                // CRITICAL: Store original values before any manipulation
+                const originalQuestionText = questionText;
+                const originalAnswerText = answerText;
+                
+                // Build row HTML with explicit question and answer values
+                // CRITICAL: Use the original values directly, don't modify them
+                const questionCellContent = safeQuestionText; // Use escaped version for HTML
+                const answerCellContent = safeAnswerText; // Use escaped version for HTML
+                
+                // Log what we're about to insert (for first 3 entries)
+                if (logIndex < 3) {
+                    console.log(`[ROW BUILD] ${entryId} - About to insert:`);
+                    console.log(`  Question cell will contain: "${questionCellContent.substring(0, 80)}${questionCellContent.length > 80 ? '...' : ''}"`);
+                    console.log(`  Answer cell will contain: "${answerCellContent.substring(0, 80)}${answerCellContent.length > 80 ? '...' : ''}"`);
+                }
+                
+                row.innerHTML = `
+                    <td>${formatDate(log.created_at)}</td>
+                    <td>${log.ticket_number ? `<span style="font-weight: 600; color: #2563eb;">${log.ticket_number}</span>` : (log.id ? `<span style="font-size: 11px; color: #6b7280;">${log.id.substring(0, 8)}...</span>` : 'N/A')}</td>
+                    <td>${log.user_id ? `<span class="badge badge-user">${escapeHtml(log.user_id)}</span>` : 'N/A'}</td>
+                    <td>${log.site_id ? `<span class="badge badge-site">${escapeHtml(log.site_id)}</span>` : 'N/A'}</td>
+                    <td>${log.category ? `<span class="badge" style="background: #dbeafe; color: #1e40af;">${escapeHtml(log.category)}</span>` : (isTicket ? 'N/A' : 'Q&A')}</td>
+                    <td>${escapeHtml(log.severity || (isTicket ? 'Medium' : 'N/A'))}</td>
+                    <td class="question" title="Click to view full question" data-full-text="${safeQuestionText.replace(/"/g, '&quot;')}"><div>${questionCellContent}</div></td>
+                    <td class="answer" title="Click to view full answer" data-full-text="${safeAnswerText.replace(/"/g, '&quot;')}"><div>${answerCellContent}</div></td>
+                    <td style="font-size: 11px;">${attachmentsHtml}</td>
+                    <td>${tagsHtml || 'N/A'}</td>
+                    <td>${log.rating ? '⭐ '.repeat(log.rating) : 'N/A'}</td>
+                    <td class="feedback">${escapeHtml(log.feedback || 'N/A')}</td>
+                `;
+                
+                // Add click handler for question and answer cells to show full text
+                const questionCell = row.querySelector('td.question');
+                const answerCell = row.querySelector('td.answer');
+                
+                if (questionCell && questionText !== 'N/A') {
+                    questionCell.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        showTextModal('Question', questionText);
+                    });
+                }
+                
+                if (answerCell && answerText !== 'N/A') {
+                    answerCell.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        console.log('[CLICK] Answer cell clicked, showing modal');
+                        console.log('[CLICK] Answer text:', answerText.substring(0, 100));
+                        showTextModal('Answer', answerText);
+                    });
+                }
+                
+                // VERIFY: Check what was actually inserted into DOM and what's visually displayed
+                const verifyId = log.ticket_number || log.id.substring(0, 8);
+                if (logIndex < 3) { // Only verify first 3 entries to avoid console spam
+                    setTimeout(() => {
+                        const questionCells = row.querySelectorAll('td.question');
+                        const answerCells = row.querySelectorAll('td.answer');
+                        const allCells = row.querySelectorAll('td');
+                        
+                        console.log(`[DOM VERIFY] ${verifyId} - All cells in row:`);
+                        allCells.forEach((cell, idx) => {
+                            const header = document.querySelector(`.logs-table thead th:nth-child(${idx + 1})`);
+                            const headerText = header ? header.textContent.trim() : `Column ${idx + 1}`;
+                            console.log(`  ${headerText}: "${cell.textContent.substring(0, 60)}${cell.textContent.length > 60 ? '...' : ''}"`);
+                        });
+                        
+                        if (questionCells.length > 0) {
+                            const cell = questionCells[0];
+                            const textContent = cell.textContent;
+                            const innerHTML = cell.innerHTML;
+                            const computedStyle = window.getComputedStyle(cell);
+                            console.log(`[DOM VERIFY] ${verifyId} Question cell DETAIL:`);
+                            console.log(`  textContent (${textContent.length} chars): "${textContent.substring(0, 100)}${textContent.length > 100 ? '...' : ''}"`);
+                            console.log(`  innerHTML (${innerHTML.length} chars): "${innerHTML.substring(0, 100)}${innerHTML.length > 100 ? '...' : ''}"`);
+                            console.log(`  Expected (${questionText.length} chars): "${questionText.substring(0, 100)}${questionText.length > 100 ? '...' : ''}"`);
+                            console.log(`  CSS: width=${computedStyle.width}, max-width=${computedStyle.maxWidth}, overflow=${computedStyle.overflow}`);
+                            if (textContent !== questionText) {
+                                console.error(`[ERROR] Question mismatch!`);
+                                console.error(`  Expected: "${questionText}"`);
+                                console.error(`  Got: "${textContent}"`);
+                            }
+                        }
+                        if (answerCells.length > 0) {
+                            const cell = answerCells[0];
+                            const textContent = cell.textContent;
+                            const innerHTML = cell.innerHTML;
+                            console.log(`[DOM VERIFY] ${verifyId} Answer cell DETAIL:`);
+                            console.log(`  textContent (${textContent.length} chars): "${textContent.substring(0, 100)}${textContent.length > 100 ? '...' : ''}"`);
+                            console.log(`  innerHTML (${innerHTML.length} chars): "${innerHTML.substring(0, 100)}${innerHTML.length > 100 ? '...' : ''}"`);
+                            console.log(`  Expected (${answerText.length} chars): "${answerText.substring(0, 100)}${answerText.length > 100 ? '...' : ''}"`);
+                            if (textContent !== answerText) {
+                                console.error(`[ERROR] Answer mismatch!`);
+                                console.error(`  Expected: "${answerText.substring(0, 100)}"`);
+                                console.error(`  Got: "${textContent.substring(0, 100)}"`);
+                            }
+                        }
+                    }, 300);
+                }
+                
+                tbody.appendChild(row);
+            });
+            
+            console.log('[displayLogs] Finished rendering', logs.length, 'rows');
+            const logsTable = document.getElementById('logsTable');
+            if (logsTable) {
+                logsTable.style.display = 'table';
+                console.log('[displayLogs] Table display set to "table"');
+            } else {
+                console.error('[displayLogs] ERROR: logsTable element not found!');
+            }
+        }
+        
+        function clearFilters() {
+            document.getElementById('userId').value = '';
+            document.getElementById('siteId').value = '';
+            document.getElementById('startDate').value = '';
+            document.getElementById('endDate').value = '';
+            loadLogs();
+        }
+        
+        // File viewer modal functions
+        function viewFile(fileUrl, fileName, fileExt, ticketId) {
+            const modal = document.getElementById('fileModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const fileViewer = document.getElementById('fileViewer');
+            const fileInfo = document.getElementById('fileInfo');
+            
+            modalTitle.textContent = fileName;
+            modal.style.display = 'block';
+            
+            const isImage = ['png', 'jpg', 'jpeg'].includes(fileExt);
+            const isPdf = fileExt === 'pdf';
+            
+            if (isImage) {
+                fileViewer.innerHTML = `<img src="${fileUrl}" alt="${fileName}">`;
+            } else if (isPdf) {
+                fileViewer.innerHTML = `<iframe src="${fileUrl}"></iframe>`;
+            } else {
+                fileViewer.innerHTML = `
+                    <div style="padding: 40px;">
+                        <p>Preview not available for this file type.</p>
+                        <a href="${fileUrl}" target="_blank" class="btn" style="margin-top: 16px; display: inline-block;">Download File</a>
+                    </div>
+                `;
+            }
+            
+            fileInfo.innerHTML = `
+                <div class="file-info-item">
+                    <span class="file-info-label">File Name:</span> ${fileName}
+                </div>
+                <div class="file-info-item">
+                    <span class="file-info-label">File Type:</span> ${fileExt.toUpperCase()}
+                </div>
+                <div class="file-info-item">
+                    <span class="file-info-label">Ticket ID:</span> ${ticketId || 'N/A'}
+                </div>
+                <div class="file-info-item">
+                    <span class="file-info-label">Actions:</span>
+                    <a href="${fileUrl}" target="_blank" class="btn" style="margin-left: 8px; padding: 6px 12px; font-size: 12px;">Download</a>
+                </div>
+            `;
+        }
+        
+        function closeFileModal() {
+            const modal = document.getElementById('fileModal');
+            modal.style.display = 'none';
+            
+            // Reset modal for next use
+            const fileViewer = document.getElementById('fileViewer');
+            const fileInfo = document.getElementById('fileInfo');
+            const modalBody = modal.querySelector('.modal-body');
+            
+            if (fileViewer) fileViewer.style.display = 'block';
+            if (fileInfo) fileInfo.style.display = 'block';
+            if (modalBody) {
+                modalBody.style.display = 'none';
+                modalBody.innerHTML = '';
+            }
+        }
+        
+        // Function to show full text in a modal
+        function showTextModal(title, text) {
+            console.log('[showTextModal] Called with title:', title);
+            console.log('[showTextModal] Text length:', text.length);
+            
+            const modal = document.getElementById('fileModal');
+            if (!modal) {
+                console.error('[showTextModal] Modal element not found!');
+                return;
+            }
+            
+            // Hide file viewer elements and show text body
+            const fileViewer = document.getElementById('fileViewer');
+            const fileInfo = document.getElementById('fileInfo');
+            const modalBody = modal.querySelector('.modal-body');
+            const modalTitle = document.getElementById('modalTitle');
+            
+            if (fileViewer) fileViewer.style.display = 'none';
+            if (fileInfo) fileInfo.style.display = 'none';
+            if (modalBody) modalBody.style.display = 'block';
+            if (modalTitle) modalTitle.textContent = title;
+            
+            if (!modalBody) {
+                console.error('[showTextModal] Modal body not found!');
+                return;
+            }
+            
+            // Format the text with line breaks and markdown-style formatting
+            const formattedText = text
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')  // Bold
+                .replace(/\n/g, '<br>')  // Line breaks
+                .replace(/(\d+\.\s)/g, '<br>$1');  // Add breaks before numbered lists
+            
+            modalBody.innerHTML = `
+                <div style="padding: 20px; max-height: 60vh; overflow-y: auto;">
+                    <div style="line-height: 1.8; color: #374151; white-space: pre-wrap; word-wrap: break-word; font-size: 14px;">
+                        ${formattedText}
+                    </div>
+                    <button onclick="closeFileModal()" class="btn" style="margin-top: 20px; background: #3b82f6; color: white; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; font-size: 14px;">Close</button>
+                </div>
+            `;
+            
+            modal.style.display = 'block';
+            console.log('[showTextModal] Modal displayed');
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('fileModal');
+            if (event.target === modal) {
+                closeFileModal();
+            }
+        }
+        
+        // Visual inspection tool - add to window for debugging
+        window.inspectRow = function(rowIndex = 0) {
+            const rows = document.querySelectorAll('#logsBody tr');
+            if (rowIndex >= rows.length) {
+                console.error('Row index out of range');
+                return;
+            }
+            const row = rows[rowIndex];
+            const cells = row.querySelectorAll('td');
+            const headers = document.querySelectorAll('.logs-table thead th');
+            
+            console.log(`=== INSPECTING ROW ${rowIndex} ===`);
+            cells.forEach((cell, idx) => {
+                const header = headers[idx] ? headers[idx].textContent.trim() : `Column ${idx + 1}`;
+                console.log(`${header}:`);
+                console.log(`  textContent: "${cell.textContent.substring(0, 100)}${cell.textContent.length > 100 ? '...' : ''}"`);
+                console.log(`  innerHTML: "${cell.innerHTML.substring(0, 100)}${cell.innerHTML.length > 100 ? '...' : ''}"`);
+                console.log(`  className: ${cell.className}`);
+                // Highlight the cell
+                cell.style.border = '3px solid red';
+                setTimeout(() => cell.style.border = '', 3000);
+            });
+        };
+        
+        // Load logs on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            // Don't set default dates - show all logs by default
+            // User can filter if needed
+            loadLogs();
+        });
+    </script>
+</body>
+</html>
+

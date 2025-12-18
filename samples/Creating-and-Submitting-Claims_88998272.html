@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DrCloudEHR : Creating and Submitting Claims</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">DrCloudEHR</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Billing-and-Payments_88998249.html">Billing and Payments</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            DrCloudEHR : Creating and Submitting Claims
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Dan Hynes</span> on Aug 25, 2020
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>After you close an encounter, you are ready to create and submit a claim to receive payment. You create claims in the Billing Manager, and then use the Claims Manager to submit claims when ready.</p><p>If you are unable to submit a claim because DrCloudEHR is configured to block claims that do not comply with Golden Thread or form completion criteria rules, you can use the override option to override the blocking error and submit the claim. </p><p>This topic contains the following sections:</p><p><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1763549374113 {padding: 0px;}
+div.rbtoc1763549374113 ul {margin-left: 0px;}
+div.rbtoc1763549374113 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1763549374113'>
+<ul class='toc-indentation'>
+<li><a href='#CreatingandSubmittingClaims-CloseEncounters'>Close Encounters</a></li>
+<li><a href='#CreatingandSubmittingClaims-GenerateClaims'>Generate Claims</a>
+<ul class='toc-indentation'>
+<li><a href='#CreatingandSubmittingClaims-GenerateaClaim'>Generate a Claim</a></li>
+<li><a href='#CreatingandSubmittingClaims-OverrideGoldenThreadorFormCompletionCriteriaRules'>Override Golden Thread or Form Completion Criteria Rules</a></li>
+</ul>
+</li>
+<li><a href='#CreatingandSubmittingClaims-SubmitClaims'>Submit Claims</a>
+<ul class='toc-indentation'>
+<li><a href='#CreatingandSubmittingClaims-SubmitaClaimforPayment'>Submit a Claim for Payment</a></li>
+<li><a href='#CreatingandSubmittingClaims-ResolveDeniedClaims'>Resolve Denied Claims</a></li>
+</ul>
+</li>
+</ul>
+</div></p><h2 id="CreatingandSubmittingClaims-CloseEncounters">Close Encounters</h2><p>When you complete a treatment session, you can close the encounter. At this point, the encounter is ready for billing.</p><p>If an encounter is incomplete or contains errors, the system does not allow you to close the encounter. The system tracks the status of the encounter, and verifies that all requirements are met.</p><ol style="text-decoration: none;text-align: left;margin-left: 0.0px;"><li style="list-style-type: decimal;">Click the <strong>Patients </strong>tab.</li><li style="list-style-type: decimal;">Search for the patient for which you want to close the encounter.</li><li style="list-style-type: decimal;">Select the encounter to close from the <strong>Encounter History</strong> menu in the upper left of the page.</li><li style="list-style-type: decimal;">Review the Summary section of the encounter to see if anything is missing or incomplete. <br/>For example, if forms completion criteria is set for forms used in the encounter, the Summary displays see progress bar for forms that are not complete. The Summary also indicates if no service codes entered in fee sheet, or corresponding diagnostic code is invalid.</li><li style="list-style-type: decimal;">Click <strong>Close Encounter</strong>. <br/>Note that if the encounter is incomplete or contains errors, the Close Encounter button is disabled.</li></ol><h2 id="CreatingandSubmittingClaims-GenerateClaims">Generate Claims</h2><h3 id="CreatingandSubmittingClaims-GenerateaClaim">Generate a Claim</h3><p>You can use the Billing Manager to generate claims for one or more closed encounters. Depending on the services rendered, the process generates UB-40 or HCFA forms that you submit to the insurance company.</p><p>Claims are generated based on values set in the corresponding fee sheet. If you have to modify any of the data in the encounter, make your modifications in the fee sheet, which contains the source data used in the claim, before you generate the claim.</p><p>You can generate and submit claims from the Billing Manager. However the best practice is to generate the claim in the Billing Manager, and then use the Claims Manager to submit the claim.</p><p>Note that you can generate claims only for closed encounters. Billing rules configured in the system are applied when you close the encounter.</p><ol style="text-decoration: none;text-align: left;margin-left: 0.0px;"><li style="list-style-type: decimal;">Click the <strong style="margin-left: 0.0px;">Billing</strong> tab.</li><li style="list-style-type: decimal;">Click <strong style="margin-left: 0.0px;">Billing Manager</strong> in the left-hand navigation menu.</li><li>Search for the encounters to be billed. Use filters to restrict results and improve performance.</li><li>Review each encounter record to ensure it contains the following information required to submit a claim:<ul><li>Primary and secondary insurance, electronic claims clearinghouse to submit to, and Place of Service (POS).</li><li>Diagnosis Code (ICD) and Service Code (CPT). <br/>Insurance companies compare the two codes to make sure service is correct for the diagnosis.</li><li>Dollar amount for the service.<br/>If you need to make changes to the encounter record, make the changes to the fee sheet created for the encounter before you generate the claim.</li></ul></li><li>Select the checkbox for a closed encounter in the search results. If the checkbox is disabled, the client does not have insurance, and you cannot generate a claim.</li><li>Click <strong>Generate Claim(s)</strong>. The application generates the UB-40 or HCFA forms required for billing. <br/>Note that while you can preview the generated forms, claim rules configured in the system have not been applied yet, and the forms cannot be considered final.</li></ol><h3 id="CreatingandSubmittingClaims-OverrideGoldenThreadorFormCompletionCriteriaRules">Override Golden Thread or Form Completion Criteria Rules</h3><p>If your organization uses Golden Thread or form completion criteria rules, and items specified in the rules are missing from the encounter, the application prevents you from generating a claim for the encounter.</p><p>Blocked claims are indicated by a yellow triangle in the encounter entry in the Billing Manager. Hover your mouse over the yellow triangle to view the list of missing rules.</p><p>If you you must generate a claim for an encounter that is blocked, you can use the override option to unblock the claim.</p><ol style="text-decoration: none;text-align: left;"><li style="list-style-type: decimal;">Select the checkbox to the left of the yellow triangle. The Override button is activated.</li><li style="list-style-type: decimal;">Click the <strong>Override</strong> button.</li><li style="list-style-type: decimal;">Select the reason you are overriding the missing rules. Optionally enter any notes.</li><li style="list-style-type: decimal;">Click the <strong>Override</strong> button. <br/>A green triangle appears in the encounter entry indicating that the missing rules have been overridden. You can now generate a claim for the encounter.</li></ol><h2 id="CreatingandSubmittingClaims-SubmitClaims">Submit Claims</h2><p>Use the Claims Manager to submit one or more claims electronically to an insurance claims clearinghouse. Claims are submitted to the clearinghouse associated in the system with the insurance company that pays the claim. </p><p>You can use the Claims Manager to track the status of claims. Do not delete a claim from the Claims Manager; it you do, you lose all record of the claim, and will be unable to match it with the corresponding payment. </p><h3 id="CreatingandSubmittingClaims-SubmitaClaimforPayment">Submit a Claim for Payment</h3><p>When you submit a claim, the application applies applicable claim rules configured in the system to the claim. </p><ol style="text-decoration: none;text-align: left;margin-left: 0.0px;"><li style="list-style-type: decimal;">Click the <strong style="margin-left: 0.0px;">Billing</strong> tab.</li><li style="list-style-type: decimal;">Click <strong style="margin-left: 0.0px;">Claims Manager </strong>in the left-hand navigation menu.</li><li>Search for claims ready to be submitted. Use filters to restrict results and improve performance.</li><li style="list-style-type: decimal;">Optionally click a claim in the Claim No. column to review the UB-40 or HCFA form generated for the claim. <br/>If you need to make changes to the form, make the changes to the fee sheet created for the encounter, and then regenerate the claim. For more information, see <a href="Using-Fee-Sheets_88998262.html">Using Fee Sheets</a>.</li><li style="list-style-type: decimal;">Select the checkbox for one or more claims to submit.</li><li style="list-style-type: decimal;">Click <strong>Submit Claim(s)</strong>.</li></ol><h3 id="CreatingandSubmittingClaims-ResolveDeniedClaims">Resolve Denied Claims</h3><p>If a claim is denied by an insurance payer, use the Denials Manager to understand why it was denied. The Remark Codes column in the table listing denied claims contains details from the insurance company indicating why the claim was denied.</p><p>If you need to make changes to the claim, make the changes to the fee sheet created for the encounter, and then regenerate the claim. For more information, see <a href="Using-Fee-Sheets_88998262.html">Using Fee Sheets</a>.</p><ol style="text-decoration: none;text-align: left;margin-left: 0.0px;"><li style="list-style-type: decimal;">Click the <strong style="margin-left: 0.0px;">Billing</strong> tab.</li><li style="list-style-type: decimal;">Click <strong style="margin-left: 0.0px;">Denials Manager</strong> in the left-hand navigation menu.</li><li>Search for the denied claim. Use filters to restrict results and improve performance.</li><li style="list-style-type: decimal;">Locate the denied claim in the table. <br/>The reason sent by the insurer indicating why the claim was denied appears in the Remark Codes column.</li></ol><p><br/></p>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Nov 19, 2025 02:49</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

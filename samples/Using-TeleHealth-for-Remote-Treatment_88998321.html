@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DrCloudEHR : Using TeleHealth for Remote Treatment</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">DrCloudEHR</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Clinics-and-Providers_88998311.html">Clinics and Providers</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            DrCloudEHR : Using TeleHealth for Remote Treatment
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Dan Hynes</span> on Aug 27, 2020
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>DrCloudEHR provides a TeleHealth feature through integration with the Zoom for Healthcare video conferencing platform. Providers can use the TeleHealth feature to meet remotely with patients without having to leave the DrCloudEHR application.</p><p>The application automatically creates a Zoom session when you check a patient in for a TeleHealth appointment or create a new encounter, and emails the patient the Zoom meeting details. When you close the encounter, the application<span style="color: rgb(23,43,77);"> adds the &quot;GT&quot; modifier to service codes in the corresponding fee sheet to facilitate billing</span>. </p><p>This topic contains the following sections:</p><p><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1763549374370 {padding: 0px;}
+div.rbtoc1763549374370 ul {margin-left: 0px;}
+div.rbtoc1763549374370 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1763549374370'>
+<ul class='toc-indentation'>
+<li><a href='#UsingTeleHealthforRemoteTreatment-EnableTeleHealth'>Enable TeleHealth</a>
+<ul class='toc-indentation'>
+<li><a href='#UsingTeleHealthforRemoteTreatment-AddaTeleHealthCategorytoUsewithPatientAppointments'>Add a TeleHealth Category to Use with Patient Appointments</a></li>
+<li><a href='#UsingTeleHealthforRemoteTreatment-EnablePatientstoReceiveEmailMessagesfromDrCloudEHR'>Enable Patients to Receive Email Messages from DrCloudEHR</a></li>
+<li><a href='#UsingTeleHealthforRemoteTreatment-EnableaDrCloudEHRUsertoUseTeleHealth'>Enable a DrCloudEHR User to Use TeleHealth</a></li>
+</ul>
+</li>
+<li><a href='#UsingTeleHealthforRemoteTreatment-ScheduleandStartaTeleHealthSession'>Schedule and Start a TeleHealth Session</a></li>
+</ul>
+</div></p><h2 id="UsingTeleHealthforRemoteTreatment-EnableTeleHealth">Enable TeleHealth</h2><p>Complete the following steps to enable your organization to use the TeleHealth feature. Note that both the provider and the patient need to install the Zoom application on their respective devices.</p><h3 id="UsingTeleHealthforRemoteTreatment-AddaTeleHealthCategorytoUsewithPatientAppointments">Add a TeleHealth Category to Use with Patient Appointments</h3><p>You must create an encounter category to use with TeleHealth appointments and encounters. For more information, see <span style="color: rgb(23,43,77);">see </span><a style="text-decoration: none;" href="https://apps.ensoftek.com:9443/display/KB/Clinical+Process+Configuration#ClinicalProcessConfiguration-configCategory" class="external-link" rel="nofollow">Create Categories</a><span style="color: rgb(23,43,77);">.</span></p><p>When you create the category, select the following in the Create Category window:</p><ul><li>Select the <strong>TeleHealth</strong> checkbox.</li><li>Select <strong>Patient</strong> from the Type menu. </li><li>Select <span style="color: rgb(23,43,77);"><strong>02: Telehealth</strong> from the Place of Service menu.</span></li></ul><h3 id="UsingTeleHealthforRemoteTreatment-EnablePatientstoReceiveEmailMessagesfromDrCloudEHR">Enable Patients to Receive Email Messages from DrCloudEHR</h3><p>DrCloudEHR sends email to patients with the details for a TeleHealth meeting. Ensure that patients are able to receive emails sent by the application.</p><ol style="text-decoration: none;text-align: left;"><li style="list-style-type: decimal;">Click the<span> </span><strong style="margin-left: 0.0px;">Patients</strong><span> </span>tab, and then search for the patient.</li><li style="list-style-type: decimal;">Click the <strong>Edit </strong>button next to Demographics on the Patient Summary Chart page.</li><li style="list-style-type: decimal;">Click the Choices tab under Demographics.</li><li style="list-style-type: decimal;">Set the <strong>Allow Email</strong> property to <strong>YES</strong>.</li></ol><h3 id="UsingTeleHealthforRemoteTreatment-EnableaDrCloudEHRUsertoUseTeleHealth">Enable a DrCloudEHR User to Use TeleHealth</h3><p>You can enable a new or existing DrCloudEHR user to use the TeleHealth feature.</p><p>When you enable a user to use the feature, the application creates a user account in Zoom. The email address you enter for the user in the user's account profile is used as the user's Zoom account identifier. You must update the TeleHealth user account if the user's email address changes.</p><ol><li>Click the <strong>Administration</strong> tab.</li><li>Click <strong>Users</strong> in the left navigation bar.</li><li>Add a new user, or select an existing user.</li><li>Click the <strong>TeleHealth</strong> tab in the Add User or Edit User popup window.</li><li>Enter the configuration details.</li><li>Create or update the user's Zoom account.<br/><ul><li>If you are adding a user, you choose to create the TeleHealth user after you click <strong>Save</strong>.</li><li>If you are editing a user, click the <strong>Create User at TeleHealth</strong> button.</li><li>If you modify the email address in the user's account profile, click the <strong>Update User at TeleHealth</strong> button to update the Zoom account with the new address.</li></ul></li><li>Click <strong>Save</strong>.</li></ol><h2 id="UsingTeleHealthforRemoteTreatment-ScheduleandStartaTeleHealthSession">Schedule and Start a TeleHealth Session</h2><p>Select the TeleHealth category when you schedule a TeleHealth appointment event. <span style="color: rgb(23,43,77);">Selecting the category causes the application to create a</span> Zoom meeting and send an email with the meeting details to both you and the patient. The TeleHealth Appointment icon is also displayed in the appointment event details.</p><p><span style="color: rgb(23,43,77);">When the you check a patient in for a TeleHealth appointment, a <strong>Start TeleHealth Meeting</strong> button is displayed in the Telehealth appointment. Click the button to start the Zoom session.</span></p><p><span style="color: rgb(23,43,77);">You can also click the <strong>Copy Meeting Link</strong> button to copy the link and paste it into a Web browser.</span></p><p><span style="color: rgb(23,43,77);">When you close the encounter, the application adds the &quot;GT&quot; modifier to service codes in the corresponding fee sheet.</span></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Nov 19, 2025 02:49</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DrCloudEHR : Using the LabCorp Interface</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">DrCloudEHR</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Clinics-and-Providers_88998311.html">Clinics and Providers</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Using-Laboratory-Interfaces_88998313.html">Using Laboratory Interfaces</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            DrCloudEHR : Using the LabCorp Interface
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Dan Hynes</span> on Sep 18, 2020
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p style="text-align: left;">DrCloudEHR provides an interface that allows you to submit procedure orders electronically to LabCorp, and then download and display laboratory test results. </p><p style="text-align: left;">After a requested test is completed, DrCloudEHR automatically downloads the results from the laboratory and matches the results with the patient for which the tests were done. The application notifies the provider who ordered the tests and enables the provider to review and sign off on the results.</p><p style="text-align: left;">This topic contains the following sections:</p><p style="text-align: left;"><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1763549374391 {padding: 0px;}
+div.rbtoc1763549374391 ul {margin-left: 0px;}
+div.rbtoc1763549374391 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1763549374391'>
+<ul class='toc-indentation'>
+<li><a href='#UsingtheLabCorpInterface-DownloadandViewResults'>Download and View Results</a>
+<ul class='toc-indentation'>
+<li><a href='#UsingtheLabCorpInterface-ViewOrdersandResults'>View Orders and Results</a></li>
+<li><a href='#UsingtheLabCorpInterface-MatchResultsandPatientsManually'>Match Results and Patients Manually</a></li>
+<li><a href='#UsingtheLabCorpInterface-ViewResultsinthePatientDocumentsFolder'>View Results in the Patient Documents Folder</a></li>
+<li><a href='#UsingtheLabCorpInterface-ViewResultsinHTMLFormat'>View Results in HTML Format</a></li>
+</ul>
+</li>
+<li><a href='#UsingtheLabCorpInterface-ReviewandSignOffOnResultsasaProvider'>Review and Sign Off On Results as a Provider</a></li>
+<li><a href='#UsingtheLabCorpInterface-CreateandUploadaProcedureOrdertoLabCorp'>Create and Upload a Procedure Order to LabCorp</a></li>
+</ul>
+</div></p><h2 style="text-align: left;" id="UsingtheLabCorpInterface-DownloadandViewResults">Download and View Results</h2><p>DrCloudEHR automatically and securely downloads results from the laboratory and uploads the results to the database on a set schedule. The application parses each result and matches it with the corresponding patient  based on the order requisition number.</p><p>When a result is matched with a patient, the application does the following:</p><ul><li>Uploads the results to the patient's chart. You can view the results in HTML format by clicking the Practice &gt; Procedures &gt; Electronic Reports page.</li><li>Saves the results as a PDF file in the patient's Documents &gt; LabCorp folder.</li><li>Sends a notification to the provider who ordered the test, and to the user group specified in the lab connection. </li><li>Creates an encounter and attaches the results to it.</li></ul><p>If the application is unable to match a result with a patient, you can perform the match manually.</p><h3 id="UsingtheLabCorpInterface-ViewOrdersandResults">View Orders and Results</h3><p>You can download test results for matched patients formatted as PDF files on the LabCorp Orders/Results page. You can also view procedure orders sent to the lab.</p><p>The page displays two results download links for each procedure. The LabCorp results displays the results as delivered from LabCorp. The DrCloud results contains the same results data in the format used by the application.</p><ol><li>Click the<span> </span><strong>Practice</strong><span> </span>tab.</li><li>Click<span> </span><strong>Procedures</strong><span> </span>in the left navigation bar, and then click<span> <strong>LabCorp Orders/Results</strong>.</span></li><li><span>Enter the search criteria, and then click <strong>Search</strong>.</span></li><li>Click an order or result link to view the data in PDF format.</li></ol><h3 id="UsingtheLabCorpInterface-MatchResultsandPatientsManually">Match Results and Patients Manually</h3><p>The Unmatched Results button displays the number of results that you must match manually.</p><ol><li>Click the<span> </span><strong>Practice</strong><span> </span>tab.</li><li>Click<span> </span><strong>Procedures</strong><span> </span>in the left navigation bar, and then click<span> <strong>LabCorp Orders/Results</strong>.</span></li><li><span>Enter the search criteria, and then click <strong>Search</strong>.</span></li><li>Click the <strong>Unmatched Results </strong>button to display unmatched results.</li><li>Click the <strong>Unmatched Results </strong>tab.</li><li>Click the link for each unmatched patient in the Patient Name column. The application displays a list of suggested patients.</li><li>Click the<strong> Match Patient Manually</strong> tab.</li><li>Start typing patient's name in <strong>Patient</strong> field, then select the patient to match the results with.</li><li>Click the <strong>Match Patient</strong> button.</li></ol><h3 id="UsingtheLabCorpInterface-ViewResultsinthePatientDocumentsFolder">View Results in the Patient Documents Folder</h3><p><span style="color: rgb(23,43,77);">When the application downloads lab test results, the results are saved as a PDF file in the patient's Documents &gt; LabCorp Results folder.</span></p><ol><li><span style="color: rgb(23,43,77);">Click the<span> </span></span><strong style="text-align: left;margin-left: 0.0px;">Patients</strong> <span style="color: rgb(23,43,77);"> tab, and then select for the patient for whom you want to download the results file.</span></li><li><span style="color: rgb(23,43,77);">Mouse over the <strong>Documents</strong> tab at the top of the Patient Summary Chart page, and then select<span> </span><strong>Documents</strong>. The folder tree displays.</span></li><li><span style="color: rgb(23,43,77);">Expand the <strong>LabCorp Results </strong>folder in the tree.</span></li><li><span style="color: rgb(23,43,77);">Click the PDF file.</span></li></ol><h3 id="UsingtheLabCorpInterface-ViewResultsinHTMLFormat">View Results in HTML Format</h3><p>You can generate a report displaying the test results for a patient in HTML format.</p><ol><li><span style="color: rgb(23,43,77);">Click the<span> </span></span><strong style="text-align: left;margin-left: 0.0px;">Patients</strong> <span style="color: rgb(23,43,77);"> tab, and then select the patient for whom you want to view results. The Patient Summary Chart page displays.</span></li><li><span style="color: rgb(23,43,77);">Click the <strong>Practice</strong> tab.</span></li><li>Click <strong>Procedures</strong> in the left navigation bar, and then click <strong>Patient Results</strong>. <br/>Note that you must select or create an encounter to enable the tab.</li><li>Select the encounter the test results are saved to from the <strong>Lab Procedure Encounter</strong> menu.</li><li>Click <strong>Generate Report </strong>to view the results in HTML format in a new tab in your web browser.</li></ol><h2 id="UsingtheLabCorpInterface-ReviewandSignOffOnResultsasaProvider">Review and Sign Off On Results as a Provider</h2><p>As a provider, you can review the lab results report for a patient. After you review the results, you electronically sign the report. The application then moves the report to the Patient Results page for the patient.</p><ol><li><span style="color: rgb(23,43,77);">Click the<span> </span></span><strong style="text-align: left;margin-left: 0.0px;">Patients</strong> <span style="color: rgb(23,43,77);"> tab, and then select the patient for whom you want to view results. The Patient Summary Chart page displays.</span></li><li><span style="color: rgb(23,43,77);">Click the <strong>Practice</strong> tab.</span></li><li>Click <strong>Procedures</strong> in the left navigation bar, and then click <strong>Pending Review</strong>.<br/>Note that you must select or create an encounter to enable the tab.</li><li>Click <strong>Generate Report </strong>to view the results in HTML format in a new tab in your web browser.</li><li>Return to the pending review page and select for each result from the <strong>Status</strong> menu.</li><li>Select a value from the <strong>Abn</strong> menu for each result report to indicate whether the results are abnormal.</li><li>After you review the report, click <strong>Sign Results</strong>.<br/>The report is added to the Patient Results page, which contains a list of all lab result reports for the patient.</li></ol><h2 id="UsingtheLabCorpInterface-CreateandUploadaProcedureOrdertoLabCorp">Create and Upload a Procedure Order to LabCorp</h2><p>The LabCorp interface allows you to submit procedure orders electronically from DrCloudEHR. You must first select the patient and then create or open an encounter to submit a procedure order. </p><ol><li><span style="color: rgb(23,43,77);">Click the<span> </span></span><strong style="text-align: left;margin-left: 0.0px;">Patients</strong> <span style="color: rgb(23,43,77);"> tab, and then search for the patient<span> .</span> </span></li><li>Open or create an encounter for the patient.</li><li>Click <strong>Forms Cabinet</strong> in the left navigation bar, and then click <strong>General</strong>.</li><li>Click the <strong>Provider Order</strong> <strong>(Lab Corp)</strong> form. <br/>Note that you must select or create an encounter to enable the form.</li><li>Provide the order details.</li><li>Select the payer from the <strong>Bill Type</strong> menu. <br/>If you select Third Party, select the LabCorp special billing type from the <strong>Select Special Bill</strong> menu. You must also click the <strong>Add</strong> button next to Diagnosis at the bottom of the page, and then click in the field to add a diagnosis code. </li><li>If an advanced beneficiary notice is required, select the <strong>ABN Required</strong> checkbox, and then select the courtesy copy type.</li><li>Click the <strong>Add</strong> button next to Specimen, Diagnosis, and Order, and then select the appropriate values.</li><li>Select the checkbox to electronically sign the order if required.</li><li>Click <strong>Save</strong>. The order is saved to the encounter.</li><li>Click the <strong>Edit</strong> button above LabCorp order on the encounter page.</li><li>Review the order. If it appears correct, click <strong>Transmit</strong> to submit the order to LabCorp.<br/>Note that you can also click the <strong>E-Requisition</strong> button to generate a .zip file containing a PDF version of the order and a text file containing a bar code number.</li></ol><p><br/></p><p style="text-align: left;"><br/></p>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Nov 19, 2025 02:49</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

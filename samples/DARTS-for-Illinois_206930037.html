@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DrCloudEHR : DARTS for Illinois</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">DrCloudEHR</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="DrCloudEHR_33783903.html">DrCloudEHR</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            DrCloudEHR : DARTS for Illinois
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Ramesh Nagul</span>, last modified on Aug 16, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 id="DARTSforIllinois-DARTS(Division&#39;sAutomatedReporting&amp;TrackingSystem)forIllinoisisastatereportingsystemthatagenciesmustusetosubmitSubstanceUsePreventionandRecovery(SUPR)information.">DARTS (Division's Automated Reporting &amp; Tracking System) for Illinois is a state reporting system that agencies must use to submit <span style="color: rgb(0,0,0);">Substance Use Prevention and Recovery (SUPR) information.</span></h2><p><strong><span>DARTS Functionality within DrCloudEHR and Prerequisites</span></strong><span> </span></p><p>This interface can be activated only if the Global flags<span> &quot;Enable DARTS&quot; is enabled. More information on DARTS is available at <a href="https://www.dhs.state.il.us/page.aspx?item=67043" class="external-link" rel="nofollow">https://www.dhs.state.il.us/page.aspx?item=67043</a></span></p><p><span><br/></span>1. Enable DARTS-When this global flag is enabled, the following will be enabled. </p><ol><li><span>A Link at Practice-Administrative-Practice-DARTS to capture the DARTS settings.</span><span> </span></li></ol><p><span><span class="SCXW236611735 BCX4" style="text-decoration: none;"><span class="WACImageContainer NoPadding DragDrop BlobObject SCXW236611735 BCX4"><span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image" draggable="false" src="attachments/206930037/206930051.png" data-image-src="attachments/206930037/206930051.png" data-unresolved-comment-count="0" data-linked-resource-id="206930051" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-2024-8-13_15-36-25.png" data-base-url="https://docs.drcloudemr.com:9443" data-linked-resource-content-type="image/png" data-linked-resource-container-id="206930037" data-linked-resource-container-version="3" alt=""></span></span></span> </span></p><p>2. Configure three important picklists at Practice-Administrative-Categories to capture the data. </p><p><span> <span class="SCXW259299208 BCX4" style="text-decoration: none;"><span class="WACImageContainer NoPadding DragDrop BlobObject SCXW259299208 BCX4"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="250" src="attachments/206930037/206930050.png" data-image-src="attachments/206930037/206930050.png" data-unresolved-comment-count="0" data-linked-resource-id="206930050" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-2024-8-13_15-36-45.png" data-base-url="https://docs.drcloudemr.com:9443" data-linked-resource-content-type="image/png" data-linked-resource-container-id="206930037" data-linked-resource-container-version="3" alt=""></span></span></span></span></p><p><span>By default, the ‘DARTS Service Setting Codes’ drop down will be set to ‘Assessment’, the ‘DARTS Service Activity Code’ will be set to ‘Service at provider location’ and ‘Admission’ and the ‘DARTS Dedicated Funding Code’ will be set to ‘None’.</span><span> </span></p><p><span>This will happen when adding a new category. For the existing categories, the clinic has to set the options and save.</span><span> </span></p><p><span>3. At Practice-Administrative-Programs/Facilities-Add/ Edit facility, a DARTS tab will be displayed to capture the details of the DARTS facility. The Checkbox “Enable DARTS” has to be checked to auto create a DARTS record on patient admission.</span><span> </span></p><p><span> <span class="SCXW33956026 BCX4" style="text-decoration: none;"><span class="WACImageContainer NoPadding DragDrop BlobObject SCXW33956026 BCX4"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="250" src="attachments/206930037/206930049.png" data-image-src="attachments/206930037/206930049.png" data-unresolved-comment-count="0" data-linked-resource-id="206930049" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-2024-8-13_15-57-14.png" data-base-url="https://docs.drcloudemr.com:9443" data-linked-resource-content-type="image/png" data-linked-resource-container-id="206930037" data-linked-resource-container-version="3" alt=""></span></span></span></span></p><p><span> </span><span> </span></p><p>4. At New Encounter page, a drop down with the name “Darts Program Number” will be displayed and will be defaulted to “Assessment”. </p><p><strong><span class="SCXW19818441 BCX4" style="text-decoration: none;"><span class="WACImageContainer NoPadding DragDrop BlobObject SCXW19818441 BCX4"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="250" src="attachments/206930037/206930048.png" data-image-src="attachments/206930037/206930048.png" data-unresolved-comment-count="0" data-linked-resource-id="206930048" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-2024-8-13_16-6-46.png" data-base-url="https://docs.drcloudemr.com:9443" data-linked-resource-content-type="image/png" data-linked-resource-container-id="206930037" data-linked-resource-container-version="3" alt=""></span></span></span></strong></p><p><span> </span></p><p><span>Once all of the above is set, clinic can start creating the status records and submit them to DARTS using the DARTS Interface located at Practice-DARTS-Patient Transaction Manager.</span><span> </span></p><p><span>To create DARTS Status records, user has to navigate to the Patient Summary Chart-Other tab and click on DARTS.</span><span> </span></p><p><span> <span class="SCXW254270864 BCX4" style="text-decoration: none;"><span class="WACImageContainer NoPadding DragDrop BlobObject SCXW254270864 BCX4"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="250" src="attachments/206930037/206930047.png" data-image-src="attachments/206930037/206930047.png" data-unresolved-comment-count="0" data-linked-resource-id="206930047" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-2024-8-13_16-18-10.png" data-base-url="https://docs.drcloudemr.com:9443" data-linked-resource-content-type="image/png" data-linked-resource-container-id="206930037" data-linked-resource-container-version="3" alt=""></span></span></span></span></p><p><span> </span><strong><span>Saved DARTS Status Records:</span></strong><span> </span></p><p><span> <span class="SCXW50015 BCX4" style="text-decoration: none;"><span class="WACImageContainer NoPadding DragDrop BlobObject SCXW50015 BCX4"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="250" src="attachments/206930037/206930046.png" data-image-src="attachments/206930037/206930046.png" data-unresolved-comment-count="0" data-linked-resource-id="206930046" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-2024-8-13_16-18-26.png" data-base-url="https://docs.drcloudemr.com:9443" data-linked-resource-content-type="image/png" data-linked-resource-container-id="206930037" data-linked-resource-container-version="3" alt=""></span></span></span></span></p><p><span> </span></p><p><strong><span>Submission of Status records</span></strong><span> </span></p><p><span>Navigate to Practice-DARTS-Patient Transaction Manager</span><span> </span></p><p><span>Using the Transaction Manager, user can search for the status records using different search criteria.</span><span> </span></p><p><span><span class="SCXW235684522 BCX4" style="text-decoration: none;"><span class="WACImageContainer NoPadding DragDrop BlobObject SCXW235684522 BCX4"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="250" src="attachments/206930037/206930045.png" data-image-src="attachments/206930037/206930045.png" data-unresolved-comment-count="0" data-linked-resource-id="206930045" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-2024-8-13_16-20-7.png" data-base-url="https://docs.drcloudemr.com:9443" data-linked-resource-content-type="image/png" data-linked-resource-container-id="206930037" data-linked-resource-container-version="3" alt=""></span></span></span> </span></p><p><span>Once the results are displayed user can select the records that the user wants to submit to DARTS and click on Submit button.</span><span> </span></p><p><strong><span>Successfully submitted DARTS Status Records:</span></strong><span> </span></p><p><span> <span class="SCXW116861982 BCX4" style="text-decoration: none;"><span class="WACImageContainer NoPadding DragDrop BlobObject SCXW116861982 BCX4"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="250" src="attachments/206930037/206930044.png" data-image-src="attachments/206930037/206930044.png" data-unresolved-comment-count="0" data-linked-resource-id="206930044" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-2024-8-13_16-20-33.png" data-base-url="https://docs.drcloudemr.com:9443" data-linked-resource-content-type="image/png" data-linked-resource-container-id="206930037" data-linked-resource-container-version="3" alt=""></span></span></span></span></p><p><span> </span></p><p><span>Next is the submission of Service records.</span><span> </span></p><p><span>To submit the Service records to DARTS,</span><span> </span></p><ol><li><span>Patient to have a valid Insurance/Payer and the Payer type should be of the type Medicaid/Contract/Split billing.</span><span> </span></li></ol><ol><li><span>Create an Encounter with the Category for which the DARTS options are captured and the facility which is a DARTS facility.</span><span> </span></li></ol><ol><li><span>Once the Encounter is created, user has to navigate to the Practice-DARTS-Service Manager</span><span> </span></li></ol><ol><li><span>Using the Service Manager, user can search for the service records using different search criteria.</span><span> </span></li></ol><p><span> </span></p><p><span>Once the results are displayed user can select the records that the user wants to submit to DARTS and click on Submit button.</span><span> </span></p><p><span> <span class="SCXW215380249 BCX4" style="text-decoration: none;"><span class="WACImageContainer NoPadding DragDrop BlobObject SCXW215380249 BCX4"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="250" src="attachments/206930037/206930043.png" data-image-src="attachments/206930037/206930043.png" data-unresolved-comment-count="0" data-linked-resource-id="206930043" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-2024-8-13_16-21-4.png" data-base-url="https://docs.drcloudemr.com:9443" data-linked-resource-content-type="image/png" data-linked-resource-container-id="206930037" data-linked-resource-container-version="3" alt=""></span></span></span></span></p><p><span> </span></p><p><span> </span></p><p><strong><span>Successfully submitted DARTS Service Records:</span></strong><span> </span></p><p><span> </span></p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="400" confluence-query-params="effects=drop-shadow" src="attachments/206930037/206930042.png?effects=drop-shadow" data-image-src="attachments/206930037/206930042.png" data-unresolved-comment-count="0" data-linked-resource-id="206930042" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-2024-8-13_16-21-22.png" data-base-url="https://docs.drcloudemr.com:9443" data-linked-resource-content-type="image/png" data-linked-resource-container-id="206930037" data-linked-resource-container-version="3" alt=""></span></p><p><span> </span></p><p><span>Once the Service records are submitted to DARTS, User can view them at the Practice-DARTS-Service Results.</span><span> </span></p><p><span><span class="SCXW221471794 BCX4" style="text-decoration: none;"><span class="WACImageContainer NoPadding DragDrop BlobObject SCXW221471794 BCX4"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" draggable="false" height="400" confluence-query-params="effects=drop-shadow" src="attachments/206930037/206930041.png?effects=drop-shadow" data-image-src="attachments/206930037/206930041.png" data-unresolved-comment-count="0" data-linked-resource-id="206930041" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-2024-8-13_16-21-43.png" data-base-url="https://docs.drcloudemr.com:9443" data-linked-resource-content-type="image/png" data-linked-resource-container-id="206930037" data-linked-resource-container-version="3" alt=""></span></span></span> </span></p><p><span> </span></p><ol><li><span> </span><strong><span>Enable DARTS Automation</span></strong><span>-When this global flag is enabled and when a patient is admitted to the DARTS facility the system will auto create a DARTS record at Patient Summary Chart-Others.</span></li></ol><p><span> </span></p><p><strong><span>Interface Mapping:</span></strong><span> </span></p><p><span>With the help of Interface mapping clinic can set the DARTS Status fields to populate data from the desired form or from the patient data.</span><span> </span></p><p><span>Interface Mapping can be done at Administration-Interface Mapping-DARTS-Mapping</span><span> </span></p><p><span><span class="SCXW86492756 BCX4" style="text-decoration: none;"><span class="WACImageContainer NoPadding DragDrop BlobObject SCXW86492756 BCX4"><span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image" draggable="false" src="attachments/206930037/206930040.png" data-image-src="attachments/206930037/206930040.png" data-unresolved-comment-count="0" data-linked-resource-id="206930040" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-2024-8-13_16-22-3.png" data-base-url="https://docs.drcloudemr.com:9443" data-linked-resource-content-type="image/png" data-linked-resource-container-id="206930037" data-linked-resource-container-version="3" alt=""></span></span></span> </span></p><p><span> </span></p><p><span>User can click on the DARTS Mapping link to see the mappings.</span><span> </span></p><p><span> <span class="SCXW102023104 BCX4" style="text-decoration: none;"><span class="WACImageContainer NoPadding DragDrop BlobObject SCXW102023104 BCX4"><span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image" draggable="false" src="attachments/206930037/206930039.png" data-image-src="attachments/206930037/206930039.png" data-unresolved-comment-count="0" data-linked-resource-id="206930039" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-2024-8-13_16-22-18.png" data-base-url="https://docs.drcloudemr.com:9443" data-linked-resource-content-type="image/png" data-linked-resource-container-id="206930037" data-linked-resource-container-version="3" alt=""></span></span></span></span></p><p><span>There will be a Default mapping. To add a new mapping, click on the Add button</span><span> </span></p><p><span><span class="SCXW117489717 BCX4" style="text-decoration: none;"><span class="WACImageContainer NoPadding DragDrop BlobObject SCXW117489717 BCX4"><span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image" draggable="false" src="attachments/206930037/206930038.png" data-image-src="attachments/206930037/206930038.png" data-unresolved-comment-count="0" data-linked-resource-id="206930038" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-2024-8-13_16-22-30.png" data-base-url="https://docs.drcloudemr.com:9443" data-linked-resource-content-type="image/png" data-linked-resource-container-id="206930037" data-linked-resource-container-version="3" alt=""></span></span></span> </span></p><p><span>Click on Edit button against each of the field to mapping the source data.</span><span> </span></p><p><span> </span></p>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930079.png">image-2024-8-13_15-35-50.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930078.png">image-2024-8-13_15-35-50-1.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930077.png">image-2024-8-13_15-35-50-2.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930076.png">image-2024-8-13_15-35-50-3.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930075.png">image-2024-8-13_15-35-50-4.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930074.png">image-2024-8-13_15-35-50-5.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930073.png">image-2024-8-13_15-35-50-6.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930072.png">image-2024-8-13_15-35-50-7.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930071.png">image-2024-8-13_15-35-50-8.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930070.png">image-2024-8-13_15-35-50-9.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930069.png">image-2024-8-13_15-35-50-10.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930068.png">image-2024-8-13_15-35-50-11.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930067.png">image-2024-8-13_15-35-50-12.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930066.png">image-2024-8-13_15-35-50-13.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930065.png">image-2024-8-13_15-36-9.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930064.png">image-2024-8-13_15-36-9-1.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930063.png">image-2024-8-13_15-36-9-2.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930062.png">image-2024-8-13_15-36-9-3.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930061.png">image-2024-8-13_15-36-9-4.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930060.png">image-2024-8-13_15-36-9-5.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930059.png">image-2024-8-13_15-36-9-6.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930058.png">image-2024-8-13_15-36-9-7.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930057.png">image-2024-8-13_15-36-9-8.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930056.png">image-2024-8-13_15-36-9-9.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930055.png">image-2024-8-13_15-36-9-10.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930054.png">image-2024-8-13_15-36-9-11.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930053.png">image-2024-8-13_15-36-9-12.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930052.png">image-2024-8-13_15-36-9-13.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930194.png">image-2024-8-13_15-36-25.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930193.png">image-2024-8-13_15-36-45.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930192.png">image-2024-8-13_15-57-14.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930191.png">image-2024-8-13_16-6-46.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930190.png">image-2024-8-13_16-18-10.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930189.png">image-2024-8-13_16-18-26.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930188.png">image-2024-8-13_16-20-7.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930187.png">image-2024-8-13_16-20-33.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930186.png">image-2024-8-13_16-21-4.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930185.png">image-2024-8-13_16-21-22.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930184.png">image-2024-8-13_16-21-43.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930183.png">image-2024-8-13_16-22-3.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930182.png">image-2024-8-13_16-22-18.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930181.png">image-2024-8-13_16-22-30.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930038.png">image-2024-8-13_16-22-30.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930039.png">image-2024-8-13_16-22-18.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930040.png">image-2024-8-13_16-22-3.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930041.png">image-2024-8-13_16-21-43.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930042.png">image-2024-8-13_16-21-22.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930043.png">image-2024-8-13_16-21-4.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930044.png">image-2024-8-13_16-20-33.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930045.png">image-2024-8-13_16-20-7.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930046.png">image-2024-8-13_16-18-26.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930047.png">image-2024-8-13_16-18-10.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930048.png">image-2024-8-13_16-6-46.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930049.png">image-2024-8-13_15-57-14.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930050.png">image-2024-8-13_15-36-45.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/206930037/206930051.png">image-2024-8-13_15-36-25.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Nov 19, 2025 02:49</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

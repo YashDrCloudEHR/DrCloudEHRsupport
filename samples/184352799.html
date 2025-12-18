@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DrCloudEHR : B10 Electronic health information (EHI) export</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">DrCloudEHR</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="DrCloudEHR_33783903.html">DrCloudEHR</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            DrCloudEHR : B10 Electronic health information (EHI) export
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Ramesh Nagul</span>, last modified on Jul 15, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="B10Electronichealthinformation(EHI)export-PublicEHIExportFormatDocumentation">Public EHI Export Format Documentation</h3><p>Online ONC Certification public URL documentation for this export can be found at:</p><ul><li><a href="https://www.drcloudemr.com/wp-content/uploads/EHI_Export/docs/index.html" class="external-link" rel="nofollow">https://www.drcloudemr.com/wp-content/uploads/EHI_Export/docs/index.html</a></li></ul><h3 id="B10Electronichealthinformation(EHI)export-SetupInstructions">Setup Instructions</h3><p>For Subscribers of the DrCloudEHR Meaningful Use Module EnSoftek staff will have this option enabled, if not, customers would need to submit a Help Desk ticket for a Change Request.</p><p>These customers will see this option enabled for the Administrator Role.</p><h3 id="B10Electronichealthinformation(EHI)export-ExportingaSinglePatient-Instructions">Exporting a Single Patient - Instructions</h3><p><br/>To export a single patient do the following:</p><ol><li>Login as the Administrator, i.e. user that has the admin/super ACL.</li><li>Navigate from the menu to '''Miscellaneous -&gt; Electronic Health Information Export'''.  Refer to the following screenshot for the rest of these instructions.<span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image confluence-external-resource" draggable="false" alt="SinglePatient EHI Export.png" src="https://www.open-emr.org/wiki/images/7/78/SinglePatient_EHI_Export.png" data-image-src="https://www.open-emr.org/wiki/images/7/78/SinglePatient_EHI_Export.png"></span></li><li>Enter in the patient pid (patient identifier) in the '''Specific Patient To Export (specify pid)''' textbox field.</li><li>With a single patient export, all patient data will be bundled into a single zip file so you can leave the '''Zip file limit setting in MBs (Max Setting is 4000MB)''' alone.</li><li>If you wish to exclude the patient digital documents as part of the export, you can uncheck the '''Include Patient Document Files From Storage''' checkbox.</li><li>Hit the '''Export''' button.  The export processing page will display.  Wait for the single export task to finish.  </li><li>Select the download link for the zip file.  The download will be listed as ehi-export-&amp;lt;unique-id&gt;.zip.  Wait for the download to complete.</li></ol><p>There is a hash value of the zip file that you can use to verify the integrity of the zip export.</p><h3 id="B10Electronichealthinformation(EHI)export-ExportingtheEntirePatientPopulationElectronicHealthInformation-Instructions">Exporting the Entire Patient Population Electronic Health Information - Instructions</h3><p>To export the entire patient population do the following (Note this feature is ONLY available to users with the Administrator role, ie users that have the admin/super ACL).</p><ol><li>Login as the Administrator, i.e. user that has the admin/super ACL.</li><li>Ensure that your server has enough disk space and memory to handle the largest zip file that you choose.  Plan on your server needing to use 3X the amount of memory that you use for a single zip file.  You also need to have sufficient disk space to hold the zip files in your patient file storage (either CouchDB or the file system).  That means if you choose the maximum 4GB zip file size, your server process needs to be able to consume up to 12GB of memory to process the patient population export and have at least as much disk space as what you currently have stored for patient documents in your server.</li><li>Navigate from the menu to '''Miscellaneous -&gt; Electronic Health Information Export''' and refer to the following screenshot as you follow the instructions:<span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image confluence-external-resource" draggable="false" alt="TotalPatient EHI Export.png" src="https://www.open-emr.org/wiki/images/a/a1/TotalPatient_EHI_Export.png" data-image-src="https://www.open-emr.org/wiki/images/a/a1/TotalPatient_EHI_Export.png"></span></li><li>Leave blank the '''Specific Patient To Export (specify pid)''' textbox field.</li><li>Enter between 1 and 4000MB for '''Zip file limit setting in MBs''' (Max Setting is 4000MB).  The export algorithm will calculate up the number of zip files to generate based on the following settings: The sum of each patient's document storage requirements + 100KB per patient for their database data.  Patient documents are kept together within the same batch, this can cause a zip file to exceed the recommended zip file limit.  This would be around 5,120 patients per zip if there are no documents involved, or about 217 patients (2.2MB for documents + 100KB for patients).</li><li>If you wish to exclude the patient digital documents as part of the export, you can uncheck the '''Include Patient Document Files From Storage''' checkbox.</li><li>Hit the '''Export''' button. The export processing page will display.  An export task will display for each batch that is displayed.  Tasks will run one at a time and progress will be updated on the progress being worked.  Once a batch has completed it will show as completed and provide a download link to download the batch.</li><li><span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image confluence-external-resource" draggable="false" alt="EHI-Export-Task-Completed.png" src="https://www.open-emr.org/wiki/images/0/0c/EHI-Export-Task-Completed.png" data-image-src="https://www.open-emr.org/wiki/images/0/0c/EHI-Export-Task-Completed.png"></span></li><li>Select the download link for the zip file. The download will be listed as ehi-export-&lt;unique-id&gt;.zip. Wait for the download to complete.</li></ol><p>There is a hash value of the zip file that you can use to verify the integrity of each zip export.</p>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Nov 19, 2025 02:49</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

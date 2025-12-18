@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DrCloudEHR : Clinical Process Configuration</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">DrCloudEHR</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Billing-and-Clinical-Setup_88998273.html">Billing and Clinical Setup</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            DrCloudEHR : Clinical Process Configuration
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Dan Hynes</span> on Aug 20, 2020
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>Add the facilities, document workflows, service code/modifier combinations, and encounter categories you use when performing various <span style="color: rgb(23,43,77);">clinical and billing procedures </span>to DrCloudEHR.</p><p>This topic contains the following sections:</p><p><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1763549374067 {padding: 0px;}
+div.rbtoc1763549374067 ul {margin-left: 0px;}
+div.rbtoc1763549374067 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1763549374067'>
+<ul class='toc-indentation'>
+<li><a href='#ClinicalProcessConfiguration-DefineFacilities'>Define Facilities</a></li>
+<li><a href='#ClinicalProcessConfiguration-configServiceDefineServiceCodes'>Define Service Codes</a></li>
+<li><a href='#ClinicalProcessConfiguration-configWorkflowDefineWorkflows'>Define Workflows</a></li>
+<li><a href='#ClinicalProcessConfiguration-configCategoryCreateCategories'>Create Categories</a></li>
+</ul>
+</div></p><h2 id="ClinicalProcessConfiguration-DefineFacilities">Define Facilities</h2><p><span style="color: rgb(23,43,77);">Add information about each facility or program you use to provide treatment. You select the facilities or programs where services are billed or provided when you perform various tasks in DrCloudEHR.</span></p><p><span style="color: rgb(23,43,77);">Once you add a facility, you cannot delete it. You can make a facility inactive in the system, which prevents users from selecting it.</span></p><ol style="text-decoration: none;text-align: left;"><li style="list-style-type: decimal;">Click the<span> </span><strong style="margin-left: 0.0px;">Practice</strong><span> </span>tab. </li><li style="list-style-type: decimal;">On the left navigation menu, click the <strong>Administrative</strong> tab, and then select <strong style="margin-left: 0.0px;">Facilities</strong>.</li><li style="list-style-type: decimal;">Click <strong style="margin-left: 0.0px;">Add</strong>. The Add Facility dialog box opens.</li><li style="list-style-type: decimal;">Click the <strong>Address</strong> and <strong>Remit To</strong> tabs and enter the necessary details.</li><li style="list-style-type: decimal;">Click the <strong>Additional Info</strong> tab and provide relevant business details.<ul><li>If the facility is a Medicare Administrative Contractor (MAC), enter the Provider Transaction Access Number (PTAN) in the Medicare PTAN field.. </li><li>If the facility uses taxonomy codes used to identify the provider specialty at the claim level, enter the 10 character alphanumeric code.</li></ul></li><li style="list-style-type: decimal;">Click the <strong>Settings</strong> tab and provide the billing details. <ul><li>If the facility is the billing location, select the <strong>Accepts Assignments</strong> check box. If the box is not selected, electronic signatures are not set in Box 13 in HCFA forms submitted electronically.</li><li>Enter contact details for the primary billing contact for the facility.</li></ul></li><li style="list-style-type: decimal;">Click <strong>Save</strong> to save the facility.</li></ol><h2 id="ClinicalProcessConfiguration-configServiceDefineServiceCodes"><span class="confluence-anchor-link" id="ClinicalProcessConfiguration-configService"></span>Define Service Codes</h2><p>Define the service code and modifier combinations used by your clinic in DrCloudEHR. You select the codes when you perform various clinical and billing tasks.</p><ol style="text-decoration: none;text-align: left;"><li style="list-style-type: decimal;">Click the <strong style="margin-left: 0.0px;">Practice</strong> <span> </span>tab. </li><li style="list-style-type: decimal;">On the left navigation menu, click the <strong>Administrative</strong> tab, and then select <strong style="margin-left: 0.0px;">Services</strong>.</li><li style="list-style-type: decimal;">Select the code type, and then enter the service code. </li><li style="list-style-type: decimal;">If applicable, enter up to four modifier codes. To create a new code based on an existing code, must add a new modifier to prevent duplicates.</li><li style="list-style-type: decimal;">Select the appropriate checkbox to indicate if the service should be included in diagnosis or service reports. Service codes are not included in reports by default.</li><li style="list-style-type: decimal;">If you select REV as the code type, optionally click <strong>Add</strong> to specify the related service.</li><li style="list-style-type: decimal;">If you select DSM-5, FunctStatus, or POV as the code type, the Mapped ICD Code field appears. Select the checkbox to indicate whether the mapped code should be included on the UBO4 claim form instead of the code entered, and then enter the mapped code to include in the form in the Mapped ICD Code field. </li><li style="list-style-type: decimal;">Enter your standard fee amount for the service. Set the amount to a value 10% to 20% higher than the amount specified in your contract with the insurance company. Insurance companies typically pay the lowest possible amount, so set the fee amount higher to ensure you receive the best payment. </li><li style="list-style-type: decimal;">Click <strong>Add as New</strong> to save the service definition.</li></ol><h2 id="ClinicalProcessConfiguration-configWorkflowDefineWorkflows"><span class="confluence-anchor-link" id="ClinicalProcessConfiguration-configWorkflow"></span>Define Workflows</h2><p>A workflow is a collection of encounter and consent forms used in a specific encounter type. You select the forms to include, and specify the order in which they appear in an encounter.</p><p>When you create a category for the encounter type, you specify the workflow containing the forms used with encounters. When you create a new encounter and select a category that includes the workflow, the forms in the workflow display in the encounter window, in the order specified in the workflow.</p><p>Note that you cannot change the name of a workflow. If you want to assign a new name, delete the workflow, and then re-create it.</p><ol style="text-decoration: none;text-align: left;"><li style="list-style-type: decimal;">Click the <strong style="margin-left: 0.0px;">Practice</strong><span> </span>tab. </li><li style="list-style-type: decimal;">On the left navigation menu, click the <strong>Administrative</strong> tab, and then select<span> </span><strong style="margin-left: 0.0px;">Forms Workflow</strong>.</li><li>Click<span> </span><strong>Add New Workflow </strong>button. The Add New Workflow dialog box opens.</li><li>Enter a name and description for the workflow.</li><li>Select each program or facility where the appointments occur.</li><li>Select the <span style="color: rgb(68,34,0);"><strong>Show at Forms Cabinet</strong> checkbox to include the forms in the Forms Cabinet. </span></li><li>Click<span> </span><strong>Save</strong>. The new workflow appears in the table on the Forms Workflow page.</li><li>Locate the workflow in the table, and then click the <strong>Forms</strong> link in the Add Forms column. </li><li>Select the forms to include, then use the arrow buttons to move the forms into the Forms Selected window. </li><li>Use the <strong>Up</strong> and <strong>Down</strong> keys to specify the order in which forms appear in the encounter summary page.</li><li>Enter the order in which the workflow appears in the Forms Cabinet in the Priority field. Set the value to 0 to have the workflow display first in the list.</li></ol><h2 id="ClinicalProcessConfiguration-configCategoryCreateCategories"><span class="confluence-anchor-link" id="ClinicalProcessConfiguration-configCategory"></span>Create Categories</h2><p>A category is a template used for a specific encounter or appointment type. The category contains codes, facilities, providers, and workflows specific to the encounter. When a new encounter is created, the provider selects the category to use. Dependent on data already defined in the system, such as service codes, facilities, and workflows. </p><p>When a user schedules a new appointment in the calendar, they select the category. </p><ol style="text-decoration: none;text-align: left;"><li style="list-style-type: decimal;">Click the<span> </span><strong style="margin-left: 0.0px;">Practice</strong> <span> </span>tab. </li><li style="list-style-type: decimal;">On the left navigation menu, click the <strong>Administrative</strong> tab, and then select <strong style="margin-left: 0.0px;">Categories</strong>.</li><li style="list-style-type: decimal;">Click <strong>Add</strong>.</li><li style="list-style-type: decimal;">Select the checkbox indicating payment type.</li><li style="list-style-type: decimal;">Enter a name and description that map to the encounter type.</li><li style="list-style-type: decimal;">Indicate whether the category applies to patients, providers, or a group of patients that receive the same service.</li><li style="list-style-type: decimal;">Click the <strong>Click to choose the code </strong> <span style="text-decoration: none;">link to select service codes</span> and modifiers defined in the system to associate with the category. You can select multiple codes. <br/>If you add codes manually, format codes as type:number-modifier. For example: CPT4:90834-HF. Separate each code with a comma.</li><li style="list-style-type: decimal;">Select the Place of Service (POS) where the appointment typically occurs.</li><li style="list-style-type: decimal;">Specify the typical duration of appointments of this type. This data is useful when scheduling appointments in the calendar.</li><li style="list-style-type: decimal;">Optionally specify the color to use for this type of appointment.</li><li style="list-style-type: decimal;">Select the workflow that contains encounter forms typically used for this encounter type.</li><li style="list-style-type: decimal;">Select the facility and a list of providers associated with the encounter type.</li><li style="list-style-type: decimal;">Optionally indicate how often the encounter repeats. It is advisable not set this property, but instead schedule appointments as needed in the calendar.</li><li style="list-style-type: decimal;">Click <strong>Save</strong> to save the category.</li></ol><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Nov 19, 2025 02:49</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DrCloudEHR : Submitting MOTS Forms</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">DrCloudEHR</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Billing-and-Payments_88998249.html">Billing and Payments</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            DrCloudEHR : Submitting MOTS Forms
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Dan Hynes</span> on Aug 11, 2020
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>DrCloudEHR provides seamless integration with the Oregon Health Authority's Measures and Outcomes Tracking System (MOTS) to enable facilities to report patient status and service billing updates to the Addictions and Mental Health (AMH) Division.</p><p>The application automatically creates and submits a status record through MOTS when you:</p><ul><li>Admit a patient configured for MOTS to a facility or program that is enabled to submit reports. </li><li>Discharge a patient configure for MOTS from a facility or program that is enabled to submit reports.</li></ul><p>The application resubmits the status record if a patient remains in a facility or program 60 days after the initial admission date.</p><p>You configure a patient to use MOTS by supplying information required by MOTS when you add or edit the patient's data. The fields in the MOTS status record are automatically populated using patient data stored in the DrCloudEHR database. After a report is created, the application submits it to MOTS electronically using an EDI connection that you create.</p><p>In addition to submitting status records, the system automatically submits monthly reports that describe billable services each facility provides that are not covered by Medicaid. The system creates the reports based on service rules that you define.</p><p>This topic contains the following sections:</p><p><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1763549374289 {padding: 0px;}
+div.rbtoc1763549374289 ul {margin-left: 0px;}
+div.rbtoc1763549374289 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1763549374289'>
+<ul class='toc-indentation'>
+<li><a href='#SubmittingMOTSForms-PreparetoUseMOTS'>Prepare to Use MOTS</a>
+<ul class='toc-indentation'>
+<li><a href='#SubmittingMOTSForms-CreatetheMOTSEDIConnection'>Create the MOTS EDI Connection</a></li>
+<li><a href='#SubmittingMOTSForms-ConfigureFacilitiesorProgramstoUseMOTS'>Configure Facilities or Programs to Use MOTS</a></li>
+<li><a href='#SubmittingMOTSForms-MapMOTSFormFieldstoDrCloudEHRFields'>Map MOTS Form Fields to DrCloudEHR Fields</a></li>
+</ul>
+</li>
+<li><a href='#SubmittingMOTSForms-SubmitPatientStatusRecordsThroughMOTS'>Submit Patient Status Records Through MOTS</a>
+<ul class='toc-indentation'>
+<li><a href='#SubmittingMOTSForms-ProvideMOTSDataforaPatient'>Provide MOTS Data for a Patient</a></li>
+<li><a href='#SubmittingMOTSForms-SubmitaStatusRecordWhenaPatientisAdmittedtoaFacility'>Submit a Status Record When a Patient is Admitted to a Facility</a></li>
+<li><a href='#SubmittingMOTSForms-SubmitaStatusRecordWhenaPatientisDischargedfromaFacility'>Submit a Status Record When a Patient is Discharged from a Facility</a></li>
+</ul>
+</li>
+<li><a href='#SubmittingMOTSForms-EnableMonthlyMOTSServiceReports'>Enable Monthly MOTS Service Reports</a></li>
+</ul>
+</div></p><h2 id="SubmittingMOTSForms-PreparetoUseMOTS">Prepare to Use MOTS</h2><h3 id="SubmittingMOTSForms-CreatetheMOTSEDIConnection">Create the MOTS EDI Connection</h3><p>Create an EDI connection the application uses to submit forms to MOTS electronically. The connection is used by all facilities configured to submit forms through MOTS. The connection is similar to the connection you create to submit claims to a medical claims clearinghouse.</p><ol style="text-decoration: none;text-align: left;"><li style="list-style-type: decimal;">Click the <strong style="margin-left: 0.0px;">Practice</strong> tab. </li><li style="list-style-type: decimal;">In the left-hand navigation menu, click the <strong>Administrative</strong> tab, and then select <strong style="margin-left: 0.0px;">Practice</strong>.</li><li style="list-style-type: decimal;">Click the <strong>MOTS</strong> link under Practice Settings at the top of the page.</li><li style="list-style-type: decimal;">Click the <strong>Host URL</strong> link.</li><li>Enter the required connection information, which should be provided to you by MOTS. Fields marked with an asterisk are required.</li><li>Click <strong>Save</strong> to save the connection details.</li></ol><h3 id="SubmittingMOTSForms-ConfigureFacilitiesorProgramstoUseMOTS">Configure Facilities or Programs to Use MOTS</h3><p>Provide the information required to submit status records for a facility through MOTS.</p><p>DrCloudEHR automatically creates and submits a status record containing the patient data you select from the Treatment Type menu when you admit a patient to the facility, or when you discharge a patient from the facility.</p><p>The application also submits monthly service reports that contain details for each billable service code for which the facility provided treatment. Billable services are those services that are not covered by Medicaid.</p><ol><li>Click the <strong>Practice</strong> tab. </li><li>Click the <strong>Administrative</strong> tab, and then click <strong>Facilities</strong>.</li><li>Do one of the following:<ul><li>Click <strong>Add</strong> to add a new facility.</li><li>Click a facility name in the table to edit the facility.</li></ul></li><li>Click the <strong>MOTS</strong> tab. </li><li>Enter the required information. The application submits status records containing the </li><li>Click <strong>Save</strong>.</li></ol><h3 id="SubmittingMOTSForms-MapMOTSFormFieldstoDrCloudEHRFields">Map MOTS Form Fields to DrCloudEHR Fields</h3><p>Map each field in the MOTS forms with the corresponding field in the DrCloudEHR database. The application automatically populates fields in the MOTS forms you create with data stored in the database.</p><p>You must be familiar with how data is stored in your system in order to map a form field to a database field. When you map the fields, you select the category, or type, the data belongs to. Based on the category, you then select the database table and database field that contains the data. </p><ol><li>Click the <strong>Administration</strong> tab.</li><li>Click the <strong>Interface Mapping</strong> tab in the left hand navigation bar.</li><li>For each Input Form Data element used in a MOTS form, click the <strong>Edit</strong> button in the Source Data Column.</li><li>Select the data type from the <strong>Category</strong> menu.</li><li>Enter the database table and field containing the data, and then click <strong>Apply</strong>.</li><li>Click <strong>Save</strong> when you have finished mapping the fields.</li></ol><h2 id="SubmittingMOTSForms-SubmitPatientStatusRecordsThroughMOTS">Submit Patient Status Records Through MOTS</h2><h3 id="SubmittingMOTSForms-ProvideMOTSDataforaPatient">Provide MOTS Data for a Patient</h3><p>Provide the necessary information for each patient included in status records submitted through MOTS. You can provide the information when you add or edit the patient in the system.</p><p>MOTS requires that you provide information within the following categories:</p><ul><li>Client Profile Data (CPD)</li><li>Behavioral Health Data (BHD)</li><li>Addiction Detail Data (ADD)</li><li>Involuntary Service (INS)</li><li>Mental Health Crisis Data (MCD)</li></ul><p>Complete the following steps to provide patient data:</p><ol><li>Add or search for the patient.</li><li>Click the <strong>Edit</strong> button in the Demographics region.</li><li>Click the <strong>MOTS</strong> tab in the Demographics region.</li><li>Provide the patient details. Fields marked by an asterisk are required.</li><li>Click <strong>Save</strong>.</li></ol><h3 id="SubmittingMOTSForms-SubmitaStatusRecordWhenaPatientisAdmittedtoaFacility">Submit a Status Record When a Patient is Admitted to a Facility</h3><p>DrCloudEHR creates and submits a MOTS status record when you admit a MOTS patient to a facility configured for MOTS reporting. </p><p>When you select the facility in the admission details, the <strong>MOTS Assessment Only</strong> checkbox appears. Select the checkbox if you are performing an initial assessment of the patient.</p><ol><li>Click the <strong>Residents</strong> tab.</li><li>Click <strong>Patient Search/Add</strong> in the left hand navigation bar, and then search for and select the patient.</li><li>Select the <strong>Patient Info</strong> tab at the top of the page, and then select <strong>Admit/Pause/Discharge</strong>.</li><li>Click <strong>New Admission</strong>.</li><li>Enter the admission details for the patient.</li><li>Click <strong>Submit</strong>.</li></ol><h3 id="SubmittingMOTSForms-SubmitaStatusRecordWhenaPatientisDischargedfromaFacility">Submit a Status Record When a Patient is Discharged from a Facility</h3><p>DrCloudEHR creates and submits a MOTS status record when you discharge a MOTS patient from a facility configured for MOTS reporting. </p><ol><li>Click the <strong>Residents</strong> tab.</li><li>Click <strong>Patient Search/Add</strong> in the left hand navigation bar, and then search for and select the patient.</li><li>Select the <strong>Patient Info</strong> tab at the top of the page, and then select <strong>Admit/Pause/Discharge</strong>.</li><li>Click the <strong>Discharge</strong> button</li><li>Enter the discharge details for the patient.</li><li>Select the reason for discharging the patient from the <strong>MOTS Treatment Status</strong> menu. The reason is included in the status record submitted to MOTS.</li><li>Click <strong>Submit</strong>.</li></ol><h2 id="SubmittingMOTSForms-EnableMonthlyMOTSServiceReports">Enable Monthly MOTS Service Reports</h2><p>MOTS requires that facilities submit regular reports on services provided that are not covered by Medicaid. DrCloudEHR automatically creates and submits service reports every month that contain details for each billable service code for which a facility provided treatment. You create service rules that define the facility, the patient's insurance coverage details, and the service codes and modifiers to include in the report. </p><ol><li>Click the <strong>Practice</strong> tab.</li><li>Click the <strong>Administrative</strong> tab in the left hand navigation bar.</li><li>Click <strong>MOTS</strong>, and then click <strong>Service Rules</strong>.</li><li>Enter or select the rule name, insurance coverage, and facility details.</li><li>Click in the <strong>Service Codes</strong> field. The Add Service dialog opens.</li><li>Search for and add each service code and modifier. </li><li>Click <strong>Save</strong>. </li></ol><p><br/></p>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Nov 19, 2025 02:49</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

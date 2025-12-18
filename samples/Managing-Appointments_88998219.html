@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DrCloudEHR : Managing Appointments</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">DrCloudEHR</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Patients_88998243.html">Patients</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            DrCloudEHR : Managing Appointments
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Dan Hynes</span>, last modified on Oct 01, 2020
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>Use the calendar feature to schedule and manage patient appointments and group events.  </p><p>This topic contains the following sections:</p><p><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1763549374533 {padding: 0px;}
+div.rbtoc1763549374533 ul {margin-left: 0px;}
+div.rbtoc1763549374533 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1763549374533'>
+<ul class='toc-indentation'>
+<li><a href='#ManagingAppointments-PatientAppointments'>Patient Appointments</a>
+<ul class='toc-indentation'>
+<li><a href='#ManagingAppointments-ScheduleaPatientAppointment'>Schedule a Patient Appointment</a></li>
+<li><a href='#ManagingAppointments-CheckInaPatient'>Check In a Patient</a></li>
+</ul>
+</li>
+<li><a href='#ManagingAppointments-#exportOutlookExportAppointmentstoMicrosoftOutlook'>Export Appointments to Microsoft Outlook</a></li>
+<li><a href='#ManagingAppointments-WaitLists'>Wait Lists</a>
+<ul class='toc-indentation'>
+<li><a href='#ManagingAppointments-ManageWaitLists'>Manage Wait Lists</a></li>
+</ul>
+</li>
+<li><a href='#ManagingAppointments-GroupSessions'>Group Sessions</a>
+<ul class='toc-indentation'>
+<li><a href='#ManagingAppointments-ScheduleaGroupSessionEvent'>Schedule a Group Session Event</a></li>
+<li><a href='#ManagingAppointments-CheckInPatientsforaGroupSession'>Check In Patients for a Group Session</a></li>
+</ul>
+</li>
+<li><a href='#ManagingAppointments-noShowsNoShowAppointments'>No Show Appointments</a>
+<ul class='toc-indentation'>
+<li><a href='#ManagingAppointments-CreateaNoShowServiceCode'>Create a No Show Service Code</a></li>
+<li><a href='#ManagingAppointments-CreateaNoShowWorkflow'>Create a No Show Workflow</a></li>
+<li><a href='#ManagingAppointments-CreateaNoShowCategory'>Create a No Show Category</a></li>
+</ul>
+</li>
+</ul>
+</div></p><h2 id="ManagingAppointments-PatientAppointments">Patient Appointments</h2><h3 id="ManagingAppointments-ScheduleaPatientAppointment">Schedule a Patient Appointment </h3><p>Search for the patient you want to schedule an appointment for, and then create an appointment. </p><p>When you create an appointment, the To Time and Duration property values are set automatically set based on the category you select. You can modify both values if needed.</p><p>Note that you can search for a provider based on gender or on language spoken to address the patient's needs or concerns.</p><ol><li>Click the <strong>Schedule</strong> tab.</li><li>Click <strong>Add Appointment</strong>.</li><li>Click the <strong>Patient</strong> field to open the search dialog, and then search for the patient.</li><li>Provide the relevant details. Fields marked with an asterisk are required. </li><li><p>Optionally click <strong>Find Available</strong> to locate an available time slot within the next seven days for a selected provider, or to find a provider based on gender or language spoken.</p></li><li><span style="color: rgb(23,43,77);">Click <strong>Save</strong> to add the appointment to the calendar.</span></li></ol><h3 id="ManagingAppointments-CheckInaPatient">Check In a Patient</h3><p>When you check the patient in after they arrive for the appointment, the application creates a new encounter based on the category you select. For more information on categories, see <a href="Clinical-Process-Configuration_88998276.html#ClinicalProcessConfiguration-configCategory">Create Categories</a>. You document the details from the appointment in the encounter.</p><p>If the patient pays the amount due at start of appointment, such as a copay amount, you can enter the payment information when you check the patient in.</p><ol><li>Click the <strong>Schedule</strong> tab to open the calendar.</li><li>Click the appointment. </li><li>Select the check in option:<ul><li><strong>Check In As Arrived</strong>: Select to check the patient in and create a new encounter.</li><li><strong>Check In Arrived With Payment</strong>: Select if the patient pays the amount due at start of appointment. Enter the payment details, and then click <strong>Save</strong>.</li><li><strong>Check In as Absent</strong>: Select if the patient fails to arrive for the appointment. For more information on billing and tracking no-show appointments, see <a href="#ManagingAppointments-noShows">No Show Appointments</a>.</li></ul></li></ol><p><br/></p><h2 id="ManagingAppointments-#exportOutlookExportAppointmentstoMicrosoftOutlook"><span class="confluence-anchor-link" id="ManagingAppointments-#exportOutlook"></span>Export Appointments to Microsoft Outlook</h2><p>You can export patient, group, and provider appointments to an .ics file, which you can then import into your Microsoft Outlook client. You can export a single appointment, or you can export all of the appointments for a day, a week, or a month.</p><p>Note that if you export a repeated event, all of the associated repeated events are exported.</p><ol><li>Click the <strong>Schedule</strong> tab to open the calendar.</li><li>Choose the appointments to export.</li><li>To export a single appointment, click the appointment event in the calendar, and then click the <strong>Export to Outlook</strong> button.</li><li>To export all appointments scheduled for a day, a week, or a month, click the <strong>Day</strong>, <strong>Week</strong>, or <strong>Month</strong> button in the calendar, and then click the <strong>Export to Outlook</strong> button.</li><li>Select the event type, category, or facility to further refine the export selection.</li><li>Click <strong>Export</strong> to download the .ics file containing the appointment data to your computer.</li></ol><h2 id="ManagingAppointments-WaitLists">Wait Lists</h2><p>When a provider or other resource is not available for a patient, you can add the resource to a wait list. You can use wait lists in the following scenarios:</p><ul><li>The selected provider is not available at the requested appointment time. The application prompts you to add the appointment event to the Individual Appointment wait list.</li><li>A group you want to add the patient is at maximum capacity. You can add the patient to the Group wait list from the Add/Remove Patients page.</li><li><span style="color: rgb(23,43,77);">The provider you want to assign as the patient's primary care provider cannot accept any more patients, based on the Caseload Capacity defined for the provider. The application prompts you to move the request to the Admit wait list.</span></li><li>A bed is not available in a selected facility. You can add the bed request to the Bed wait list from the Bed Allocation page.</li></ul><h3 id="ManagingAppointments-ManageWaitLists">Manage Wait Lists</h3><p>Use the Wait List Dashboard to manage your practice's Wait Lists. Note that you can print the wait list contents, or export the data to a .csv file.</p><ol><li>Click the <strong>Practice</strong> tab.</li><li>Click <strong>Wait List Dashboard</strong> in the left navigation bar.</li><li>Select the wait list - Admit, Appointment, Bed, or Group - to view from the <strong>Type</strong> menu.</li><li>Enter the remaining search criteria.</li><li>Click <strong>Search</strong>. </li><li>Click the check mark icon <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-thumbnail" draggable="false" height="18" src="attachments/88998219/88998322.png" data-image-src="attachments/88998219/88998322.png" data-unresolved-comment-count="0" data-linked-resource-id="88998322" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2020-9-2_14-39-25.png" data-base-url="https://docs.drcloudemr.com:9443" data-linked-resource-content-type="image/png" data-linked-resource-container-id="88998219" data-linked-resource-container-version="2" alt=""></span>in a wait list entry in the search results, and then update the status.</li></ol><h2 id="ManagingAppointments-GroupSessions">Group Sessions</h2><h3 id="ManagingAppointments-ScheduleaGroupSessionEvent">Schedule a Group Session Event</h3><p style="text-align: left;"><span style="color: rgb(23,43,77);">Group sessions encourage patients to meet with other people who are coping with similar kinds of situations. Patients are evaluated using the program's predefined set of forms and questionnaire. You select the patients to include in the group after you create the event.</span></p><ol><li>Click the<span> </span> <strong>Schedule</strong> tab.</li><li>Click <strong>Add Appointment</strong>.</li><li>Click the <strong>Group</strong> button.</li><li><span style="color: rgb(23,43,77);">Provide the relevant details.<span> Fields marked with an asterisk are required.</span> </span></li><li><span style="color: rgb(23,43,77);">Click <strong>Save</strong>.</span></li><li><span style="color: rgb(23,43,77);">Click <strong>Add Now</strong> in the popup window to add patients to the event.</span></li><li><span style="color: rgb(23,43,77);">Select the patients to add, and then click <strong>Add Patients to the Event</strong>. </span></li><li><span style="color: rgb(23,43,77);">Click <strong>Close</strong>.</span></li><li><span style="color: rgb(23,43,77);">Click <strong>Save</strong> to add the event to the calendar.</span></li></ol><h3 id="ManagingAppointments-CheckInPatientsforaGroupSession"><span style="color: rgb(23,43,77);">Check In Patients for a Group Session</span></h3><p><span style="color: rgb(23,43,77);">When you check a patient in for an event, an encounter is automatically created with a Group Therapy Note form.</span></p><ol><li><span style="color: rgb(23,43,77);">Click the group session in the calendar. </span></li><li><span style="color: rgb(23,43,77);">For each patient, the <strong>Check In</strong> link in the Action column in the table within the popup window. You can select multiple patients to check in.</span></li><li><span style="color: rgb(23,43,77);">Click the <strong>Check In</strong> link in Action column for a patient. The payment screen appears. Enter the payment details and click <strong>Save</strong>.</span></li><li><span style="color: rgb(23,43,77);">Click the patient's name to create a new encounter.</span></li></ol><h2 id="ManagingAppointments-noShowsNoShowAppointments"><span style="color: rgb(23,43,77);"> <span class="confluence-anchor-link" id="ManagingAppointments-noShows"></span>No Show Appointments</span></h2><p>From a practice management perspective, a no-show appointment is a billable event. DrCloudEHR enables you to charge and track no-show fees to patients who fail to arrive for a scheduled appointment.</p><ul><li><span style="color: rgb(23,43,77);">Create a service code specifying the fee to charge for no-show appointments.</span></li><li><span style="color: rgb(23,43,77);">Optionally create a workflow with any encounter forms to use.</span></li><li><span style="color: rgb(23,43,77);">Create a category that includes the service code and workflow to use to create encounters for no-show appointments.</span></li></ul><p><span style="color: rgb(23,43,77);">To flag a no-show appointment, click the <strong>Check-in As Absent</strong> button in the appointment. When you click the button, the application generates an encounter based on the category, and creates a corresponding fee sheet with the service code and charges. </span></p><h3 id="ManagingAppointments-CreateaNoShowServiceCode"><span style="color: rgb(23,43,77);">Create a No Show Service Code</span></h3><p><span style="color: rgb(23,43,77);">Create a service code to use for no-show appointments. Enter the fee to charge in the Fees field. The service code appears on the fee sheet created for the encounter.</span></p><p><span style="color: rgb(23,43,77);">For more information, see <a href="Clinical-Process-Configuration_88998276.html#ClinicalProcessConfiguration-configService">Define Service Codes</a>.</span></p><h3 id="ManagingAppointments-CreateaNoShowWorkflow"><span style="color: rgb(23,43,77);">Create a No Show Workflow</span></h3><p><span style="color: rgb(23,43,77);">Optionally create a workflow containing the encounter forms to use for no-show appointments. </span></p><p><span style="color: rgb(23,43,77);">For more information, see <a href="Clinical-Process-Configuration_88998276.html#ClinicalProcessConfiguration-configWorkflow">Define Workflows</a>.</span></p><h3 id="ManagingAppointments-CreateaNoShowCategory"><span style="color: rgb(23,43,77);">Create a No Show Category</span></h3><p><span style="color: rgb(23,43,77);">Create a category to use for no-show appointments.</span></p><p><span style="color: rgb(23,43,77);">Select the service code you created in the Codes field, and select the workflow to use.</span></p><p><span style="color: rgb(23,43,77);">Select the category from the <strong>Category when checked in as absent</strong> menu. The category name appears in the list after you specify it in the Name field. Setting this value causes the application to generate a no-show encounter when you check the patient in as absent in the calendar.</span></p><p><span style="color: rgb(23,43,77);">For more information, see <a href="Clinical-Process-Configuration_88998276.html#ClinicalProcessConfiguration-configCategory">Create Categories</a>.</span></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/88998219/88998327.png">DrCloudEMR_5.0_Users_Guide-Reception_LocateaPatient.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/88998219/88998326.png">DrCloudEMR_5.0_Users_Guide-Reception_CustomSearch.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/88998219/88998325.png">image2018-10-31_13-55-16.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/88998219/88998324.png">image2018-10-31_13-56-3.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/88998219/88998323.png">DrCloudEMR_5.0_Users_Guide-Reception_AppointmentAvailabilityPatientDetailsinTooltip.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/88998219/88998322.png">image2020-9-2_14-39-25.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Nov 19, 2025 02:49</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

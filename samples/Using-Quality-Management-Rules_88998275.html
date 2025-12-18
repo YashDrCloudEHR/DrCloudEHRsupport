@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DrCloudEHR : Using Quality Management Rules</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">DrCloudEHR</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Billing-and-Clinical-Setup_88998273.html">Billing and Clinical Setup</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            DrCloudEHR : Using Quality Management Rules
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Dan Hynes</span> on Aug 12, 2020
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>DrCloudEHR provides quality management features that enable you to ensure that forms used in encounters comply with internal and external procedures and regulations when billing claims. Quality management features help you avoid potential issues when undergoing an audit or when submitting claims to insurance providers. </p><p>You can define rules, known as Golden Thread rules, to require that specific forms be completed for selected facilities or programs, as well as the frequency or time frame for which the forms must be completed. You can also define form completion criteria requiring the completion of specific fields in a form based on business, clinical, regulatory and workflow requirements. Golden Thread rules and form completion rules work in tandem to ensure the documentation associated with an encounter is complete. </p><p>You can configure Golden Thread and encounter form completion rules to prevent users from submitting claims if the rules are not satisfied.</p><p>This topic contains the following sections:</p><p><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1763549374084 {padding: 0px;}
+div.rbtoc1763549374084 ul {margin-left: 0px;}
+div.rbtoc1763549374084 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1763549374084'>
+<ul class='toc-indentation'>
+<li><a href='#UsingQualityManagementRules-formCriteriaDefineEncounterFormCompletionCriteria'>Define Encounter Form Completion Criteria</a></li>
+<li><a href='#UsingQualityManagementRules-AddaGoldenThreadRule'>Add a Golden Thread Rule</a></li>
+</ul>
+</div></p><h2 id="UsingQualityManagementRules-formCriteriaDefineEncounterFormCompletionCriteria"><span class="confluence-anchor-link" id="UsingQualityManagementRules-formCriteria"></span>Define Encounter Form Completion Criteria</h2><p>You can define rules specifying that specific fields be filled out in an encounter form for the form to be considered complete. </p><ol><li>Click the<span> </span><strong>Practice</strong> tab.</li><li>Click the <strong>Administration </strong>tab, and then click <strong>Forms Settings</strong>.</li><li>Click a form name in the table. </li><li>Click <strong>Add</strong>.</li><li>Enter the starting date on which the rule takes effect. <br/>You can optionally enter an end date. If you do not specify an end date, the rule remains in effect.</li><li>Select <strong>Block from being billed</strong> to prevent users from submitting a claim if the rule is not satisfied.</li><li>Select the checkbox for each field in the form you want to require be completed.</li><li>Click <strong>Save</strong>.</li></ol><h2 id="UsingQualityManagementRules-AddaGoldenThreadRule">Add a Golden Thread Rule</h2><p>Define rules requiring specific forms be completed for selected facilities or programs, a specific time frame, or for an encounter category.</p><p>When you define a rule, you can require <span style="color: rgb(68,34,0);">that selected encounter forms meet the form completion rules defined in the Forms Settings page.</span></p><p><span style="color: rgb(68,34,0);"> <strong>Note:</strong> The Value and Advanced Golden Thread rule types are reserved for the DrCloudEHR product development team.</span></p><p>To add a new golden thread rule, do the following:</p><ol><li>Click the <strong>Practice</strong> tab.</li><li>In the left hand navigation menu, click the <strong>Golden Thread</strong> tab, and then click<span> </span><strong>Golden Thread Rules</strong>. The Golden Thread Rules page opens.</li><li>Click the <strong>Add Golden Thread Rule</strong> button.</li><li>Enter a name for the rule.</li><li>Select <strong>Form</strong> as the rule<span> </span>type.</li><li>Enter the starting date on which the rule takes effect. You can optionally enter an end date. If you do not specify an end date, the rule remains in effect.</li><li>Select the facilities or programs to which to apply the rule. <br/>Specify the AND operator to apply the rules to all selected facilities.​​ Use the OR operator to apply the rule to at least one facility.</li><li>Select the forms that must be submitted. <br/>Specify the AND operator to require a user to complete all of the selected forms.​​ Use the OR operator to require that at least one of the selected forms be completed.</li><li>Select the frequency at which the forms must be completed.</li><li>Select <strong>Must meet the form completion criteria</strong> to require that the selected encounter forms meet any form completion criteria. <br/>Form completion criteria are defined in the Forms Settings page. For more information, see <a href="#UsingQualityManagementRules-formCriteria">Define Encounter Form Completion Criteria</a>.</li><li>Specify the message to display in notifications if the user fails to follow the rule. </li><li>Select <strong>Block from being billed</strong> to prevent users from submitting a claim if the rule is not complete. </li><li>Click the <strong>Notifications</strong> tab in the Add Golden Thread Rule dialog, and then configure how and to whom notifications are sent if the rule is violated. <br/>If you select Billing Manager, a message appears with an alert icon in the Billing Manager to indicate that the rule is not satisfied.</li><li>Click the <strong>Exceptions </strong>tab in the dialog, and then select the categories to ignore when applying the rule.</li><li>Click <strong>Save</strong>.</li></ol><p><br/></p>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Nov 19, 2025 02:49</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

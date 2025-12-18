@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DrCloudEHR : Casamba Documents</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">DrCloudEHR</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Administration_40337469.html">Administration</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            DrCloudEHR : Casamba Documents
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Tejasvini Aurangabadkar</span>, last modified on Mar 28, 2018
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p style="text-decoration: none;text-align: left;margin-left: 0.0px;" /><p style="text-decoration: none;text-align: left;margin-left: 0.0px;"><span style="color: rgb(51,51,51);text-decoration: none;">This article contains the following topics:</span></p><p style="text-decoration: none;text-align: left;margin-left: 0.0px;"><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1763549375421 {padding: 0px;}
+div.rbtoc1763549375421 ul {margin-left: 0px;}
+div.rbtoc1763549375421 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1763549375421'>
+<ul class='toc-indentation'>
+<li><a href='#CasambaDocuments-ConnectingtoCasambaServer'>Connecting to Casamba Server</a></li>
+<li><a href='#CasambaDocuments-CasambaDocumentsDownload'>Casamba Documents Download</a></li>
+<li><a href='#CasambaDocuments-CasambaResultsDelete'>Casamba Results Delete</a></li>
+</ul>
+</div></p><p /><p style="margin-left: 0.0px;text-align: left;">The resident care plan documents are uploaded on to Casamba by <strong style="margin-left: 0.0px;">Ergo</strong> on a regular basis. Each care plan consists of a set of two files.</p><ul style="text-decoration: none;text-align: left;margin-left: 0.0px;"><li style="list-style-type: disc;">XML file</li><li style="list-style-type: disc;">PDF file</li></ul><p><span style="color: rgb(51,51,51);text-decoration: none;">When a request is initiated from DrCloudEMR, it downloads all the care plan documents from the Casamba site and assigns them to the corresponding resident(s) in DrCloudEMR using certain preset matching criteria.</span></p><h3 style="text-decoration: none;text-align: left;margin-left: 0.0px;" id="CasambaDocuments-ConnectingtoCasambaServer">Connecting to Casamba Server</h3><ol style="text-decoration: none;text-align: left;margin-left: 0.0px;"><li style="list-style-type: decimal;">Navigate to Practice &gt; Administrative &gt; Practice.</li><li style="list-style-type: decimal;">Open the Practice Settings page.</li><li style="list-style-type: decimal;">Click the Casamba link.</li><li style="list-style-type: decimal;">Casamba Connection Information page opens.</li><li style="list-style-type: decimal;">Click on the default facility link.</li></ol><p style="margin-left: 0.0px;text-align: left;">Casamba Connection Information page can be edited from here.</p><ol style="text-decoration: none;text-align: left;margin-left: 0.0px;"><li style="list-style-type: decimal;"><strong style="margin-left: 0.0px;">Facility</strong>: Select the facility from the list box of facilities provided. The selected facility is the facility for which the following connectivity information applies.</li><li style="list-style-type: decimal;"><strong style="margin-left: 0.0px;">Host URL</strong>:Host Url is the SMTP location on Casamba where Ergo uploads documents to.</li><li style="list-style-type: decimal;"><strong style="margin-left: 0.0px;">User Id</strong>: User id and password provided by Casamba goes in here.</li><li style="list-style-type: decimal;"><strong style="margin-left: 0.0px;">Remote Folder</strong>: Remote Folder is the folder on Casamba where Ergo uploads the documents to.</li><li style="list-style-type: decimal;"><strong style="margin-left: 0.0px;">Download Folder</strong>: Download Folder is the folder path on DrCloudEMR to download all the data related to your facility from Casamba . This is essentially a staging area for DrCloudEMR.</li><li style="list-style-type: decimal;"><strong style="margin-left: 0.0px;">Matching Criteria</strong>: Matching Criteria is the criteria that will be used to assign the downloaded care plan to the resident in DrCloudEMR.</li><li style="list-style-type: decimal;">Criteria options are provided as option buttons:<ul style="margin-left: 0.0px;"><li style="list-style-type: disc;"><strong style="margin-left: 0.0px;">SSN</strong>(Match by Social Security Number)</li><li style="list-style-type: disc;"><strong style="margin-left: 0.0px;">Fname and Lname and DOB</strong>(Match by First Name, Last Name and Date Of Birth)</li></ul></li><li style="list-style-type: decimal;"><strong style="margin-left: 0.0px;">Delete on Download</strong>: Enabling this checkbox auto deletes the downloaded files from the Casamba server after download is completed to DrCloudEMR. This is to prevent successfully downloaded documents from being downloaded again.</li></ol><p><em style="text-decoration: none;text-align: left;margin-left: 0.0px;">The Connecting to Casamba Server</em></p><p style="margin-left: 0.0px;text-align: left;"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-external-resource confluence-content-image-border" draggable="false" alt="Connecting to Casamba Server" width="500" src="http://drcloud-qa.cloudapp.net/dc_ehr_qa/Documentation/User_Guide/DrCloudEMR_UserGuide_5/images/DrCloudEMR_5.0_Users_Guide_A-ADN-ConnectingtoCasambaServer.png" data-image-src="http://drcloud-qa.cloudapp.net/dc_ehr_qa/Documentation/User_Guide/DrCloudEMR_UserGuide_5/images/DrCloudEMR_5.0_Users_Guide_A-ADN-ConnectingtoCasambaServer.png"></span></p><p><span style="color: rgb(51,51,51);text-decoration: none;"><span> </span></span></p><h3 style="text-decoration: none;text-align: left;margin-left: 0.0px;" id="CasambaDocuments-CasambaDocumentsDownload">Casamba Documents Download</h3><ol style="text-decoration: none;text-align: left;margin-left: 0.0px;"><li style="list-style-type: decimal;">Navigate to Practice &gt; Administrative &gt; <strong style="margin-left: 0.0px;">Egro-Casamba Docs</strong>.</li><li style="list-style-type: decimal;">Ergo Casamba Documents page opens.</li><li style="list-style-type: decimal;">Select the facility from the dropdown ,which is mapped from the Casamba Connection Information page.</li><li style="list-style-type: decimal;">Click on Download button to download all the documents to DrCloudEMR from Casamba and assign them to the residents in DrCloudEMR according to the matching criteria set on the <a style="text-decoration: none;" href="http://drcloud-qa.cloudapp.net/dc_ehr_qa/Documentation/User_Guide/DrCloudEMR_UserGuide_5/index.html#ConnectingtoCasambaServer" class="external-link" rel="nofollow">Casamba Connection Information page</a>.</li><li style="list-style-type: decimal;">Once a document is downloaded it is in one of the two states:<ul style="margin-left: 0.0px;"><li style="list-style-type: disc;"><strong style="margin-left: 0.0px;">Matched</strong>:These are the documents that were matched and assigned to residents in DrCloudEMR.The matched results are shown in <strong style="margin-left: 0.0px;">black</strong> color.</li><li style="list-style-type: disc;"><strong style="margin-left: 0.0px;">Unmatched</strong>:These are the documents that were unmatched and hence not assigned to any resident(s) in DrCloudEMR. The unmatched results are displayed in <strong style="margin-left: 0.0px;">red</strong> color.</li></ul><ul style="margin-left: 0.0px;"><li style="list-style-type: disc;">The Unmatched documents can be manually matched to residents in DrCloudEMR as follows:<ul style="margin-left: 0.0px;"><li style="list-style-type: disc;">Select all the checkboxes for the unmatched residents.</li><li style="list-style-type: disc;">Click on Assign.</li><li style="list-style-type: disc;">Map each unmatched resident to a resident in DrCloudEMR in the &quot;Casamba Reports - Assign Residents&quot; dialog box.</li><li style="list-style-type: disc;">Close the dialog box.</li></ul></li></ul></li><li style="list-style-type: decimal;">The assigned resident records are now shown in <strong style="margin-left: 0.0px;">black</strong>, indicating matched status.</li></ol><p><em style="text-decoration: none;text-align: left;margin-left: 0.0px;">The Casamba Documents Download and Assign to Residents</em></p><p style="margin-left: 0.0px;text-align: left;"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-external-resource confluence-content-image-border" draggable="false" alt="Casamba Documents Download and Assign to Residents" width="900" src="http://drcloud-qa.cloudapp.net/dc_ehr_qa/Documentation/User_Guide/DrCloudEMR_UserGuide_5/images/DrCloudEMR_5.0_Users_Guide_A-ADN-CasambaDocumentsDownloadandAssigntoResident.png" data-image-src="http://drcloud-qa.cloudapp.net/dc_ehr_qa/Documentation/User_Guide/DrCloudEMR_UserGuide_5/images/DrCloudEMR_5.0_Users_Guide_A-ADN-CasambaDocumentsDownloadandAssigntoResident.png"></span></p><p><em style="text-decoration: none;text-align: left;margin-left: 0.0px;">The Assigned Casamba Documents</em></p><p style="margin-left: 0.0px;text-align: left;"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-external-resource confluence-content-image-border" draggable="false" alt="Assigned Casamba Documents" width="900" src="http://drcloud-qa.cloudapp.net/dc_ehr_qa/Documentation/User_Guide/DrCloudEMR_UserGuide_5/images/DrCloudEMR_5.0_Users_Guide_A-ADN-AssignedCasambaDocuments.png" data-image-src="http://drcloud-qa.cloudapp.net/dc_ehr_qa/Documentation/User_Guide/DrCloudEMR_UserGuide_5/images/DrCloudEMR_5.0_Users_Guide_A-ADN-AssignedCasambaDocuments.png"></span></p><p><span style="color: rgb(51,51,51);text-decoration: none;"><span> </span></span></p><h3 style="text-decoration: none;text-align: left;margin-left: 0.0px;" id="CasambaDocuments-CasambaResultsDelete">Casamba Results Delete</h3><p>This enables us to search the downloaded documents on DrCloudEMR based on certain search filters.<br/></p><ol style="text-decoration: none;text-align: left;margin-left: 0.0px;"><li style="list-style-type: decimal;">Navigate to Practice &gt; Administrative &gt; <strong style="margin-left: 0.0px;">Egro-Casamba Docs</strong>.</li><li style="list-style-type: decimal;">Ergo Casamba Documents page opens.</li><li style="list-style-type: decimal;">Find the search section.</li><li style="list-style-type: decimal;">Select the Resident Name search option from the dropdown.</li><li style="list-style-type: decimal;">Enter the search criteria of the selected option.<ul style="margin-left: 0.0px;"><li style="list-style-type: disc;"><strong style="margin-left: 0.0px;">Matched</strong>: Displays all the downloaded documents from Casamba that were matched and assigned to residents in DrCloudEMR.</li><li style="list-style-type: disc;"><strong style="margin-left: 0.0px;">Unmatched</strong>: Displays all the downloaded documents from Casamba that were unmatched and hence not assigned to any resident(s) in DrCloudEMR.</li></ul></li><li style="list-style-type: decimal;">Select the checkboxes and click on the Delete button. This will delete the selected document(s) from DrCloudEMR.</li></ol>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Nov 19, 2025 02:49</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

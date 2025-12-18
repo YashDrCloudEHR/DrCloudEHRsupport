@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DrCloudEHR : SAML Setup with V1/PHP Sites</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">DrCloudEHR</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="DrCloudEHR_33783903.html">DrCloudEHR</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            DrCloudEHR : SAML Setup with V1/PHP Sites
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Kevin Yeh</span>, last modified on Jul 24, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>Enabling SAML for PHP based DrCloud sites requires installation of SimpleSAMLphp version 1.19.9<br/>This older release is required for compatibility with current PHP version 7.4 in use for DrCloud</p><p><a href="https://github.com/simplesamlphp/simplesamlphp/releases/tag/v1.19.9" class="external-link" rel="nofollow">https://github.com/simplesamlphp/simplesamlphp/releases/tag/v1.19.9</a></p><p>The default folder to extract the required files is /var/simplesamlphp</p><p>After extraction, a symbolic link is needed in the webserver root directory (/data1/wwwroot/html) to /var/simplesamlphp/www named simplesaml</p><p>Access to SAML related configuration and test tools are available at:<br/>https://&lt;v1-server&gt;/simplesaml</p><p>Login via SAML is accomplished at this URL:</p><p>https://&lt;v1-server&gt;/&lt;ehrFiles&gt;/interface/login/saml.php?idp=&lt;IdentityProviderTag&gt;</p><p>(example: <a href="https://dceast.drcloudemr.com/ehr/interface/login/saml.php?idp=whlc" class="external-link" rel="nofollow">https://dceast.drcloudemr.com/ehr/interface/login/saml.php?idp=whlc</a>) &lt;NOT yet configured&gt;</p><p>Additional changes are required in four files:</p><ol><li>/var/simplesamlphp/config/config.php</li><li>/var/simplesamlphp/metadata/saml20-idp-remote.php</li><li>/var/simplesamlphp/config/authsources.php</li><li>/var/simplesamlphp/metadata/dc-idp-mapping.php</li></ol><p><br/></p><h2 id="SAMLSetupwithV1/PHPSites-Changesto/var/simplesamlphp/config.php-onlyrequiredonceperV1server">Changes to /var/simplesamlphp/config.php - only required once per V1 server</h2><h3 id="SAMLSetupwithV1/PHPSites-Thefollowingchanges(withreferencetothisURLarerequiredasbaselinesetupofsimpleSAMLphpthesechangesareonlyrequiredonce."><br/>The following changes (with reference to this URL are required as baseline setup of simpleSAMLphp these changes are only required once.</h3><p><a href="https://simplesamlphp.org/docs/1.19/simplesamlphp-install.html#simplesamlphp-configuration-configphp" class="external-link" rel="nofollow">https://simplesamlphp.org/docs/1.19/simplesamlphp-install.html#simplesamlphp-configuration-configphp</a></p><p>Set the<span> </span><code>baseurlpath<span> </span></code>configuration option. Make it point to the canonical URL of your deployment, where SimpleSAMLphp can be reached:</p><pre><code>    'baseurlpath' =&gt; 'https://your.canonical.host.name/simplesaml/',
+</code></pre><p>Please note that your canonical URL should always use HTTPS in order to protect your users. Additionally, if you are running behind a<span> </span><strong>reverse proxy<span> </span></strong>and you are offloading TLS to it, the proper way to tell SimpleSAMLphp that its base URL should use HTTPS is to set the<span> </span><code>baseurlpath<span> </span></code>configuration option properly. SimpleSAMLphp deliberately<span> </span><strong>ignores<span> </span></strong>the<span> </span><code>X-Forwarded-*<span> </span></code>set of headers that your proxy might be setting, so<span> </span><strong>do not rely on those<span> </span></strong>.</p><p>Set an administrator password. This is needed to access some of the pages in your SimpleSAMLphp installation web interface.</p><p>Hashed passwords can also be used here. See the<span> </span><a style="text-decoration: none;" href="https://simplesamlphp.org/docs/1.19/authcrypt/authcrypt.html" class="external-link" rel="nofollow"><code>authcrypt<span> </span></code></a>documentation for more information.</p><pre><code>    'auth.adminpassword' =&gt; 'setnewpasswordhere',
+</code></pre><p>Set a secret salt. This should be a random string. Some parts of the SimpleSAMLphp needs this salt to generate cryptographically secure hashes. SimpleSAMLphp will give an error if the salt is not changed from the default value. The command below can help you to generated a random string on (some) unix systems:</p><pre><code>tr -c -d '0123456789abcdefghijklmnopqrstuvwxyz' &lt;/dev/urandom | dd bs=32 count=1 2&gt;/dev/null;echo
+</code></pre><p>Here is an example of the configuration option:</p><pre><code>    'secretsalt' =&gt; 'randombytesinsertedhere',
+</code></pre><p><strong>Please note that changing the secret salt may break access to services for your users<span> </span></strong></p><h3 id="SAMLSetupwithV1/PHPSites-Additionalchangerequiredinconfig.phpspecifictoDr.Cloud"><strong>Additional change required in config.php specific to Dr. Cloud</strong></h3><p>The phpsession cookiename needs to be changed from SimpleSAML to DrCloud</p><p><code>    'session.phpsession.cookiename' =&gt; 'DrCloud',</code></p><h2 id="SAMLSetupwithV1/PHPSites-Changesto/var/simplesamlphp/metadata/saml20-idp-remote.php"> Changes to /var/simplesamlphp/metadata/saml20-idp-remote.php</h2><h3 id="SAMLSetupwithV1/PHPSites-MetadataforeachIdentityProviderneedstobeaddedtothesaml20-idp-remote.phpfile">Metadata for each Identity Provider needs to be added to the saml20-idp-remote.php file</h3><p>IdP setup will vary depending on which IdP is being used.  However, they generally all provide a link to the metadata in XML format that is needed to establish the connection between the IdP and the SP</p><p>The XML from the IdP needs to be converted into PHP format and appended to the above file using the metarefresh tool:</p><p>(Detailed documentation in the following link):</p><p><a href="https://simplesamlphp.org/docs/contrib_modules/metarefresh/simplesamlphp-automated_metadata.html" class="external-link" rel="nofollow">https://simplesamlphp.org/docs/contrib_modules/metarefresh/simplesamlphp-automated_metadata.html</a></p><p>Command used as follows.</p><p>/var/simplesamlphp/modules/metarefresh/bin/metarefresh.php -s <a href="https://drcloudehr-idd-qa-dev-ed.develop.my.salesforce.com" class="external-link" rel="nofollow">https://</a>&lt;idp-server&gt;/&lt;location&gt;.xml &gt; &lt;IdPFileName&gt;.php</p><p>Example:</p><p>/var/simplesamlphp/modules/metarefresh/bin/metarefresh.php -s <a href="https://drcloudehr-idd-qa-dev-ed.develop.my.salesforce.com" class="external-link" rel="nofollow">https://drcloudehr-idd-qa-dev-ed.develop.my.salesforce.com</a>/.well-known/samlidp.xml &gt; SF-SSO.php</p><p>For each IdPs/sites to be enabled, the above command needs to be run with different &lt;idp-server&gt; and/or &lt;location&gt; to generate distinct files.  </p><p><br/></p><p>Each of the generated files needs to be combined into the /var/simplesamlphp/metadata/saml20-idp-remote.php</p><p>Example:</p><p>cat SF-SSO.php SF-SSO-2.php SF-SSO-3.php &gt; /var/simplesamlphp/metadata/saml20-idp-remote.php</p><p><br/></p><pre>This creates entries in the metadata array for each IdP.  The keys in this array are used in the next step<br/><br/>$metadata['<a href="https://drcloudehr-idd-qa-dev-ed.develop.my.salesforce.com" class="external-link" rel="nofollow">https://drcloudehr-idd-qa-dev-ed.develop.my.salesforce.com</a>'] = array (<br/>  'entityid' =&gt; '<a href="https://drcloudehr-idd-qa-dev-ed.develop.my.salesforce.com" class="external-link" rel="nofollow">https://drcloudehr-idd-qa-dev-ed.develop.my.salesforce.com</a>',<br/>  'entityDescriptor' =&gt; 'PG1kOkVu....<br/><br/><br/></pre><p><br/></p><h2 id="SAMLSetupwithV1/PHPSites-Changesto/var/simplesamlphp/config/authsources.php">Changes to /var/simplesamlphp/config/authsources.php</h2><h3 id="SAMLSetupwithV1/PHPSites-Theentriesaddedinthepreviousstepneedtobeenabledasauthenticationsources">The entries added in the previous step need to be enabled as authentication sources</h3><p><a href="https://simplesamlphp.org/docs/1.19/simplesamlphp-sp.html#configuring-the-sp" class="external-link" rel="nofollow">https://simplesamlphp.org/docs/1.19/simplesamlphp-sp.html#configuring-the-sp</a></p><p>Entries need to be added to the authsources.php file in the config array as follows:</p><pre><code>'sp1' =&gt; [
+    'saml:SP',
+  'entityID' =&gt; '<a href="https://drcloudehr-idd-qa-dev-ed.develop.my.salesforce.com" class="external-link" rel="nofollow">https://drcloudehr-idd-qa-dev-ed.develop.my.salesforce.com</a>',<br/>  'idp'      =&gt; '<a href="https://drcloudehr-idd-qa-dev-ed.develop.my.salesforce.com" class="external-link" rel="nofollow">https://drcloudehr-idd-qa-dev-ed.develop.my.salesforce.com</a>',<br/> ],
+'sp2' =&gt; [
+    'saml:SP',
+  'entityID' =&gt; '<a href="https://drcloudehr-idd-qa-dev-ed.develop.my.salesforce.com" class="external-link" rel="nofollow">https://okta.com</a>/',   <br/>  'idp'      =&gt; '<a href="https://drcloudehr-idd-qa-dev-ed.develop.my.salesforce.com" class="external-link" rel="nofollow">https://okta.com</a>/',
+],<br/><br/></code></pre><p>The entityID and idp are keys to the metadata array defined in saml20-idp-remote.php file that was updated in the previous step.</p><p>The entityId and the idp entries are set to the same value to eliminate the step of choosing an IdP when logging in. </p><h2 id="SAMLSetupwithV1/PHPSites-Changesto/var/simplesamlphp/metadata/dc-idp-mapping.php">Changes to /var/simplesamlphp/metadata/dc-idp-mapping.php</h2><h3 id="SAMLSetupwithV1/PHPSites-TheauthenticationsourcesdefinedintheprevioussteparemappedtoV1site_id/databaseconfigurations">The authentication sources defined in the previous step are mapped to V1 site_id/database configurations</h3><p>/var/simplesamlphp/metadata/dc-idp-mapping.php stores an associative array of authentication source to V1 site_id tags.  It specifies which database should be used to compare the SAML user with the V1 user. (referenced through the email address column in the users table)</p><pre>$DC_IDP_MAPPINGS = [<br/>     // idp-tag                     DrCloud SiteID                   idp-entity-id<br/>      'qa'         =&gt;['dc_site_id' =&gt; 'qa'          , 'idp_entity' =&gt; 'sp1'],     // (Connects to qa site using &quot;Salesforce IdP&quot;<br/>      'qa-okta'    =&gt;['dc_site_id' =&gt; 'qa'          , 'idp_entity' =&gt; 'sp2'],     // (Connects to qa site using &quot;Okta IdP&quot;<br/>];<br/><br/>These mapping consist of an idp-tag that associates a SiteID(dc_site_id) with one of the sources(idp_entity) defined in authsources.php</pre><p>The idp-tag is specified when accessing the SSO URL described earlier<br/>https://&lt;v1-server&gt;/&lt;ehrFiles&gt;/interface/login/saml.php?idp=&lt;IdentityProviderTag&gt;</p><p>The idp-tag does not need to match the V1 site id.  However, when possible, it is encouraged to do so.  If multiple IdP need to connect to the same V1 site, then only one of the idp-tags can match the V1 site id<br/><br/></p><p><br/></p>
+                    </div>
+
+                                        
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Nov 19, 2025 02:49</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,2 +1,0 @@
-Qdrant is a high-performance vector database designed for semantic search and retrieval-augmented generation (RAG). It supports cosine, dot, and Euclidean distances, filtering, payload storage, and hybrid queries. Managed Qdrant Cloud exposes an HTTPS API authenticated with an API key.
-

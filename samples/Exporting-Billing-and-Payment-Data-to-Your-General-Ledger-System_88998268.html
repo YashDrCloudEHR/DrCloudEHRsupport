@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DrCloudEHR : Exporting Billing and Payment Data to Your General Ledger System</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">DrCloudEHR</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Billing-and-Payments_88998249.html">Billing and Payments</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            DrCloudEHR : Exporting Billing and Payment Data to Your General Ledger System
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+    
+        
+    
+        
+        
+            Created by <span class='author'> Dan Hynes</span> on Sep 28, 2020
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>Use the General Ledger Interface feature to export DrCloudEHR billing and payment data for a selected accounting period to comma-separated value (.csv) files that you can import into your general ledger system. </p><p>The feature exports billing and payment data associated with crosswalk entries defined in DrCloudEHR. A crosswalk contains the information needed to export data to accounts in your general ledger system. You can configure the application to create crosswalk entries for any combination of the following:</p><ul><li>Treatment facilities</li><li>Insurance providers</li><li>Service codes</li></ul><p>After you create a crosswalk, billing and payment data for the selected facility, insurance provider or service code is associated with the corresponding accounts when you export the data.</p><p>This topic contains the following sections:</p><p><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1763549374262 {padding: 0px;}
+div.rbtoc1763549374262 ul {margin-left: 0px;}
+div.rbtoc1763549374262 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1763549374262'>
+<ul class='toc-indentation'>
+<li><a href='#ExportingBillingandPaymentDatatoYourGeneralLedgerSystem-ConfigureGeneralLedgerAccountNumbers'>Configure General Ledger Account Numbers</a>
+<ul class='toc-indentation'>
+<li><a href='#ExportingBillingandPaymentDatatoYourGeneralLedgerSystem-ConfiguretheLedgerAccountNumberforaFacility'>Configure the Ledger Account Number for a Facility</a></li>
+<li><a href='#ExportingBillingandPaymentDatatoYourGeneralLedgerSystem-ConfiguretheLedgerAccountNumberforanInsuranceProvider'>Configure the Ledger Account Number for an Insurance Provider</a></li>
+<li><a href='#ExportingBillingandPaymentDatatoYourGeneralLedgerSystem-ConfiguretheLedgerAccountNumberforaServiceCode'>Configure the Ledger Account Number for a Service Code</a></li>
+</ul>
+</li>
+<li><a href='#ExportingBillingandPaymentDatatoYourGeneralLedgerSystem-ConfiguretheGeneralLedgerInterfaceFeature'>Configure the General Ledger Interface Feature</a></li>
+<li><a href='#ExportingBillingandPaymentDatatoYourGeneralLedgerSystem-CreateCrosswalkEntries'>Create Crosswalk Entries</a></li>
+<li><a href='#ExportingBillingandPaymentDatatoYourGeneralLedgerSystem-ClosetheAccountingPeriod'>Close the Accounting Period</a></li>
+<li><a href='#ExportingBillingandPaymentDatatoYourGeneralLedgerSystem-ExporttheData'>Export the Data</a></li>
+</ul>
+</div></p><h2 id="ExportingBillingandPaymentDatatoYourGeneralLedgerSystem-ConfigureGeneralLedgerAccountNumbers">Configure General Ledger Account Numbers</h2><p>Before you use the General Ledger Interface feature, define the general ledger account number for each facility, insurance provider, and service code for which you want to export data.</p><p>Each account number should contain the same number of characters.</p><h3 id="ExportingBillingandPaymentDatatoYourGeneralLedgerSystem-ConfiguretheLedgerAccountNumberforaFacility">Configure the Ledger Account Number for a Facility</h3><ol><li>Click the <strong>Practice</strong> tab at the top of the page.</li><li>Click the <strong>Administrative</strong> tab in the left-hand navigation bar, and then click <strong>Facilities</strong>.</li><li>Click the facility name in the table.</li><li>Click the <strong>Additional Info</strong> tab.</li><li>Enter a value in the Ledger Account Number field.</li></ol><h3 id="ExportingBillingandPaymentDatatoYourGeneralLedgerSystem-ConfiguretheLedgerAccountNumberforanInsuranceProvider">Configure the Ledger Account Number for an Insurance Provider</h3><ol><li>Click the <strong>Practice</strong> tab at the top of the page.</li><li>Click the <strong>Administrative</strong> tab in the left-hand navigation bar, and then click <strong>Practice</strong>.</li><li>Click an insurance company in the table.</li><li>Enter a value in the Ledger Account Number field.</li></ol><h3 id="ExportingBillingandPaymentDatatoYourGeneralLedgerSystem-ConfiguretheLedgerAccountNumberforaServiceCode">Configure the Ledger Account Number for a Service Code</h3><ol><li>Click the <strong>Practice</strong> tab at the top of the page.</li><li>Click the <strong>Administrative</strong> tab in the left-hand navigation bar, and then click <strong>Services</strong>.</li><li>Select a code type, such as CPT4, and then click <strong>Search</strong>. The existing codes load in the table below.</li><li>Click <strong>Edit</strong> for a service code in the table.</li><li>Enter a value in the Ledger Account Number field.</li></ol><h2 id="ExportingBillingandPaymentDatatoYourGeneralLedgerSystem-ConfiguretheGeneralLedgerInterfaceFeature">Configure the General Ledger Interface Feature</h2><p>Define the format for crosswalk entries created in DrCloudEHR. The format you define applies to all crosswalks that you create. <br/>You can select more than one entity to include in crosswalks. For example, you can configure the application to create crosswalks that combine insurance providers and facilities. When you create a new crosswalk, you select the corresponding insurance provider and facility to include. The application then adds the account numbers for each selected facility and insurance provider to the crosswalk.</p><ol><li>Click the <strong>Billing</strong> tab at the top of the page.</li><li>Click the <strong>Account Ledger</strong> tab in the left-hand navigation bar.</li><li>Click the <strong style="letter-spacing: 0.0px;">Crosswalk</strong> <span style="letter-spacing: 0.0px;"> tab. The GL Crosswalk page appears.</span></li><li>Click the <strong style="letter-spacing: 0.0px;">GL Settings</strong> <span style="letter-spacing: 0.0px;"> button, and then enter your eSignature password.</span></li><li>Select the entities – Facility, Insurance, or Service - for which you want to create crosswalk entries in the Select GL Parameters section.</li><li><p class="auto-cursor-target">Define the format of accounts included in crosswalks in the Other Settings section. The following table describes the properties you set:<br/><br/></p><div class="table-wrap"><table class="relative-table wrapped confluenceTable" style="width: 77.5427%;"><colgroup> <col style="width: 28.1513%;"/> <col style="width: 68.8025%;"/> </colgroup><tbody><tr><td class="confluenceTd"><p>Separator for Revenue Account Number</p></td><td class="confluenceTd"><p>The separator to use when the application generates account numbers using the Ledger Account Number for each selected entity. For example:</p><p>&lt;Insurance Account Number&gt;-&lt;Facility Account Number&gt;</p></td></tr><tr><td class="confluenceTd">Length of GL Account Numbers</td><td class="confluenceTd"><p>The maximum number of characters that you can include in account numbers. All characters in the string, including the separator, are included in the length.</p></td></tr><tr><td class="confluenceTd">Records to display on the page</td><td class="confluenceTd"><p>The maximum number of crosswalk entries to display in the Export Data window.</p></td></tr><tr><td class="confluenceTd">GL Number for patients with no insurance</td><td class="confluenceTd"><p>The value to display for patients that do not have insurance. The value is appended to Revenue and Cash account numbers in the crosswalk.</p><p>You must specify a numeric value.</p></td></tr></tbody></table></div><p>The following image shows the settings defined to create crosswalk entries that include the combination of Insurance and Facility. Account numbers for patients without insurance will include 0000.<br/><br/> <span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image" draggable="false" src="attachments/88998268/88998270.png" data-image-src="attachments/88998268/88998270.png" data-unresolved-comment-count="0" data-linked-resource-id="88998270" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2020-9-28_16-44-19.png" data-base-url="https://docs.drcloudemr.com:9443" data-linked-resource-content-type="image/png" data-linked-resource-container-id="88998268" data-linked-resource-container-version="1" alt=""></span><br/><br/></p></li><li>Click <strong>Save</strong> to save the crosswalk settings.</li></ol><h2 id="ExportingBillingandPaymentDatatoYourGeneralLedgerSystem-CreateCrosswalkEntries">Create Crosswalk Entries</h2><p>Create a crosswalk entry for each facility, insurance provider, or service code for which you export data.</p><ol><li>Click <strong>Add</strong> to create a new crosswalk entry.</li><li>Select a value for the facility, insurance provider or service code. <br/>When you select more than one entity, the application concatenates the general ledger account number for each entity into a Revenue Account number and a Cash Account number in the crosswalk.To differentiate between the Revenue and Cash accounts, you might want to change one or more values in one of the account number fields.</li><li>Enter an accounts receivable account number in the A/R Account field.<br/>In the following image, the Ledger Account Numbers for the Insurance and Facility (Program) entities are concatenated into Revenue Account and Cash Account numbers. The last two digits in the Cash Account number are changed to allow you to differentiate between the accounts.<br/><br/> <span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image" draggable="false" src="attachments/88998268/88998271.png" data-image-src="attachments/88998268/88998271.png" data-unresolved-comment-count="0" data-linked-resource-id="88998271" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="export1.PNG" data-base-url="https://docs.drcloudemr.com:9443" data-linked-resource-content-type="image/png" data-linked-resource-container-id="88998268" data-linked-resource-container-version="1" alt=""></span><br/><br/></li><li>Click <strong>Save</strong>.</li></ol><h2 id="ExportingBillingandPaymentDatatoYourGeneralLedgerSystem-ClosetheAccountingPeriod"><span>Close the Accounting Period </span></h2><p>When you export data, you select the month and year for the accounting period for which you want to export data. Close the accounting period before you export data to ensure that you do not export unwanted transactions to your general ledger.<br/><br/></p><ol><li>Close the accounting period for which you want to export data. Click the <strong>Billing</strong> tab at the top of the page. The Accounting Period tab appears in the left-hand navigation bar.</li><li>Click the <strong>Accounting Periods</strong> tab.</li><li>Select the year for which you want to view data in the Accounting Periods page.</li><li>Click <strong>Edit</strong> in the Action column, and then change the status to <strong>Closed</strong>.</li><li>Click <strong>Save</strong>.</li></ol><h2 id="ExportingBillingandPaymentDatatoYourGeneralLedgerSystem-ExporttheData"><span>Export the Data</span></h2><p>After you create your crosswalk entries, you can export billing and payment data associated with each crosswalk.<br/><br/>The application generates a .zip file containing the exported data in two comma-separated value (.csv) files named billing_data.csv and cash_data.csv. You can import the data from these files into your general ledger system.</p><ol><li>Click the <strong>Account Ledger</strong> tab<strong>, </strong>and then click <strong>Export</strong>.</li><li>Select the month and year that correspond to the accounting period for which you want to export data.</li><li>Click <strong style="letter-spacing: 0.0px;">Search </strong> <span style="letter-spacing: 0.0px;">to load the data for the selected accounting period. <br/><br/></span>The following image shows a summary of the export data for each crosswalk. For each claim or payment included in the data, the GL Account column contains two accounts. The account number in the first row is the Revenue or Cash account number as defined in the crosswalk. The second row contains the A/R account number.<br/><br/><span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image" draggable="false" src="attachments/88998268/88998269.png" data-image-src="attachments/88998268/88998269.png" data-unresolved-comment-count="0" data-linked-resource-id="88998269" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="export2.PNG" data-base-url="https://docs.drcloudemr.com:9443" data-linked-resource-content-type="image/png" data-linked-resource-container-id="88998268" data-linked-resource-container-version="1" alt=""></span> <br/><br/><br/></li><li>Enter a title for the export.</li><li>Click <strong>Export</strong>. The application generates a .zip file containing two .csv files. <br/>The Export button is disabled if the data contains entries without general ledger account numbers. Click the Download Records with missing GL A/C button to download the entries that contain missing account numbers.</li></ol><p><br/></p>
+                    </div>
+
+                                                            <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/88998268/88998271.png">export1.PNG</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/88998268/88998270.png">image2020-9-28_16-44-19.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/88998268/88998269.png">export2.PNG</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Nov 19, 2025 02:49</p>
+                    <div id="footer-logo"><a href="https://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>
